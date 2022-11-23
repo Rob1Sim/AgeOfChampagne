@@ -90,14 +90,26 @@
             "php vendor/bin/codecept run"
         ],
         "test": ["php vendor/bin/php-cs-fixer fix --dry-run --diff","php vendor/bin/codecept run"],
-
+        "db": [
+            "php bin/console doctrine:database:drop --force --if-exists",
+            "php bin/console doctrine:database:create",
+            "php bin/console doctrine:migrations:migrate --no-interaction",
+            "php bin/console doctrine:fixtures:load --no-interaction"
+        ],
         "post-install-cmd": [
             "@auto-scripts"
         ],
         "post-update-cmd": [
             "@auto-scripts"
         ]
-    },
+    },"scripts-descriptions": {
+    "start": "Lance le seveur",
+    "test:cs": "Vérifie si le codes est écrit selon le style de codage : PSR-12",
+    "fix:cs": "Corrige le code pour qu'il suivent le style de codage : PSR-12",
+    "test:codecept": "Reset la base de donnée de test et lance la série de test de codeption",
+    "test": "Effectue tous les test de mis en forme et lance la série de test de codeption",
+    "db": "Reset la base de donnée de test afin d'y entrée des données factices"
+},
     "conflict": {
         "symfony/symfony": "*"
     },
