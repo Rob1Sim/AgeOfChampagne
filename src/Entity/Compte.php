@@ -146,4 +146,18 @@ class Compte implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    /**
+     * Renvoie vrai si l'utilsiateur a plus de 18 ans.
+     *
+     * @throws \Exception
+     */
+    public function estMajeur(): bool
+    {
+        //TODO : Tester la fonction
+        $now = new \DateTime();
+        $ecart = $now->diff($this->dateNaiss);
+
+        return $ecart->y >= 18;
+    }
 }
