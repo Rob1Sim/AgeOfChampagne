@@ -122,6 +122,7 @@
     "require-dev": {
         "codeception/codeception": "^5.0",
         "codeception/module-doctrine2": "^3.0",
+        "doctrine/doctrine-fixtures-bundle": "^3.4",
         "phpunit/phpunit": "^9.5",
         "symfony/browser-kit": "5.4.*",
         "symfony/css-selector": "5.4.*",
