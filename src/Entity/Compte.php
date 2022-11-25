@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CompteRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -26,6 +27,12 @@ class Compte implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     private ?string $password = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $dateNaiss = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $login = null;
 
     public function getId(): ?int
     {
@@ -114,5 +121,29 @@ class Compte implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getDateNaiss(): ?\DateTimeInterface
+    {
+        return $this->dateNaiss;
+    }
+
+    public function setDateNaiss(\DateTimeInterface $dateNaiss): self
+    {
+        $this->dateNaiss = $dateNaiss;
+
+        return $this;
+    }
+
+    public function getLogin(): ?string
+    {
+        return $this->login;
+    }
+
+    public function setLogin(string $login): self
+    {
+        $this->login = $login;
+
+        return $this;
     }
 }
