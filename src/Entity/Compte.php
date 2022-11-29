@@ -5,10 +5,12 @@ namespace App\Entity;
 use App\Repository\CompteRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: CompteRepository::class)]
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class Compte implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -33,6 +35,10 @@ class Compte implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 50)]
     private ?string $login = null;
+
+    #[ORM\Column(type: 'boolean')]
+    private $is_verified = false;
+
 
     public function getId(): ?int
     {
@@ -160,4 +166,17 @@ class Compte implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $ecart->y >= 18;
     }
+
+    public function isVerified(): bool
+    {
+        return $this->is_verified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->is_verified = $isVerified;
+
+        return $this;
+    }
+
 }
