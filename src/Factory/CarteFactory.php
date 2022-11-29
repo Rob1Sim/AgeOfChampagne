@@ -2,6 +2,7 @@
 
 namespace App\Factory;
 
+use App\DataFixtures\AppFixtures;
 use App\Entity\Carte;
 use App\Repository\CarteRepository;
 use Zenstruck\Foundry\RepositoryProxy;
@@ -40,10 +41,10 @@ final class CarteFactory extends ModelFactory
     {
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
-            'nom' => self::faker()->text(),
-            'type' => self::faker()->text(),
-            'cru' => self::faker()->text(),
-            'region' => self::faker()->text(),
+            'nom' => self::faker()->userName(),
+            'type' => self::faker()->streetName(),
+            'cru' => self::faker()->userName(),
+            'region' => self::faker()->name(),
             'latitude' => self::faker()->randomFloat(),
             'longitude' => self::faker()->randomFloat(),
             'superficie' => self::faker()->randomFloat(),
@@ -62,5 +63,11 @@ final class CarteFactory extends ModelFactory
     protected static function getClass(): string
     {
         return Carte::class;
+    }
+
+
+    public function getDependencies(): array
+    {
+        return [AppFixtures::class];
     }
 }
