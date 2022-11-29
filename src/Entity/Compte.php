@@ -37,7 +37,8 @@ class Compte implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $login = null;
 
     #[ORM\Column(type: 'boolean')]
-    private $isVerified = false;
+    private $is_verified = false;
+
 
     public function getId(): ?int
     {
@@ -168,13 +169,14 @@ class Compte implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function isVerified(): bool
     {
-        return $this->isVerified;
+        return $this->is_verified;
     }
 
     public function setIsVerified(bool $isVerified): self
     {
-        $this->isVerified = $isVerified;
+        $this->is_verified = $isVerified;
 
         return $this;
     }
+
 }
