@@ -40,9 +40,9 @@ final class CruFactory extends ModelFactory
     {
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
-            'libelle' => self::faker()->text(),
-            'horaire' => self::faker()->text(),
-            'infos' => self::faker()->text(),
+            'libelle' => self::faker()->company(),
+            'horaire' => self::faker()->time(),
+            'infos' => self::faker()->company(),
         ];
     }
 
