@@ -40,11 +40,11 @@ final class VigneronFactory extends ModelFactory
     {
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
-            'nom' => self::faker()->text(),
-            'prenom' => self::faker()->text(),
-            'adresse' => self::faker()->text(),
-            'code_postal' => self::faker()->text(),
-            'ville' => self::faker()->text(),
+            'nom' => self::faker()->lastName(),
+            'prenom' => self::faker()->firstName(),
+            'adresse' => self::faker()->address(),
+            'code_postal' => self::faker()->postcode(),
+            'ville' => self::faker()->city(),
         ];
     }
 
