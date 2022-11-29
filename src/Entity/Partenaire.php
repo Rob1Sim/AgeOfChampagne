@@ -36,14 +36,14 @@ class Partenaire
         return $this;
     }
 
-    public function getPr�enom(): ?string
+    public function getPrenom(): ?string
     {
         return $this->prenom;
     }
 
-    public function setPr�enom(string $pr�enom): self
+    public function setPrenom(string $prenom): self
     {
-        $this->prenom = $pr�enom;
+        $this->prenom = $prenom;
 
         return $this;
     }
