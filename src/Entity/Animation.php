@@ -26,6 +26,9 @@ class Animation
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $horaireFin = null;
 
+    #[ORM\Column]
+    private ?float $prix = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +78,18 @@ class Animation
     public function setHoraireFin(\DateTimeInterface $horaireFin): self
     {
         $this->horaireFin = $horaireFin;
+
+        return $this;
+    }
+
+    public function getPrix(): ?float
+    {
+        return $this->prix;
+    }
+
+    public function setPrix(float $prix): self
+    {
+        $this->prix = $prix;
 
         return $this;
     }
