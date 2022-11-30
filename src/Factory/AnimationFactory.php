@@ -42,6 +42,7 @@ final class AnimationFactory extends ModelFactory
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
             'type' => self::faker()->name(),
             'nom' => self::faker()->name(),
+            'prix'=>self::faker()->randomFloat(),
             'horaireDeb' => self::faker()->dateTime(),
             'horaireFin' => self::faker()->dateTime(),
         ];
