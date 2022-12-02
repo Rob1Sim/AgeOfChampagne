@@ -10,8 +10,8 @@ class VigneronFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        //VigneronFactory::createMany(10);
+        VigneronFactory::createMany(10);
         //TODO: Demander a gillard pourquoi ça ne fonctionne pas
-        //$manager->flush();
+        $manager->flush();
     }
 }

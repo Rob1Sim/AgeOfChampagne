@@ -41,7 +41,7 @@ final class ProduitFactory extends ModelFactory
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
             'libelle' => self::faker()->company(),
-            'prix' => self::faker()->randomFloat(),
+            'prix' => self::faker()->randomFloat(2, 50, 5000),
         ];
     }
 
