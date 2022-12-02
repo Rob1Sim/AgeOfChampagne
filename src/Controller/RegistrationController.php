@@ -11,7 +11,9 @@ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
@@ -20,15 +22,9 @@ use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
 class RegistrationController extends AbstractController
 {
-    private EmailVerifier $emailVerifier;
-
-    public function __construct(EmailVerifier $emailVerifier)
-    {
-        $this->emailVerifier = $emailVerifier;
-    }
 
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginFormAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
+    public function register(MailerInterface $mailer, Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginFormAuthenticator $authenticator, EntityManagerInterface $entityManager, VerifyEmailHelperInterface $verifyEmailHelper): Response
     {
         $user = new Compte();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -42,10 +38,24 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+            $signatureComponents = $verifyEmailHelper->generateSignature(
+                'app_verify_email',
+                $user->getId(),
+                $user->getEmail(),
+                ['id' => $user->getId()]
+            );
+            $email = (new Email())
+                ->from('contact@oldhengames.com')
+                ->to($user->getEmail())
+                ->subject('Vérifier votre compte')
+                ->text("Bonjour {$user->getFirstName()} !")
+                ->text('Comfirmer votre email sur :  '.$signatureComponents->getSignedUrl());
+            $mailer->send($email);
+
+            // return $this->redirectToRoute();
 
             $entityManager->persist($user);
             $entityManager->flush();
-
             // generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())
@@ -68,7 +78,7 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-    #[Route('/verify/email', name: 'app_verify_email')]
+    #[Route('/verify', name: 'app_verify_email')]
     public function verifyUserEmail(Request $request, TranslatorInterface $translator): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');

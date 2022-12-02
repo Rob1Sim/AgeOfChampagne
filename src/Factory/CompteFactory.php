@@ -48,6 +48,7 @@ final class CompteFactory extends ModelFactory
             'password' => 'test',
             'dateNaiss' => self::faker()->dateTimeBetween(),
             'login' => self::faker()->firstName(),
+            'isVerified' => true,
         ];
     }
 
