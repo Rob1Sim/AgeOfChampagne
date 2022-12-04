@@ -19,7 +19,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 
-    class RegistrationController extends AbstractController
+class RegistrationController extends AbstractController
 {
 
     #[Route('/register', name: 'app_register')]
@@ -46,12 +46,7 @@ use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
             $em->persist($user);
             $em->flush();
 
-
-            return $userAuthenticator->authenticateUser(
-                $user,
-                $authenticator,
-                $request
-            );
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('registration/register.html.twig', [

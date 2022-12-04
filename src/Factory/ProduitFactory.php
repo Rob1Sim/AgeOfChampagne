@@ -4,28 +4,28 @@ namespace App\Factory;
 
 use App\Entity\Produit;
 use App\Repository\ProduitRepository;
-use Zenstruck\Foundry\RepositoryProxy;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
+use Zenstruck\Foundry\RepositoryProxy;
 
 /**
  * @extends ModelFactory<Produit>
  *
- * @method static Produit|Proxy createOne(array $attributes = [])
- * @method static Produit[]|Proxy[] createMany(int $number, array|callable $attributes = [])
- * @method static Produit[]|Proxy[] createSequence(array|callable $sequence)
- * @method static Produit|Proxy find(object|array|mixed $criteria)
- * @method static Produit|Proxy findOrCreate(array $attributes)
- * @method static Produit|Proxy first(string $sortedField = 'id')
- * @method static Produit|Proxy last(string $sortedField = 'id')
- * @method static Produit|Proxy random(array $attributes = [])
- * @method static Produit|Proxy randomOrCreate(array $attributes = [])
- * @method static Produit[]|Proxy[] all()
- * @method static Produit[]|Proxy[] findBy(array $attributes)
- * @method static Produit[]|Proxy[] randomSet(int $number, array $attributes = [])
- * @method static Produit[]|Proxy[] randomRange(int $min, int $max, array $attributes = [])
+ * @method static Produit|Proxy                     createOne(array $attributes = [])
+ * @method static Produit[]|Proxy[]                 createMany(int $number, array|callable $attributes = [])
+ * @method static Produit[]|Proxy[]                 createSequence(array|callable $sequence)
+ * @method static Produit|Proxy                     find(object|array|mixed $criteria)
+ * @method static Produit|Proxy                     findOrCreate(array $attributes)
+ * @method static Produit|Proxy                     first(string $sortedField = 'id')
+ * @method static Produit|Proxy                     last(string $sortedField = 'id')
+ * @method static Produit|Proxy                     random(array $attributes = [])
+ * @method static Produit|Proxy                     randomOrCreate(array $attributes = [])
+ * @method static Produit[]|Proxy[]                 all()
+ * @method static Produit[]|Proxy[]                 findBy(array $attributes)
+ * @method static Produit[]|Proxy[]                 randomSet(int $number, array $attributes = [])
+ * @method static Produit[]|Proxy[]                 randomRange(int $min, int $max, array $attributes = [])
  * @method static ProduitRepository|RepositoryProxy repository()
- * @method Produit|Proxy create(array|callable $attributes = [])
+ * @method        Produit|Proxy                     create(array|callable $attributes = [])
  */
 final class ProduitFactory extends ModelFactory
 {

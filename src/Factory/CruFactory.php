@@ -4,28 +4,28 @@ namespace App\Factory;
 
 use App\Entity\Cru;
 use App\Repository\CruRepository;
-use Zenstruck\Foundry\RepositoryProxy;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
+use Zenstruck\Foundry\RepositoryProxy;
 
 /**
  * @extends ModelFactory<Cru>
  *
- * @method static Cru|Proxy createOne(array $attributes = [])
- * @method static Cru[]|Proxy[] createMany(int $number, array|callable $attributes = [])
- * @method static Cru[]|Proxy[] createSequence(array|callable $sequence)
- * @method static Cru|Proxy find(object|array|mixed $criteria)
- * @method static Cru|Proxy findOrCreate(array $attributes)
- * @method static Cru|Proxy first(string $sortedField = 'id')
- * @method static Cru|Proxy last(string $sortedField = 'id')
- * @method static Cru|Proxy random(array $attributes = [])
- * @method static Cru|Proxy randomOrCreate(array $attributes = [])
- * @method static Cru[]|Proxy[] all()
- * @method static Cru[]|Proxy[] findBy(array $attributes)
- * @method static Cru[]|Proxy[] randomSet(int $number, array $attributes = [])
- * @method static Cru[]|Proxy[] randomRange(int $min, int $max, array $attributes = [])
+ * @method static Cru|Proxy                     createOne(array $attributes = [])
+ * @method static Cru[]|Proxy[]                 createMany(int $number, array|callable $attributes = [])
+ * @method static Cru[]|Proxy[]                 createSequence(array|callable $sequence)
+ * @method static Cru|Proxy                     find(object|array|mixed $criteria)
+ * @method static Cru|Proxy                     findOrCreate(array $attributes)
+ * @method static Cru|Proxy                     first(string $sortedField = 'id')
+ * @method static Cru|Proxy                     last(string $sortedField = 'id')
+ * @method static Cru|Proxy                     random(array $attributes = [])
+ * @method static Cru|Proxy                     randomOrCreate(array $attributes = [])
+ * @method static Cru[]|Proxy[]                 all()
+ * @method static Cru[]|Proxy[]                 findBy(array $attributes)
+ * @method static Cru[]|Proxy[]                 randomSet(int $number, array $attributes = [])
+ * @method static Cru[]|Proxy[]                 randomRange(int $min, int $max, array $attributes = [])
  * @method static CruRepository|RepositoryProxy repository()
- * @method Cru|Proxy create(array|callable $attributes = [])
+ * @method        Cru|Proxy                     create(array|callable $attributes = [])
  */
 final class CruFactory extends ModelFactory
 {
