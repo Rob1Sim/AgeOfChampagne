@@ -19,7 +19,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 
-class RegistrationController extends AbstractController
+    class RegistrationController extends AbstractController
 {
 
     #[Route('/register', name: 'app_register')]
@@ -45,7 +45,7 @@ class RegistrationController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-            
+
 
             return $userAuthenticator->authenticateUser(
                 $user,
