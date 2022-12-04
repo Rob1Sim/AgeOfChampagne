@@ -5,9 +5,10 @@ namespace App\Factory;
 use App\DataFixtures\AppFixtures;
 use App\Entity\Carte;
 use App\Repository\CarteRepository;
+use Zenstruck\Foundry\RepositoryProxy;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
-use Zenstruck\Foundry\RepositoryProxy;
+
 
 /**
  * @extends ModelFactory<Carte>
