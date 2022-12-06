@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Liste des Vignerons {% endblock %}
+
+{% block body %}
+    <h1>Liste des Vignerons </h1>
+    <ul>
+        {% for infoVign in vignerons %}
+            <li class="vigneron">
+                <pre>
+                Nom :
+                    {{ infoVign.nom }}
+                Prenom :
+                    {{ infoVign.prenom }}
+                Adresse :
+                    {{ infoVign.adresse }}
+                Code Postal :
+                    {{ infoVign.code_postal }}
+                Ville :
+                    {{ infoVign.ville }}
+                </pre>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
