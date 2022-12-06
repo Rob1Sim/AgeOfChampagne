@@ -17,5 +17,10 @@ class VigneronController extends AbstractController
 
         return $this->render('vigneron/index.html.twig', ['vignerons' => $allVignerons]);
     }
-    
+
+    #[Route('/vigneron/{id<\d+>}', name: 'app_show_vigneron')]
+    public function show(Vigneron $vigneron): Response
+    {
+        return $this->render('vigneron/show.html.twig', ['vignerons' => $vigneron]);
+    }
 }
