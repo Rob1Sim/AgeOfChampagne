@@ -1,39 +1,26 @@
-body {
-    display:flex;
-    margin: 0;
-    padding:0;
-}
+
 @font-face {
     font-family:'avenir';
     src: url("/public/police/cooper-hewitt-font-family.zip");
 }
-.login {
-    display:flex;
-    justify-content: center;
-    font-family: avenir, sans-serif;
-    white-space: pre-line;
-    flex-direction: column;
-}
-
-.principal{
-    display:flex;
-    justify-content: center;
-    background-color: white;
-    flex:1;
-    border-color: #B0413E;
-}
-.ardoise{
-    display:flex;
-    flex-direction: column;
-    background: url("./image/ardoise.png") no-repeat;
-    background-size:100% auto;
-    flex: 1;
-    border:2px solid red;
 
 
+.gauche {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
-button{
-    background-color: #A68B6A;
-    width: 75%;
-    border-radius: 15%;
+
+.droite{
+    background: url("/image/ardoise.png") no-repeat;
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    right: 0;
+    top: 0;
+
 }
