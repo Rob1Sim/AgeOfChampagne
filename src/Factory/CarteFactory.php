@@ -42,9 +42,9 @@ final class CarteFactory extends ModelFactory
     {
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
-            'nom' => self::faker()->userName(),
+            'nom' => self::faker()->title(),
             'type' => self::faker()->streetName(),
-            'cru' => self::faker()->userName(),
+            'cru' => self::faker()->company(),
             'region' => self::faker()->name(),
             'latitude' => self::faker()->randomFloat(),
             'longitude' => self::faker()->randomFloat(),
