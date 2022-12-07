@@ -1,2 +1,1 @@
 tests\Controller\RegistrationController\registerCest.php:tryToTest
-tests\Controller\SecurityController\loginCest.php:tryToTest
