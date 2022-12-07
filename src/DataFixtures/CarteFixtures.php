@@ -3,17 +3,22 @@
 namespace App\DataFixtures;
 
 use App\Factory\CarteFactory;
+use App\Factory\VigneronFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class CarteFixtures extends Fixture
+class CarteFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
-        $carte = json_decode(file_get_contents(__DIR__.'/data/cartes.json'), associative: true);
-        for ($i = 0; $i < count($carte); ++$i) {
-            CarteFactory::createOne($carte[$i]);
-        }
+        CarteFactory::createMany(10,function (){
+            return ["vignerons"=>VigneronFactory::random()];
+        });
         $manager->flush();
+    }
+    public function getDependencies()
+    {
+        return[VigneronFixtures::class];
     }
 }
