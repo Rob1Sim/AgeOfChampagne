@@ -4,23 +4,46 @@
     src: url("/public/police/cooper-hewitt-font-family.zip");
 }
 
+@media (min-width: 1000px ) {
+    .gauche {
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: #FFFFFF;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
 
-.gauche {
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background: #FFFFFF;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    .droite {
+        background: url("/image/ardoise.png") no-repeat;
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        right: 0;
+        top: 0;
+
+    }
+    .AOC{
+        align-content: center;
+        background: url("/image/AOC_white.png") no-repeat;
+        background-size: 75%;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        right: -10%;
+        top: 0;
+    }
 }
 
-.droite{
-    background: url("/image/ardoise.png") no-repeat;
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    right: 0;
-    top: 0;
-
+@media (max-width: 999px ){
+    .gauche {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: #FFFFFF;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
 }
