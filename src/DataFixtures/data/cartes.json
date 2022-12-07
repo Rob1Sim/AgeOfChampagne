@@ -1,0 +1,35 @@
+[
+  {
+    "nom":"Trepail",
+    "type": "Jaune",
+    "cru": "Chardonnay" ,
+    "region:": "Montagne de reims",
+    "latitude": 1.1,
+    "longitude": 1.1,
+    "superficie": 10.0,
+    "contenuImage":"image"
+
+  },
+  {
+    "nom":"Celle-sur-Ource",
+    "type": "Violet",
+    "cru": "Pinots noir" ,
+    "region:": "Côte des bar",
+    "latitude": 1.1,
+    "longitude": 1.1,
+    "superficie": 10.0,
+    "contenuImage":"image"
+
+  },  {
+  "nom":"Trélou-sur-marne",
+  "type": "rose",
+  "cru": "Meunier" ,
+  "region:": "Vallée de la marne",
+  "latitude": 1.1,
+  "longitude": 1.1,
+  "superficie": 10.0,
+  "contenuImage":"image"
+
+}
+
+]
