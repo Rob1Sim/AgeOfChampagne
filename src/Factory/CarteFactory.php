@@ -9,24 +9,25 @@ use Zenstruck\Foundry\RepositoryProxy;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
 
+
 /**
  * @extends ModelFactory<Carte>
  *
- * @method static Carte|Proxy createOne(array $attributes = [])
- * @method static Carte[]|Proxy[] createMany(int $number, array|callable $attributes = [])
- * @method static Carte[]|Proxy[] createSequence(array|callable $sequence)
- * @method static Carte|Proxy find(object|array|mixed $criteria)
- * @method static Carte|Proxy findOrCreate(array $attributes)
- * @method static Carte|Proxy first(string $sortedField = 'id')
- * @method static Carte|Proxy last(string $sortedField = 'id')
- * @method static Carte|Proxy random(array $attributes = [])
- * @method static Carte|Proxy randomOrCreate(array $attributes = [])
- * @method static Carte[]|Proxy[] all()
- * @method static Carte[]|Proxy[] findBy(array $attributes)
- * @method static Carte[]|Proxy[] randomSet(int $number, array $attributes = [])
- * @method static Carte[]|Proxy[] randomRange(int $min, int $max, array $attributes = [])
+ * @method static Carte|Proxy                     createOne(array $attributes = [])
+ * @method static Carte[]|Proxy[]                 createMany(int $number, array|callable $attributes = [])
+ * @method static Carte[]|Proxy[]                 createSequence(array|callable $sequence)
+ * @method static Carte|Proxy                     find(object|array|mixed $criteria)
+ * @method static Carte|Proxy                     findOrCreate(array $attributes)
+ * @method static Carte|Proxy                     first(string $sortedField = 'id')
+ * @method static Carte|Proxy                     last(string $sortedField = 'id')
+ * @method static Carte|Proxy                     random(array $attributes = [])
+ * @method static Carte|Proxy                     randomOrCreate(array $attributes = [])
+ * @method static Carte[]|Proxy[]                 all()
+ * @method static Carte[]|Proxy[]                 findBy(array $attributes)
+ * @method static Carte[]|Proxy[]                 randomSet(int $number, array $attributes = [])
+ * @method static Carte[]|Proxy[]                 randomRange(int $min, int $max, array $attributes = [])
  * @method static CarteRepository|RepositoryProxy repository()
- * @method Carte|Proxy create(array|callable $attributes = [])
+ * @method        Carte|Proxy                     create(array|callable $attributes = [])
  */
 final class CarteFactory extends ModelFactory
 {
@@ -41,9 +42,9 @@ final class CarteFactory extends ModelFactory
     {
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
-            'nom' => self::faker()->userName(),
+            'nom' => self::faker()->title(),
             'type' => self::faker()->streetName(),
-            'cru' => self::faker()->userName(),
+            'cru' => self::faker()->company(),
             'region' => self::faker()->name(),
             'latitude' => self::faker()->randomFloat(),
             'longitude' => self::faker()->randomFloat(),
@@ -64,7 +65,6 @@ final class CarteFactory extends ModelFactory
     {
         return Carte::class;
     }
-
 
     public function getDependencies(): array
     {
