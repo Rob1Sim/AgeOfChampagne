@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Carte;
+use Doctrine\ORM\EntityRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AvatarField;
@@ -29,7 +30,11 @@ class CarteCrudController extends AbstractCrudController
             NumberField::new("latitude"),
             NumberField::new("longitude"),
             NumberField::new("superficie"),
-            AssociationField::new("vignerons")->setFormTypeOption('choice_label','nom')->formatValue(function ($value,$entity){
+            AssociationField::new("vignerons")->setFormTypeOption('choice_label','nom')
+                ->setFormTypeOption('query_builder',function(EntityRepository $ep){
+                    return $ep->createQueryBuilder('c')->orderBy('c.nom','ASC');
+                })
+                ->formatValue(function ($value,$entity){
                 return $entity->getVignerons()->getNom()." ".$entity->getVignerons()->getPrenom();
             }),
             AvatarField::new("contenuImage")->hideOnIndex()
