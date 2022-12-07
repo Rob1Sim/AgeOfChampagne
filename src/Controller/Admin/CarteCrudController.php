@@ -30,7 +30,9 @@ class CarteCrudController extends AbstractCrudController
             NumberField::new("latitude"),
             NumberField::new("longitude"),
             NumberField::new("superficie"),
-            AssociationField::new("vignerons")->setFormTypeOption('choice_label','nom')
+            AssociationField::new("vignerons")->setFormTypeOption('choice_label',function ($vigneron){
+                return $vigneron->getNomPrenom();
+            })
                 ->setFormTypeOption('query_builder',function(EntityRepository $ep){
                     return $ep->createQueryBuilder('c')->orderBy('c.nom','ASC');
                 })

@@ -103,6 +103,10 @@ class Vigneron
         return $this;
     }
 
+    public function getNomPrenom(): ?string{
+        return $this->nom." ".$this->prenom;
+    }
+
     /**
      * @return Collection<int, Carte>
      */
