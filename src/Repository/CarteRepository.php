@@ -30,7 +30,6 @@ class CarteRepository extends ServiceEntityRepository
         }
     }
 
-
     public function remove(Carte $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
@@ -39,7 +38,6 @@ class CarteRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
-
 
     /**
      * @return Carte[]
