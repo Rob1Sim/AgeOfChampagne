@@ -37,6 +37,9 @@ class Carte
     #[ORM\Column(length: 255)]
     private ?string $contenuImage = null;
 
+    #[ORM\ManyToOne(inversedBy: 'cartes')]
+    private ?Vigneron $vignerons = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -134,6 +137,18 @@ class Carte
     public function setContenuImage(string $contenuImage): self
     {
         $this->contenuImage = $contenuImage;
+
+        return $this;
+    }
+
+    public function getVignerons(): ?Vigneron
+    {
+        return $this->vignerons;
+    }
+
+    public function setVignerons(?Vigneron $vignerons): self
+    {
+        $this->vignerons = $vignerons;
 
         return $this;
     }
