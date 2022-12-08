@@ -30,18 +30,6 @@ class CarteRepository extends ServiceEntityRepository
         }
     }
 
-    /**
-     * @return Carte[]
-     */
-    public function search(string $value = ''): array
-    {
-        $qb = $this->createQueryBuilder('carte')
-            ->where('carte.nom LIKE :value')
-            ->setParameter('value', '%'.$value.'%')
-            ->orderBy('carte.nom', 'ASC');
-
-        return $qb->getQuery()->getResult();
-    }
 
     public function remove(Carte $entity, bool $flush = false): void
     {
@@ -50,6 +38,20 @@ class CarteRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+
+    /**
+     * @return Carte[]
+     */
+    public function search(string $value = ''): array
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->where('c.nom LIKE :value')
+            ->setParameter('value', '%'.$value.'%')
+            ->orderBy('c.nom', 'ASC');
+
+        return $qb->getQuery()->getResult();
     }
 
 //    /**
