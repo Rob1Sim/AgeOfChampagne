@@ -42,7 +42,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Aoc');
+            ->setTitle('Age Of Champagne');
     }
 
     public function configureMenuItems(): iterable
@@ -55,6 +55,5 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Produits', 'fas fa-wine-bottle', Produit::class);
         yield MenuItem::linkToCrud('Vignerons', 'fas fa-droplet', Vigneron::class);
         yield MenuItem::linkToCrud('Crus', 'fas fa-wine-glass', Cru::class);
-
     }
 }

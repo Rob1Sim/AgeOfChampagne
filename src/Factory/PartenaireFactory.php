@@ -4,28 +4,28 @@ namespace App\Factory;
 
 use App\Entity\Partenaire;
 use App\Repository\PartenaireRepository;
-use Zenstruck\Foundry\RepositoryProxy;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
+use Zenstruck\Foundry\RepositoryProxy;
 
 /**
  * @extends ModelFactory<Partenaire>
  *
- * @method static Partenaire|Proxy createOne(array $attributes = [])
- * @method static Partenaire[]|Proxy[] createMany(int $number, array|callable $attributes = [])
- * @method static Partenaire[]|Proxy[] createSequence(array|callable $sequence)
- * @method static Partenaire|Proxy find(object|array|mixed $criteria)
- * @method static Partenaire|Proxy findOrCreate(array $attributes)
- * @method static Partenaire|Proxy first(string $sortedField = 'id')
- * @method static Partenaire|Proxy last(string $sortedField = 'id')
- * @method static Partenaire|Proxy random(array $attributes = [])
- * @method static Partenaire|Proxy randomOrCreate(array $attributes = [])
- * @method static Partenaire[]|Proxy[] all()
- * @method static Partenaire[]|Proxy[] findBy(array $attributes)
- * @method static Partenaire[]|Proxy[] randomSet(int $number, array $attributes = [])
- * @method static Partenaire[]|Proxy[] randomRange(int $min, int $max, array $attributes = [])
+ * @method static Partenaire|Proxy                     createOne(array $attributes = [])
+ * @method static Partenaire[]|Proxy[]                 createMany(int $number, array|callable $attributes = [])
+ * @method static Partenaire[]|Proxy[]                 createSequence(array|callable $sequence)
+ * @method static Partenaire|Proxy                     find(object|array|mixed $criteria)
+ * @method static Partenaire|Proxy                     findOrCreate(array $attributes)
+ * @method static Partenaire|Proxy                     first(string $sortedField = 'id')
+ * @method static Partenaire|Proxy                     last(string $sortedField = 'id')
+ * @method static Partenaire|Proxy                     random(array $attributes = [])
+ * @method static Partenaire|Proxy                     randomOrCreate(array $attributes = [])
+ * @method static Partenaire[]|Proxy[]                 all()
+ * @method static Partenaire[]|Proxy[]                 findBy(array $attributes)
+ * @method static Partenaire[]|Proxy[]                 randomSet(int $number, array $attributes = [])
+ * @method static Partenaire[]|Proxy[]                 randomRange(int $min, int $max, array $attributes = [])
  * @method static PartenaireRepository|RepositoryProxy repository()
- * @method Partenaire|Proxy create(array|callable $attributes = [])
+ * @method        Partenaire|Proxy                     create(array|callable $attributes = [])
  */
 final class PartenaireFactory extends ModelFactory
 {

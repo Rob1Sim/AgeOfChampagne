@@ -39,7 +39,6 @@ class Compte implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $is_verified = false;
 
-
     public function getId(): ?int
     {
         return $this->id;
@@ -160,7 +159,7 @@ class Compte implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function estMajeur(): bool
     {
-        //TODO : Tester la fonction
+        // TODO : Tester la fonction
         $now = new \DateTime();
         $ecart = $now->diff($this->dateNaiss);
 
@@ -178,5 +177,4 @@ class Compte implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
 }
