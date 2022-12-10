@@ -10,6 +10,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class CompteCrudController extends AbstractCrudController
@@ -68,7 +69,10 @@ class CompteCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             EmailField::new('email', 'Email'),
             TextField::new('login', 'Login'),
-            TextField::new('password', 'Mot de passe')->hideWhenUpdating()->hideOnIndex(),
+            TextField::new('password', 'Mot de passe')
+                ->hideWhenUpdating()
+                ->hideOnIndex()
+                ->setFormType(PasswordType::class),
             DateField::new('datenaiss', 'Date de naissance'),
             ArrayField::new('roles', 'Roles')->formatValue(function ($value, $entity) {
                 if ('ROLE_ADMIN' == $entity->getRoles()[0]) {
