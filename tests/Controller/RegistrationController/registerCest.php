@@ -15,13 +15,11 @@ class registerCest
     {
         $I->amOnPage('/register');
         $I->seeResponseCodeIsSuccessful();
-        $I->fillField('Identifiant', 'davert');
-        $I->fillField('Adresse Mail', 'qwerty');
-        $I->fillField('Date de naissance', 'davert');
-        $I->fillField('password', 'qwerty');
-        $I->fillField('Mot de passe', 'davert');
-        $I->click("Acceptez les conditions d'utilisations");
+        $I->fillField('Identifiant', 'test');
+        $I->fillField('Adresse Mail', 'test@gmail.com');
+        $I->fillField('Date de naissance', '09/07/2002');
+        $I->fillField('Mot de passe', 'test');
         $I->click("S'inscrire");
-        $I->seeCurrentUrlEquals('/login');
+        $I->seeResponseCodeIsSuccessful();
     }
 }
