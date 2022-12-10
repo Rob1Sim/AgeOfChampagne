@@ -39,6 +39,19 @@ class CarteRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * @return Carte[]
+     */
+    public function search(string $value = ''): array
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->where('c.nom LIKE :value')
+            ->setParameter('value', '%'.$value.'%')
+            ->orderBy('c.nom', 'ASC');
+
+        return $qb->getQuery()->getResult();
+    }
+
 //    /**
 //     * @return Carte[] Returns an array of Carte objects
 //     */
