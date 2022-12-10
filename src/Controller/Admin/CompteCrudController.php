@@ -26,7 +26,15 @@ class CompteCrudController extends AbstractCrudController
             TextField::new('login', 'Login'),
             TextField::new('password', 'Mot de passe')->hideOnForm()->hideOnIndex(),
             DateField::new('datenaiss', 'Date de naissance'),
-            ArrayField::new('roles', 'Roles'),
+            ArrayField::new('roles', 'Roles')->formatValue(function ($value, $entity) {
+                if ('ROLE_ADMIN' == $entity->getRoles()[0]) {
+                    return '<span CLASS="fa-solid fa-person-military-pointing"></span>';
+                } elseif ('ROLE_PREMIUM' == $entity->getRoles()[0]) {
+                    return '<span CLASS="fa-solid fa-person-rays"></span>';
+                } else {
+                    return '<span CLASS="fa-solid fa-person"></span>';
+                }
+            }),
             BooleanField::new('is_verified', 'Est vérifié'),
         ];
     }
