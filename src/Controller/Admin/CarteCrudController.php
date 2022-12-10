@@ -41,7 +41,7 @@ class CarteCrudController extends AbstractCrudController
             ImageField::new('contenuImage', 'Image de la carte')
                 ->setBasePath('uploads/image/')
                 ->setUploadDir('public/uploads/img/')
-                ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]')
+            ->setUploadedFileNamePattern('cards-[slug]-[timestamp].[extension]')
                 /**->setFormTypeOption('constraints', [
                     new \Symfony\Component\Validator\Constraints\Image([
                         'maxSize' => '5M',
