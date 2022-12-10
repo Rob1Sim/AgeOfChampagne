@@ -79,7 +79,8 @@ class CompteCrudController extends AbstractCrudController
             DateField::new('datenaiss', 'Date de naissance'),
             ChoiceField::new('roles')
             ->setChoices($roles)
-            ->allowMultipleChoices(),
+            ->allowMultipleChoices()
+            ->onlyOnForms(),
             ArrayField::new('roles', 'Roles')->formatValue(function ($value, $entity) {
                 if ('ROLE_ADMIN' == $entity->getRoles()[0]) {
                     return '<span CLASS="fa-solid fa-person-military-pointing"></span>';
