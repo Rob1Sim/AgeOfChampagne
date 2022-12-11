@@ -1,25 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <pre>
-        <div class ="carte">
-            <span class="carteNom">
-                {{ carte.nom }}
-            </span>
-            <span class="carteType">
-                {{ carte.type }}
-            </span>
-            <span class="carteCru">
-                {{ carte.cru }}
-            </span>
-            <span class="carteRegion">
-                {{ carte.region }}
-            </span>
-            <span class="carteSuperficie">
-                {{ carte.superficie }}
-            </span>
-        </div>
-    </pre>
+    <ul class="carte">
+            <li class="carteNom">
+                Nom : {{ carte.nom }}
+            </li>
+            <li class="carteType">
+                Type : {{ carte.type }}
+            </li>
+            <li class="carteCru">
+                Cru : {{ carte.cru }}
+            </li>
+            <li class="carteRegion">
+                Region : {{ carte.region }}
+            </li>
+            <li class="carteSuperficie">
+                Superficie : {{ carte.superficie }} m2
+            </li>
+    </ul>
 {% endblock %}
 
 {% block title %}
