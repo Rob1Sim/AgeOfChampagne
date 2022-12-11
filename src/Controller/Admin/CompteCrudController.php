@@ -6,6 +6,7 @@ use App\Entity\Compte;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -65,6 +66,8 @@ class CompteCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
+        $roles = ['Administrateur' => 'ROLE_ADMIN', 'Utilisateur' => 'ROLE_USER', 'Premium' => 'ROLE_PREMIUM'];
+
         return [
             IdField::new('id')->hideOnForm(),
             EmailField::new('email', 'Email'),
@@ -74,6 +77,10 @@ class CompteCrudController extends AbstractCrudController
                 ->hideOnIndex()
                 ->setFormType(PasswordType::class),
             DateField::new('datenaiss', 'Date de naissance'),
+            ChoiceField::new('roles')
+            ->setChoices($roles)
+            ->allowMultipleChoices()
+            ->onlyOnForms(),
             ArrayField::new('roles', 'Roles')->formatValue(function ($value, $entity) {
                 if ('ROLE_ADMIN' == $entity->getRoles()[0]) {
                     return '<span CLASS="fa-solid fa-person-military-pointing"></span>';
@@ -82,7 +89,7 @@ class CompteCrudController extends AbstractCrudController
                 } else {
                     return '<span CLASS="fa-solid fa-person"></span>';
                 }
-            }),
+            })->hideOnForm(),
             BooleanField::new('is_verified', 'Est vérifié'),
         ];
     }
