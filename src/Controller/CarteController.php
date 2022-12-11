@@ -22,7 +22,7 @@ class CarteController extends AbstractController
     }
 
     #[Route('carte/{id}', requirements: ['id' => '\d+'])]
-    #[Entity('carte', expr: 'repository.findWithCategory(id)')]
+    #[Entity('carte', expr: 'repository.find(id)')]
     public function show(Carte $carte): Response
     {
         return $this->render('carte/show.html.twig', ['carte' => $carte]);
