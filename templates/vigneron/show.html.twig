@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ vigneron.getNom()}} {{ vigneron.getPrenom()}} {% endblock %}
+
+{% block body %}
+    <h1> {{ vigneron.getNom()}} {{ vigneron.getPrenom()}} </h1>
+
+    <dl>
+        <dt>Nom : {{ vigneron.getNom()}} </dt>
+        <dt>Prénom : {{ vigneron.getPrenom()}} </dt>
+        <dt>Adresse : {{ vigneron.getAdresse()}} </dt>
+        <dt>Code Postal : {{ vigneron.getCodePostal()}} </dt>
+        <dt>Ville : {{ vigneron.getVille()}} </dt>
+    </dl>
+{% endblock %}
