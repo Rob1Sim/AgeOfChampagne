@@ -1,7 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
+    <span class="carteNom">
+        {{ carte.nom }}
+    </span>
+    <span class="carteType">
+        {{ carte.type }}
+    </span>
+    <span class="carteCru">
+        {{ carte.cru }}
+    </span>
+    <span class="carteRegion">
+        {{ carte.region }}
+    </span>
+    <span class="carteSuperficie">
+        {{ carte.superficie }}
+    </span>
 {% endblock %}
 
 {% block title %}
