@@ -26,6 +26,9 @@ class Cru
     #[ORM\Column(length: 255)]
     private ?string $infos = null;
 
+    #[ORM\ManyToOne(inversedBy: 'cru')]
+    private ?Vigneron $vigneronsCru;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +78,18 @@ class Cru
     public function setInfos(string $infos): self
     {
         $this->infos = $infos;
+
+        return $this;
+    }
+
+    public function getVigneronsCru(): ?Vigneron
+    {
+        return $this->vigneronsCru;
+    }
+
+    public function setVigneronsCru(?Vigneron $vigneronsCru): self
+    {
+        $this->vigneronsCru = $vigneronsCru;
 
         return $this;
     }

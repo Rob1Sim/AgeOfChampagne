@@ -10,8 +10,21 @@ class VigneronFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        VigneronFactory::createMany(10);
-        // TODO: Demander a gillard pourquoi ça ne fonctionne pas
+        VigneronFactory::createMany(10, function () {
+            return [
+                'vigneronsCru' => VigneronFactory::random(),
+                'vigneronsProduit' => VigneronFactory::random(),
+            ];
+        });
+
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return [
+            [ProduitFixtures::class],
+            [CruFixtures::class],
+            ];
     }
 }

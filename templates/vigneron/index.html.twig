@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Vignerons{% endblock %}
+
+{% block body %}
+    <h1>Liste des Vignerons</h1>
+    <ul>
+        {% for infoVign in vignerons %}
+            <li class="vigneron"><a href={{ path('app_vigneron_show', {id: infoVign.id})}}> {{ infoVign.nom }} {{ infoVign.prenom }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+

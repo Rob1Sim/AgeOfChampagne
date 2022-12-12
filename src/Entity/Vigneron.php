@@ -33,9 +33,17 @@ class Vigneron
     #[ORM\OneToMany(mappedBy: 'vignerons', targetEntity: Carte::class)]
     private Collection $cartes;
 
+    #[ORM\OneToMany(mappedBy: 'vigneronsCru', targetEntity: Cru::class)]
+    private Collection $cru;
+
+    #[ORM\OneToMany(mappedBy: 'vigneronsProd', targetEntity: Produit::class)]
+    private Collection $produit;
+
     public function __construct()
     {
         $this->cartes = new ArrayCollection();
+        $this->cru = new ArrayCollection();
+        $this->produit = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -131,6 +139,66 @@ class Vigneron
             // set the owning side to null (unless already changed)
             if ($carte->getVignerons() === $this) {
                 $carte->setVignerons(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Cru>
+     */
+    public function getCru(): Collection
+    {
+        return $this->cru;
+    }
+
+    public function addCru(Cru $cru): self
+    {
+        if (!$this->cru->contains($cru)) {
+            $this->cru->add($cru);
+            $cru->setVigneronsCru($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCru(Cru $cru): self
+    {
+        if ($this->cru->removeElement($cru)) {
+            // set the owning side to null (unless already changed)
+            if ($cru->getVigneronsCru() === $this) {
+                $cru->setVigneronsCru(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Produit>
+     */
+    public function getProduit(): Collection
+    {
+        return $this->produit;
+    }
+
+    public function addProduit(Produit $produit): self
+    {
+        if (!$this->produit->contains($produit)) {
+            $this->produit->add($produit);
+            $produit->setVigneronsProd($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduit(Produit $produit): self
+    {
+        if ($this->produit->removeElement($produit)) {
+            // set the owning side to null (unless already changed)
+            if ($produit->getVigneronsProd() === $this) {
+                $produit->setVigneronsProd(null);
             }
         }
 
