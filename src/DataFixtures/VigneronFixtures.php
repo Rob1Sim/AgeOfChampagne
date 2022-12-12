@@ -14,6 +14,8 @@ class VigneronFixtures extends Fixture
             return [
                 'vigneronsCru' => VigneronFactory::random(),
                 'vigneronsProduit' => VigneronFactory::random(),
+                'vigneronsAnim' => VigneronFactory::random(),
+                'vigneronsPart' => VigneronFactory::random(),
             ];
         });
 
@@ -25,6 +27,8 @@ class VigneronFixtures extends Fixture
         return [
             [ProduitFixtures::class],
             [CruFixtures::class],
+            [AnimationFixtures::class],
+            [PartenaireFixtures::class],
             ];
     }
 }
