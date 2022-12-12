@@ -39,11 +39,19 @@ class Vigneron
     #[ORM\OneToMany(mappedBy: 'vigneronsProd', targetEntity: Produit::class)]
     private Collection $produit;
 
+    #[ORM\OneToMany(mappedBy: 'vigneronPart', targetEntity: Partenaire::class)]
+    private Collection $partenaire;
+
+    #[ORM\OneToMany(mappedBy: 'vigneronAnim', targetEntity: Animation::class)]
+    private Collection $animation;
+
     public function __construct()
     {
         $this->cartes = new ArrayCollection();
         $this->cru = new ArrayCollection();
         $this->produit = new ArrayCollection();
+        $this->partenaire = new ArrayCollection();
+        $this->animation = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -199,6 +207,66 @@ class Vigneron
             // set the owning side to null (unless already changed)
             if ($produit->getVigneronsProd() === $this) {
                 $produit->setVigneronsProd(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Partenaire>
+     */
+    public function getPartenaire(): Collection
+    {
+        return $this->partenaire;
+    }
+
+    public function addPartenaire(Partenaire $partenaire): self
+    {
+        if (!$this->partenaire->contains($partenaire)) {
+            $this->partenaire->add($partenaire);
+            $partenaire->setVigneronPart($this);
+        }
+
+        return $this;
+    }
+
+    public function removePartenaire(Partenaire $partenaire): self
+    {
+        if ($this->partenaire->removeElement($partenaire)) {
+            // set the owning side to null (unless already changed)
+            if ($partenaire->getVigneronPart() === $this) {
+                $partenaire->setVigneronPart(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Animation>
+     */
+    public function getAnimation(): Collection
+    {
+        return $this->animation;
+    }
+
+    public function addAnimation(Animation $animation): self
+    {
+        if (!$this->animation->contains($animation)) {
+            $this->animation->add($animation);
+            $animation->setVigneronAnim($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnimation(Animation $animation): self
+    {
+        if ($this->animation->removeElement($animation)) {
+            // set the owning side to null (unless already changed)
+            if ($animation->getVigneronAnim() === $this) {
+                $animation->setVigneronAnim(null);
             }
         }
 

@@ -29,6 +29,9 @@ class Animation
     #[ORM\Column]
     private ?float $prix = null;
 
+    #[ORM\ManyToOne(inversedBy: 'animation')]
+    private ?Vigneron $vigneronAnim = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,6 +93,18 @@ class Animation
     public function setPrix(float $prix): self
     {
         $this->prix = $prix;
+
+        return $this;
+    }
+
+    public function getVigneronAnim(): ?Vigneron
+    {
+        return $this->vigneronAnim;
+    }
+
+    public function setVigneronAnim(?Vigneron $vigneronAnim): self
+    {
+        $this->vigneronAnim = $vigneronAnim;
 
         return $this;
     }
