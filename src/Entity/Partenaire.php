@@ -20,7 +20,7 @@ class Partenaire
     private ?string $prenom = null;
 
     #[ORM\ManyToOne(inversedBy: 'partenaire')]
-    private ?Vigneron $vigneronPart = null;
+    private ?Vigneron $vigneronsPart = null;
 
     public function getId(): ?int
     {
@@ -53,12 +53,12 @@ class Partenaire
 
     public function getVigneronPart(): ?Vigneron
     {
-        return $this->vigneronPart;
+        return $this->vigneronsPart;
     }
 
-    public function setVigneronPart(?Vigneron $vigneronPart): self
+    public function setVigneronPart(?Vigneron $vigneronsPart): self
     {
-        $this->vigneronPart = $vigneronPart;
+        $this->vigneronsPart = $vigneronsPart;
 
         return $this;
     }
