@@ -1,6 +1,8 @@
-
+body{
+    display: flex;
+}
 @font-face {
-    font-family:'avenir';
+    font-family:'cooper-heweit';
     src: url("/public/police/cooper-hewitt-font-family.zip");
 }
 
@@ -9,30 +11,38 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: #aa1111;
+        flex-grow: initial;
         margin-top: 25%;
     }
-    .btn_btn-lg_btn-primary{
-
+    .head{
+        width: 100%;
+        right: 0;
+    }
+    .h3-mb-3-font-weight-normal{
+        font-size: 300%;
+        font-family: "cooper-heweit", serif;
+        display:flex;
+        width: 50%;
+        text-align: center;
+        flex-flow: column;
     }
     .ecriture_avenir{
-        display:flex;
         margin-bottom: 10px;
-        font-family: avenir sans-serif;
+        font-family: 'cooper-heweit', serif;
+        width:50%;
+        font-size: 150%;
     }
 
     .form-control{
-        width:50%;
+        width:60%;
         box-sizing: border-box;
         display:flex;
-        margin-bottom: 10px;
+        margin-bottom: 30px;
         border-bottom: 1px solid #D9D9D9;
         border-radius: 5px;
     }
-    .avenir{
-        font-family: avenir sans-serif;
-    }
     .gauche {
+        display:flex;
         position: absolute;
         width: 50%;
         height: 100%;
