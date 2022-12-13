@@ -7,6 +7,7 @@ use Doctrine\ORM\EntityRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class CruCrudController extends AbstractCrudController
@@ -36,6 +37,10 @@ class CruCrudController extends AbstractCrudController
 
                     return 'Pas de vignerons';
                 }),
+            ImageField::new('image', 'Image de la carte')
+                ->setUploadDir('public/uploads/img/crus/')
+                ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]')
+                ->onlyOnForms(),
         ];
     }
 }
