@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CruRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -26,8 +28,13 @@ class Cru
     #[ORM\Column(length: 255)]
     private ?string $infos = null;
 
-    #[ORM\ManyToOne(inversedBy: 'cru')]
-    private ?Vigneron $vigneronsCru;
+    #[ORM\OneToMany(mappedBy: 'cru', targetEntity: Vigneron::class)]
+    private Collection $vigneronsCru;
+
+    public function __construct()
+    {
+        $this->vigneronsCru = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -82,14 +89,32 @@ class Cru
         return $this;
     }
 
-    public function getVigneronsCru(): ?Vigneron
+    /**
+     * @return Collection<int, Vigneron>
+     */
+    public function getVigneronsCru(): Collection
     {
         return $this->vigneronsCru;
     }
 
-    public function setVigneronsCru(?Vigneron $vigneronsCru): self
+    public function addVigneronsCru(Vigneron $vigneronsCru): self
     {
-        $this->vigneronsCru = $vigneronsCru;
+        if (!$this->vigneronsCru->contains($vigneronsCru)) {
+            $this->vigneronsCru->add($vigneronsCru);
+            $vigneronsCru->setCru($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVigneronsCru(Vigneron $vigneronsCru): self
+    {
+        if ($this->vigneronsCru->removeElement($vigneronsCru)) {
+            // set the owning side to null (unless already changed)
+            if ($vigneronsCru->getCru() === $this) {
+                $vigneronsCru->setCru(null);
+            }
+        }
 
         return $this;
     }

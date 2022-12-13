@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PartenaireRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PartenaireRepository::class)]
@@ -19,8 +21,13 @@ class Partenaire
     #[ORM\Column(length: 255)]
     private ?string $prenom = null;
 
-    #[ORM\ManyToOne(inversedBy: 'partenaire')]
-    private ?Vigneron $vigneronsPart = null;
+    #[ORM\OneToMany(mappedBy: 'partenaire', targetEntity: Vigneron::class)]
+    private Collection $vigneronsPart;
+
+    public function __construct()
+    {
+        $this->vigneronsPart = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -51,14 +58,32 @@ class Partenaire
         return $this;
     }
 
-    public function getVigneronPart(): ?Vigneron
+    /**
+     * @return Collection<int, Vigneron>
+     */
+    public function getVigneronsPart(): Collection
     {
         return $this->vigneronsPart;
     }
 
-    public function setVigneronPart(?Vigneron $vigneronsPart): self
+    public function addVigneronsPart(Vigneron $vigneronsPart): self
     {
-        $this->vigneronsPart = $vigneronsPart;
+        if (!$this->vigneronsPart->contains($vigneronsPart)) {
+            $this->vigneronsPart->add($vigneronsPart);
+            $vigneronsPart->setPartenaire($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVigneronsPart(Vigneron $vigneronsPart): self
+    {
+        if ($this->vigneronsPart->removeElement($vigneronsPart)) {
+            // set the owning side to null (unless already changed)
+            if ($vigneronsPart->getPartenaire() === $this) {
+                $vigneronsPart->setPartenaire(null);
+            }
+        }
 
         return $this;
     }
