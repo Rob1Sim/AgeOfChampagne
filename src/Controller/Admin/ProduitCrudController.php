@@ -31,7 +31,7 @@ class ProduitCrudController extends AbstractCrudController
                 })
                 ->formatValue(function ($value, $entity) {
                     if (null != $entity->getVigneronsProd()) {
-                        return $entity->getVigneronsProd()->getNom().' '.$entity->getVigneronsCru()->getPrenom();
+                        return $entity->getVigneronsProd()->getNom().' '.$entity->getVigneronsProd()->getPrenom();
                     }
 
                     return 'Pas de vignerons';
