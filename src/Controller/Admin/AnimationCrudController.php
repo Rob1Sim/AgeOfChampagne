@@ -21,12 +21,12 @@ class AnimationCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('type'),
-            DateField::new('horaireDeb'),
-            DateField::new('horaireFin'),
-            MoneyField::new('prix'),
-            AssociationField::new('vignerons')->setFormTypeOption('choice_label', function ($vigneron) {
+            IdField::new('id')->hideOnForm(),
+            TextField::new('type', 'Type'),
+            DateField::new('horaireDeb', 'Horaire de début'),
+            DateField::new('horaireFin', 'Horaire de fin'),
+            MoneyField::new('prix', 'Prix')->setCurrency('EUR'),
+            AssociationField::new('vignerons','Vignerons')->setFormTypeOption('choice_label', function ($vigneron) {
                 return $vigneron->getNomPrenom();
             })
                 ->setFormTypeOption('query_builder', function (EntityRepository $ep) {
@@ -37,5 +37,4 @@ class AnimationCrudController extends AbstractCrudController
                 }),
         ];
     }
-
 }
