@@ -16,23 +16,25 @@ class CruCrudController extends AbstractCrudController
         return Cru::class;
     }
 
-
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('libelle'),
-            TextField::new('infos'),
-            AssociationField::new('vignerons', 'Vignerons')->setFormTypeOption('choice_label', function ($vigneron) {
+            IdField::new('id')->hideOnForm(),
+            TextField::new('libelle', 'Libéllé'),
+            TextField::new('infos', 'Infos'),
+            AssociationField::new('vigneronsCru', 'Vignerons')->setFormTypeOption('choice_label', function ($vigneron) {
                 return $vigneron->getNomPrenom();
             })
                 ->setFormTypeOption('query_builder', function (EntityRepository $ep) {
                     return $ep->createQueryBuilder('c')->orderBy('c.nom', 'ASC');
                 })
                 ->formatValue(function ($value, $entity) {
-                    return $entity->getVignerons()->getNom().' '.$entity->getVignerons()->getPrenom();
+                    if (null != $entity->getVigneronsCru()) {
+                        return $entity->getVigneronsCru()->getNom().' '.$entity->getVigneronsCru()->getPrenom();
+                    }
+
+                    return 'Pas de vignerons';
                 }),
         ];
     }
-
 }
