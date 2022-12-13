@@ -39,11 +39,19 @@ class Vigneron
     #[ORM\OneToMany(mappedBy: 'vigneronsProd', targetEntity: Produit::class)]
     private Collection $produit;
 
+    #[ORM\ManyToMany(targetEntity: Animation::class, inversedBy: 'vigneronsAnim')]
+    private Collection $animation;
+
+    #[ORM\ManyToMany(targetEntity: Partenaire::class, inversedBy: 'vigneronsPart')]
+    private Collection $partenaire;
+
     public function __construct()
     {
         $this->cartes = new ArrayCollection();
         $this->cru = new ArrayCollection();
         $this->produit = new ArrayCollection();
+        $this->animation = new ArrayCollection();
+        $this->partenaire = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -201,6 +209,54 @@ class Vigneron
                 $produit->setVigneronsProd(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Animation>
+     */
+    public function getAnimation(): Collection
+    {
+        return $this->animation;
+    }
+
+    public function addAnimation(Animation $animation): self
+    {
+        if (!$this->animation->contains($animation)) {
+            $this->animation->add($animation);
+        }
+
+        return $this;
+    }
+
+    public function removeAnimation(Animation $animation): self
+    {
+        $this->animation->removeElement($animation);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Partenaire>
+     */
+    public function getPartenaire(): Collection
+    {
+        return $this->partenaire;
+    }
+
+    public function addPartenaire(Partenaire $partenaire): self
+    {
+        if (!$this->partenaire->contains($partenaire)) {
+            $this->partenaire->add($partenaire);
+        }
+
+        return $this;
+    }
+
+    public function removePartenaire(Partenaire $partenaire): self
+    {
+        $this->partenaire->removeElement($partenaire);
 
         return $this;
     }

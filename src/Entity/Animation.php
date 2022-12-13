@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AnimationRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -28,6 +30,14 @@ class Animation
 
     #[ORM\Column]
     private ?float $prix = null;
+
+    #[ORM\ManyToMany(targetEntity: Vigneron::class, mappedBy: 'animation')]
+    private Collection $vigneronsAnim;
+
+    public function __construct()
+    {
+        $this->vigneronsAnim = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -90,6 +100,33 @@ class Animation
     public function setPrix(float $prix): self
     {
         $this->prix = $prix;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Vigneron>
+     */
+    public function getVigneronsAnim(): Collection
+    {
+        return $this->vigneronsAnim;
+    }
+
+    public function addVigneronsAnim(Vigneron $vigneronsAnim): self
+    {
+        if (!$this->vigneronsAnim->contains($vigneronsAnim)) {
+            $this->vigneronsAnim->add($vigneronsAnim);
+            $vigneronsAnim->addAnimation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVigneronsAnim(Vigneron $vigneronsAnim): self
+    {
+        if ($this->vigneronsAnim->removeElement($vigneronsAnim)) {
+            $vigneronsAnim->removeAnimation($this);
+        }
 
         return $this;
     }
