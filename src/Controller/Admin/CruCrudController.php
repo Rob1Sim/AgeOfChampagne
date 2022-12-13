@@ -22,6 +22,7 @@ class CruCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             TextField::new('libelle', 'Libéllé'),
             TextField::new('infos', 'Infos'),
+            TextField::new('horaire', 'Horaire'), // TODO Changer selon si horaire est un string ou pas
             AssociationField::new('vigneronsCru', 'Vignerons')->setFormTypeOption('choice_label', function ($vigneron) {
                 return $vigneron->getNomPrenom();
             })
