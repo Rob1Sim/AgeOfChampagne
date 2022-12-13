@@ -39,7 +39,7 @@ class CarteCrudController extends AbstractCrudController
                     return $entity->getVignerons()->getNom().' '.$entity->getVignerons()->getPrenom();
                 }),
             ImageField::new('contenuImage', 'Image de la carte')
-                ->setUploadDir('public/uploads/img/')
+                ->setUploadDir('public/uploads/img/cartes/')
                 ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]')
                 ->onlyOnForms(),
         ];
