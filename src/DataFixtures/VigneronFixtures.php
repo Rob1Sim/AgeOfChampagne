@@ -2,6 +2,8 @@
 
 namespace App\DataFixtures;
 
+use App\Factory\CruFactory;
+use App\Factory\ProduitFactory;
 use App\Factory\VigneronFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -12,8 +14,8 @@ class VigneronFixtures extends Fixture
     {
         VigneronFactory::createMany(10, function () {
             return [
-                'vigneronsCru' => VigneronFactory::random(),
-                'vigneronsProduit' => VigneronFactory::random(),
+                'cru' => CruFactory::createMany(10),
+                'produit' => ProduitFactory::createMany(10),
             ];
         });
 
