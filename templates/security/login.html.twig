@@ -3,7 +3,7 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-<div class="head"><img src="../../public/image/OHG.png"> </div>
+    <header><img src="../../public/image/OHG.png"> </header>
 <div class="gauche"><form class="formu" method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -16,10 +16,11 @@
     {% endif %}
 
     <h1 class="h3-mb-3-font-weight-normal">Bienvenue sur Age Of Champagne</h1>
-    <label class="ecriture_avenir"  for="inputEmail">Email :</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+        <h2>Le site officiel du jeu de plateau</h2>
+    <label class="ecriture_avenir-email"  for="inputEmail">Email :</label>
+    <input placeholder="Email" type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
     <label class="ecriture_avenir" for="inputPassword">Password :</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+    <input placeholder="Mot de passe" type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"
@@ -37,7 +38,7 @@
     #}
 
     <button class="btn_btn-lg_btn-primary" type="submit">
-        Sign in
+        Connexion
     </button>
 </form></div><div class="droite"><div class="AOC"></div> </div>
 {% endblock %}
