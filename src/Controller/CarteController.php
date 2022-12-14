@@ -21,7 +21,7 @@ class CarteController extends AbstractController
         return $this->render('carte/index.html.twig', ['liste' => $carteList]);
     }
 
-    #[Route('carte/{id}', requirements: ['id' => '\d+'])]
+    #[Route('carte/{id}', name: 'app_carte_show', requirements: ['id' => '\d+'])]
     #[Entity('carte', expr: 'repository.find(id)')]
     public function show(Carte $carte): Response
     {
