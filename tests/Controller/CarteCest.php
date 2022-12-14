@@ -6,7 +6,8 @@ use App\Tests\ControllerTester;
 
 class CarteCest
 {
-    public function tryToTest(ControllerTester $I)
+    public function testListeCartes(ControllerTester $I): void
     {
+
     }
 }
