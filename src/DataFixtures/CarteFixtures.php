@@ -12,13 +12,14 @@ class CarteFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
-        CarteFactory::createMany(10,function (){
-            return ["vignerons"=>VigneronFactory::random()];
+        CarteFactory::createMany(10, function () {
+            return ['vignerons' => VigneronFactory::random()];
         });
         $manager->flush();
     }
-    public function getDependencies()
+
+    public function getDependencies(): array
     {
-        return[VigneronFixtures::class];
+        return [VigneronFixtures::class];
     }
 }

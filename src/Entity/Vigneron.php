@@ -33,25 +33,23 @@ class Vigneron
     #[ORM\OneToMany(mappedBy: 'vignerons', targetEntity: Carte::class)]
     private Collection $cartes;
 
-    #[ORM\OneToMany(mappedBy: 'vigneronsCru', targetEntity: Cru::class)]
-    private Collection $cru;
+    #[ORM\ManyToOne(inversedBy: 'vigneronsCru')]
+    private ?Cru $cru = null;
 
-    #[ORM\OneToMany(mappedBy: 'vigneronsProd', targetEntity: Produit::class)]
-    private Collection $produit;
-
-    #[ORM\ManyToMany(targetEntity: Animation::class, inversedBy: 'vigneronsAnim')]
-    private Collection $animation;
+    #[ORM\ManyToOne(inversedBy: 'vigneronsProd')]
+    private ?Produit $produit = null;
 
     #[ORM\ManyToMany(targetEntity: Partenaire::class, inversedBy: 'vigneronsPart')]
     private Collection $partenaire;
 
+    #[ORM\ManyToMany(targetEntity: Animation::class, inversedBy: 'vigneronsAnim')]
+    private Collection $animation;
+
     public function __construct()
     {
         $this->cartes = new ArrayCollection();
-        $this->cru = new ArrayCollection();
-        $this->produit = new ArrayCollection();
-        $this->animation = new ArrayCollection();
         $this->partenaire = new ArrayCollection();
+        $this->animation = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -153,86 +151,26 @@ class Vigneron
         return $this;
     }
 
-    /**
-     * @return Collection<int, Cru>
-     */
-    public function getCru(): Collection
+    public function getCru(): ?Cru
     {
         return $this->cru;
     }
 
-    public function addCru(Cru $cru): self
+    public function setCru(?Cru $cru): self
     {
-        if (!$this->cru->contains($cru)) {
-            $this->cru->add($cru);
-            $cru->setVigneronsCru($this);
-        }
+        $this->cru = $cru;
 
         return $this;
     }
 
-    public function removeCru(Cru $cru): self
-    {
-        if ($this->cru->removeElement($cru)) {
-            // set the owning side to null (unless already changed)
-            if ($cru->getVigneronsCru() === $this) {
-                $cru->setVigneronsCru(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Produit>
-     */
-    public function getProduit(): Collection
+    public function getProduit(): ?Produit
     {
         return $this->produit;
     }
 
-    public function addProduit(Produit $produit): self
+    public function setProduit(?Produit $produit): self
     {
-        if (!$this->produit->contains($produit)) {
-            $this->produit->add($produit);
-            $produit->setVigneronsProd($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProduit(Produit $produit): self
-    {
-        if ($this->produit->removeElement($produit)) {
-            // set the owning side to null (unless already changed)
-            if ($produit->getVigneronsProd() === $this) {
-                $produit->setVigneronsProd(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Animation>
-     */
-    public function getAnimation(): Collection
-    {
-        return $this->animation;
-    }
-
-    public function addAnimation(Animation $animation): self
-    {
-        if (!$this->animation->contains($animation)) {
-            $this->animation->add($animation);
-        }
-
-        return $this;
-    }
-
-    public function removeAnimation(Animation $animation): self
-    {
-        $this->animation->removeElement($animation);
+        $this->produit = $produit;
 
         return $this;
     }
@@ -257,6 +195,30 @@ class Vigneron
     public function removePartenaire(Partenaire $partenaire): self
     {
         $this->partenaire->removeElement($partenaire);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Animation>
+     */
+    public function getAnimation(): Collection
+    {
+        return $this->animation;
+    }
+
+    public function addAnimation(Animation $animation): self
+    {
+        if (!$this->animation->contains($animation)) {
+            $this->animation->add($animation);
+        }
+
+        return $this;
+    }
+
+    public function removeAnimation(Animation $animation): self
+    {
+        $this->animation->removeElement($animation);
 
         return $this;
     }
