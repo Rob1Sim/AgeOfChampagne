@@ -18,4 +18,14 @@ class ListeCest
         $I->seeNumberOfElements('.carte', 11);
         $I->seeCurrentRouteIs('app_carte');
     }
+
+    public function redirectToCarte(ControllerTester $I)
+    {
+        CarteFactory::createMany(5);
+        CarteFactory::createOne(['nom' => 'Aaaaaaaaaaaa']);
+        $I->amOnPage('/carte');
+        $I->seeResponseCodeIsSuccessful();
+        $I->click('Aaaaaaaaaaaa');
+        $I->seeCurrentRouteIs('app_carte_show');
+    }
 }
