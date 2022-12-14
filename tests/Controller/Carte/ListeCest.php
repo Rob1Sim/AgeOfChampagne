@@ -12,6 +12,10 @@ class ListeCest
     {
         CarteFactory::createMany(10);
         CarteFactory::createOne(['nom' => 'Aaaaaaaaaaaa']);
-        $I->amOnPage();
+        $I->amOnPage('/carte');
+        $I->seeResponseCodeIsSuccessful();
+        $I->seeInTitle('Liste des cartes');
+        $I->seeNumberOfElements('.carte', 11);
+        $I->seeCurrentRouteIs('app_carte');
     }
 }
