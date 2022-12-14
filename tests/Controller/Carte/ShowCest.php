@@ -10,6 +10,11 @@ class ShowCest
 {
     public function showCarte(ControllerTester $I)
     {
-        CarteFactory::createMany(10);
+        $I->amOnPage('/carte');
+        $I->click('Aaaaaaaaaaaa');
+        $I->seeCurrentRouteIs('app_carte_show');
+        $I->seeResponseCodeIsSuccessful();
+        $I->seeNumberOfElements('img', 1);
+        $I->seeNumberOfElements('.carte', 1);
     }
 }
