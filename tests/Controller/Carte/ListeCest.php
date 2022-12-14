@@ -3,6 +3,7 @@
 
 namespace App\Tests\Controller\Carte;
 
+use App\Entity\Carte;
 use App\Factory\CarteFactory;
 use App\Tests\ControllerTester;
 
