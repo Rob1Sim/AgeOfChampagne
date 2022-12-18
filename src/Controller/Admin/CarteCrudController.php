@@ -82,7 +82,7 @@ class CarteCrudController extends AbstractCrudController
                 ->setUploadDir('public/uploads/img/')
                 ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]')
                 ->onlyOnForms()
-            ->addJsFiles('js/form.js'),
+            ->addHtmlContentsToBody("<script src='js/form.js' ></script>"),
         ];
     }
 }
