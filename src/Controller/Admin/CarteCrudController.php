@@ -39,15 +39,8 @@ class CarteCrudController extends AbstractCrudController
                     return $entity->getVignerons()->getNom().' '.$entity->getVignerons()->getPrenom();
                 }),
             ImageField::new('contenuImage', 'Image de la carte')
-                ->setBasePath('uploads/image/')
                 ->setUploadDir('public/uploads/img/')
-            ->setUploadedFileNamePattern('cards-[slug]-[timestamp].[extension]')
-                /**->setFormTypeOption('constraints', [
-                    new \Symfony\Component\Validator\Constraints\Image([
-                        'maxSize' => '5M',
-                        'mimeTypesMessage' => "Le type d'image est invalide",
-                    ]),
-                ])**/
+                ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]')
                 ->onlyOnForms(),
         ];
     }
