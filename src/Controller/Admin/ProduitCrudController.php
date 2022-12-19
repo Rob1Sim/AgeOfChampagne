@@ -30,8 +30,12 @@ class ProduitCrudController extends AbstractCrudController
                     return $ep->createQueryBuilder('c')->orderBy('c.nom', 'ASC');
                 })
                 ->formatValue(function ($value, $entity) {
-                    if (null != $entity->getVigneronsProd()) {
-                        return $entity->getVigneronsProd()->getNom().' '.$entity->getVigneronsProd()->getPrenom();
+                    if (null != $entity->getVigneronsProd()[0]) {
+                        // Affiche ... si il y a plus d'un vignerons
+                        if (count($entity->getVigneronsProd()) > 1) {
+                            return $entity->getVigneronsProd()[0]->getNom().' '.$entity->getVigneronsProd()[0]->getPrenom().'...';
+                        }
+                        return $entity->getVigneronsProd()[0]->getNom().' '.$entity->getVigneronsProd()[0]->getPrenom();
                     }
 
                     return 'Pas de vignerons';
