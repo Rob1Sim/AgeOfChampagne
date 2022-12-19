@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Vigneron;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
@@ -21,8 +22,27 @@ class VigneronCrudController extends AbstractCrudController
             TextField::new('nom', 'Nom'),
             TextField::new('prenom', 'Prénom'),
             TextField::new('adresse', 'Adresse'),
-            TextField::new('code_postal', 'Code postal'),
+            TextField::new('code_postal', 'Code postal')->setMaxLength(5),
             TextField::new('ville', 'Ville'),
+            AssociationField::new('partenaire', 'Partenaires')
+                ->setFormTypeOption('choice_label', function ($partenaire) {
+                    return $partenaire->getNom().' '.$partenaire->getPrenom();
+                }),
+            AssociationField::new('animation', 'Animations')
+                ->setFormTypeOption('choice_label', function ($animation) {
+                    return $animation->getNom();
+                })->formatValue(function ($value, $entity) {
+                    dump($entity->getAnimation()[0]);
+                    if (null !== $entity->getAnimation()[0]) {
+                        // Affiche ... si il y a plus d'une animations
+                        if (count($entity->getAnimation()) > 1) {
+                            return $entity->getAnimation()[0]->getNom().'...';
+                        }
+                        return $entity->getAnimation()[0]->getNom();
+                    } else {
+                        return "Pas d'animations";
+                    }
+                }),
         ];
     }
 }
