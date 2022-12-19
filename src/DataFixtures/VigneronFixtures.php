@@ -2,6 +2,8 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Animation;
+use App\Entity\Partenaire;
 use App\Factory\AnimationFactory;
 use App\Factory\CruFactory;
 use App\Factory\PartenaireFactory;
@@ -13,15 +15,22 @@ use Doctrine\Persistence\ObjectManager;
 
 class VigneronFixtures extends Fixture implements DependentFixtureInterface
 {
-    public function load(ObjectManager $manager): void
+    public function load(ObjectManager $manager): array
     {
-        VigneronFactory::createMany(10, function () {
+        $animation = new Animation();
+        $partenaire = new Partenaire();
+        $vignerons = VigneronFactory::createMany(10, function () {
             return [
                 'cru' => CruFactory::random(),
                 'produit' => ProduitFactory::random(),
             ];
         });
-
+        foreach ($vignerons as $relations) {
+            return [
+                $relations->addAnimation($animation),
+                $relations->addPartenaire($partenaire),
+            ];
+        }
     }
 
     public function getDependencies(): array
@@ -29,6 +38,8 @@ class VigneronFixtures extends Fixture implements DependentFixtureInterface
         return [
             ProduitFixtures::class,
             CruFixtures::class,
+            AnimationFixtures::class,
+            PartenaireFixtures::class,
         ];
     }
 }
