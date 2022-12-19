@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Animation;
+use App\Entity\Vigneron;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -18,8 +20,11 @@ class AnimationCrudController extends AbstractCrudController
         return Animation::class;
     }
 
+
     public function configureFields(string $pageName): iterable
     {
+        // TODO régler le bug de save
+
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('type', 'Type'),

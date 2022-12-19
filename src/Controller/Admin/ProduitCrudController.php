@@ -19,6 +19,8 @@ class ProduitCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
+        // TODO régler le bug de save
+
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('libelle', 'Libéllé'),
