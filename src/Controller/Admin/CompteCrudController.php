@@ -76,7 +76,8 @@ class CompteCrudController extends AbstractCrudController
                 ->hideWhenUpdating()
                 ->hideOnIndex()
                 ->setFormType(PasswordType::class),
-            DateField::new('datenaiss', 'Date de naissance'),
+            DateField::new('datenaiss', 'Date de naissance')
+                ->setFormTypeOption('required', true),
             ChoiceField::new('roles')
             ->setChoices($roles)
             ->allowMultipleChoices()
