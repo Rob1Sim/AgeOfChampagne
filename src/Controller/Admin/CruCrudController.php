@@ -17,6 +17,7 @@ class CruCrudController extends AbstractCrudController
         return Cru::class;
     }
 
+    /*
     public function configureFields(string $pageName): iterable
     {
         // TODO régler le bug de save

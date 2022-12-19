@@ -52,4 +52,5 @@ class AnimationCrudController extends AbstractCrudController
                 }),
         ];
     }
+    */
 }
