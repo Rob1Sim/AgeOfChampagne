@@ -6,7 +6,6 @@ use App\Entity\Animation;
 use Doctrine\ORM\EntityRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
@@ -24,17 +23,27 @@ class AnimationCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('type', 'Type'),
+            TextField::new('nom', 'Nom'),
             DateTimeField::new('horaireDeb', 'Horaire de début')->setTimezone('Europe/Paris'),
             DateTimeField::new('horaireFin', 'Horaire de fin')->setTimezone('Europe/Paris'),
             MoneyField::new('prix', 'Prix')->setCurrency('EUR'),
-            AssociationField::new('vignerons', 'Vignerons')->setFormTypeOption('choice_label', function ($vigneron) {
+            AssociationField::new('vigneronsAnim', 'Vignerons')->setFormTypeOption('choice_label', function ($vigneron) {
                 return $vigneron->getNomPrenom();
             })
                 ->setFormTypeOption('query_builder', function (EntityRepository $ep) {
                     return $ep->createQueryBuilder('c')->orderBy('c.nom', 'ASC');
                 })
                 ->formatValue(function ($value, $entity) {
-                    return $entity->getVignerons()->getNom().' '.$entity->getVignerons()->getPrenom();
+                    if (null != $entity->getVigneronsAnim()[0]) {
+                        // Affiche ... si il y a plus d'un vignerons
+                        if (count($entity->getVigneronsAnim()) > 1) {
+                            return $entity->getVigneronsAnim()[0]->getNom().' '.$entity->getVigneronsAnim()[0]->getPrenom().'...';
+                        }
+
+                        return $entity->getVigneronsAnim()[0]->getNom().' '.$entity->getVigneronsAnim()[0]->getPrenom();
+                    }
+
+                    return 'Pas de vignerons';
                 }),
         ];
     }
