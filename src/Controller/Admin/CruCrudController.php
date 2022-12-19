@@ -31,8 +31,12 @@ class CruCrudController extends AbstractCrudController
                     return $ep->createQueryBuilder('c')->orderBy('c.nom', 'ASC');
                 })
                 ->formatValue(function ($value, $entity) {
-                    if (null != $entity->getVigneronsCru()) {
-                        return $entity->getVigneronsCru()->getNom().' '.$entity->getVigneronsCru()->getPrenom();
+                    if (null != $entity->getVigneronsCru()[0]) {
+                        // Affiche ... si il y a plus d'un vignerons
+                        if (count($entity->getVigneronsCru()) > 1) {
+                            return $entity->getVigneronsCru()[0]->getNom().' '.$entity->getVigneronsCru()[0]->getPrenom().'...';
+                        }
+                        return $entity->getVigneronsCru()[0]->getNom().' '.$entity->getVigneronsCru()[0]->getPrenom();
                     }
 
                     return 'Pas de vignerons';
