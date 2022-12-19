@@ -27,17 +27,28 @@ class VigneronCrudController extends AbstractCrudController
             AssociationField::new('partenaire', 'Partenaires')
                 ->setFormTypeOption('choice_label', function ($partenaire) {
                     return $partenaire->getNom().' '.$partenaire->getPrenom();
+                })->formatValue(function ($value, $entity) {
+                    if (null !== $entity->getPartenaire()[0]) {
+                        // Affiche ... si il y a plus d'un partenaires
+                        if (count($entity->getPartenaire()) > 1) {
+                            return $entity->getPartenaire()[0]->getNom().' '.$entity->getPartenaire()[0]->getPrenom().'...';
+                        }
+
+                        return $entity->getPartenaire()[0]->getNom().' '.$entity->getPartenaire()[0]->getPrenom();
+                    } else {
+                        return 'Pas de partenaires';
+                    }
                 }),
             AssociationField::new('animation', 'Animations')
                 ->setFormTypeOption('choice_label', function ($animation) {
                     return $animation->getNom();
                 })->formatValue(function ($value, $entity) {
-                    dump($entity->getAnimation()[0]);
                     if (null !== $entity->getAnimation()[0]) {
                         // Affiche ... si il y a plus d'une animations
                         if (count($entity->getAnimation()) > 1) {
                             return $entity->getAnimation()[0]->getNom().'...';
                         }
+
                         return $entity->getAnimation()[0]->getNom();
                     } else {
                         return "Pas d'animations";
