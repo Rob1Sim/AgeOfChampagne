@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ compte.getLogin() }}{% endblock %}
+
+{% block body %}
+
+    <h1>{{ compte.getLogin() }}</h1>
+
+    <dl>
+        <dt>Login : {{ compte.getLogin() }}</dt>
+        <dt>Email : {{ compte.getEmail() }}</dt>
+        <dt>Date de naissance : {{ compte.getDateNaiss().format('Y-m-d') }}</dt>
+    </dl>
+    {{ form_start(form, {'method': 'POST'}) }}
+    {{ form_row(form.login, {'label': 'Prénom'}) }}
+    {{ form_row(form.email, {'label': 'Mail'}) }}
+
+    <button type="submit" class="btn btn-success">{{ label_submit }}</button>
+    {{ form_end(form) }}
+
+
+{% endblock %}
