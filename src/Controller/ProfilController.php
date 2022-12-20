@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Compte;
+use App\Form\CompteType;
+use App\Form\RegistrationFormType;
 use App\Repository\CompteRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,11 +24,10 @@ class ProfilController extends AbstractController
         ]);
     }
 
-
-    #[Route('/profil/{id<\d+>}/update')]
+    #[Route('/profil/{id<\d+>}/update', name: 'app_profil_update')]
     public function update(ManagerRegistry $doctrine, Compte $compte, Request $request): Response
     {
-        $form = $this->createForm(Compte::class, $compte);
+        $form = $this->createForm(CompteType::class, $compte);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -35,7 +36,6 @@ class ProfilController extends AbstractController
             return $this->redirectToRoute('app_profil', ['id' => $compte->getId()]);
         }
 
-        return $this->renderForm('profil/update.html.twig', ['form' => $form, 'contact' => $compte]);
-
+        return $this->renderForm('profil/update.html.twig', ['form' => $form, 'compte' => $compte]);
     }
 }
