@@ -56,6 +56,18 @@ class CompteRepository extends ServiceEntityRepository implements PasswordUpgrad
         $this->save($user, true);
     }
 
+    /**
+     * @return Compte[]
+     */
+    public function search(string $id): array
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->where('c.id LIKE :value')
+            ->setParameter('value', $id)
+            ->orderBy('c.id', 'ASC');
+
+        return $qb->getQuery()->getResult();
+    }
 //    /**
 //     * @return Compte[] Returns an array of Compte objects
 //     */
