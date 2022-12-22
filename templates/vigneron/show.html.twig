@@ -12,4 +12,16 @@
         <dt>Code Postal : {{ vigneron.getCodePostal()}} </dt>
         <dt>Ville : {{ vigneron.getVille()}} </dt>
     </dl>
+
+    <dl>
+        <dt>Produit : {{ vigneron.produit.libelle }}</dt>
+        <dt>Prix : {{ vigneron.produit.prix }}</dt>
+    </dl>
+
+    <dl>
+        <dt>Cru : {{ vigneron.cru.libelle }}</dt>
+        <dt>Horaire : {{ vigneron.cru.horaire }}</dt>
+        <dt>Informations : {{ vigneron.cru.infos }}</dt>
+    </dl>
+
 {% endblock %}
