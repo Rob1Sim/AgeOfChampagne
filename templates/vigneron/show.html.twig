@@ -5,23 +5,23 @@
 {% block body %}
     <h1> {{ vigneron.getNom()}} {{ vigneron.getPrenom()}} </h1>
 
-    <dl>
+    <div class="vigneron"><dl>
         <dt>Nom : {{ vigneron.getNom()}} </dt>
         <dt>Prénom : {{ vigneron.getPrenom()}} </dt>
         <dt>Adresse : {{ vigneron.getAdresse()}} </dt>
         <dt>Code Postal : {{ vigneron.getCodePostal()}} </dt>
         <dt>Ville : {{ vigneron.getVille()}} </dt>
-    </dl>
+    </dl></div>
 
-    <dl>
+    <div class="produit"><dl>
         <dt>Produit : {{ vigneron.produit.libelle }}</dt>
         <dt>Prix : {{ vigneron.produit.prix }}</dt>
-    </dl>
+    </dl></div>
 
-    <dl>
+    <div class="cru"><dl>
         <dt>Cru : {{ vigneron.cru.libelle }}</dt>
         <dt>Horaire : {{ vigneron.cru.horaire }}</dt>
         <dt>Informations : {{ vigneron.cru.infos }}</dt>
-    </dl>
+    </dl></div>
 
 {% endblock %}

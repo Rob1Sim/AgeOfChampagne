@@ -1,7 +1,5 @@
 body {
     display:flex;
-    margin: 0;
-    padding:0;
 }
 @font-face {
     font-family:'avenir';
@@ -36,4 +34,16 @@ button{
     background-color: #A68B6A;
     width: 75%;
     border-radius: 15%;
+}
+@media (min-width: 1000px ) {
+    .vigneron {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .cru {
+        display: flex;
+        justify-content: end;
+        flex-direction: row;
+    }
 }
