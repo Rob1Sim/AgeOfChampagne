@@ -34,9 +34,13 @@ class Animation
     #[ORM\ManyToMany(targetEntity: Vigneron::class, mappedBy: 'animation')]
     private Collection $vigneronsAnim;
 
+    #[ORM\OneToMany(mappedBy: 'animation', targetEntity: Partenaire::class)]
+    private Collection $partenaires;
+
     public function __construct()
     {
         $this->vigneronsAnim = new ArrayCollection();
+        $this->partenaires = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -126,6 +130,36 @@ class Animation
     {
         if ($this->vigneronsAnim->removeElement($vigneronsAnim)) {
             $vigneronsAnim->removeAnimation($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Partenaire>
+     */
+    public function getPartenaires(): Collection
+    {
+        return $this->partenaires;
+    }
+
+    public function addPartenaire(Partenaire $partenaire): self
+    {
+        if (!$this->partenaires->contains($partenaire)) {
+            $this->partenaires->add($partenaire);
+            $partenaire->setAnimation($this);
+        }
+
+        return $this;
+    }
+
+    public function removePartenaire(Partenaire $partenaire): self
+    {
+        if ($this->partenaires->removeElement($partenaire)) {
+            // set the owning side to null (unless already changed)
+            if ($partenaire->getAnimation() === $this) {
+                $partenaire->setAnimation(null);
+            }
         }
 
         return $this;
