@@ -1,39 +1,148 @@
-body {
-    display:flex;
-    margin: 0;
-    padding:0;
+@font-face {
+    font-family:'Avenir next condenced';
+    src: url('/police/Avenir_Next_Condensed.ttc') ;
 }
 @font-face {
-    font-family:'avenir';
-    src: url("/public/police/cooper-hewitt-font-family.zip");
+    font-family:'daneehand';
+    src: url('/police/Daneehand_Demo.otf') ;
 }
-.login {
-    display:flex;
-    justify-content: center;
-    font-family: avenir, sans-serif;
-    white-space: pre-line;
-    flex-direction: column;
+@font-face {
+    font-family:'gotham';
+    src: url('/police/Gotham-ExtraLight_700137626.otf') format('truetype');
+}
+@font-face {
+    font-family:'handwritting';
+    src: url('/police/handwriting.ttf') format('truetype');
+}
+@font-face {
+    font-family:'myriadPro';
+    src: url('/police/MyriadPro-Regular_2066245031.otf') format('truetype');
+}
+@font-face {
+    font-family:'cooper-heweit';
+    src: url('/police/CooperHewitt-Book.ttf') format('truetype');
+}
+body{
+    display: flex;
 }
 
-.principal{
-    display:flex;
-    justify-content: center;
-    background-color: white;
-    flex:1;
-    border-color: #B0413E;
-}
-.ardoise{
-    display:flex;
-    flex-direction: column;
-    background: url("./image/ardoise.png") no-repeat;
-    background-size:100% auto;
-    flex: 1;
-    border:2px solid red;
 
+@media (min-width: 1000px ) {
+    .formu{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 15%;
 
+    }
+    h2{
+        font-size:90%;
+        margin-top:-2%;
+        font-family: "gotham", serif;
+        opacity: 35%;
+    }
+    #mdp_forget{
+        margin-top:3%
+    }
+    head{
+        background: url("../public/image/OHG.png");
+    }
+    .btn_btn-lg_btn-primary{
+        background-color: #a68b6a;
+        font-size: 150%;
+        color:white;
+        border-radius: 22px;
+        width: 70%;
+        height: 5%;
+        margin-top: 50px;
+
+    }
+    .h3-mb-3-font-weight-normal{
+        font-size: 400%;
+        font-family: "handwritting", serif;
+        font-weight: lighter;
+        display:flex;
+        width: 63%;
+        text-align: center;
+        flex-flow: column;
+    }
+    .ecriture_avenir{
+        display:flex;
+        margin-left: 10%;
+        align-self: self-start;
+        margin-bottom: 10px;
+        font-family: 'cooper-heweit', serif;
+        width:50%;
+        font-size: 200%;
+    }
+    .ecriture_avenir-email{
+        display:flex;
+        margin-left: 10%;
+        align-self: self-start;
+        margin-bottom: 10px;
+        font-family: 'cooper-heweit', serif;
+        width:50%;
+        font-size: 200%;
+        margin-top:50px;
+    }
+    .inscription{
+        margin-top:10%
+    }
+    #inscription{
+        margin-top:1%
+    }
+    .form-control{
+        width:80%;
+        height: 4%;
+        box-sizing: border-box;
+        display:flex;
+        justify-content: center;
+        margin-bottom: 30px;
+        border-bottom: 1px solid #D9D9D9;
+        border-radius: 5px;
+    }
+    .gauche {
+        display:flex;
+        position: absolute;
+        justify-content: center;
+        width: 50%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: #FFFFFF;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .droite {
+        background: url("/image/ardoise.png") no-repeat;
+        position: fixed;
+        align-content: center;
+        width: 50%;
+        height: 100%;
+        right: 0;
+        top: 0;
+
+    }
+    .AOC{
+        align-content: center;
+        background: url("/image/AOC_white.png") no-repeat;
+        background-size: 75%;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        right: -10%;
+        top: 0;
+        margin-top:15px;
+    }
 }
-button{
-    background-color: #A68B6A;
-    width: 75%;
-    border-radius: 15%;
+@media (max-width: 999px ){
+    .gauche {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: #FFFFFF;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
 }
