@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @font-face {
     font-family:'Avenir next condenced';
     src: url('/police/Avenir_Next_Condensed.ttc') ;
@@ -63,34 +64,83 @@ body{
         font-weight: lighter;
         display:flex;
         width: 63%;
+=======
+body{
+    display: flex;
+}
+@font-face {
+    font-family:'cooper-heweit';
+    src: url("/public/police/cooper-hewitt-font-family.zip");
+}
+
+@media (min-width: 1000px ) {
+    .formu{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-grow: initial;
+        margin-top: 15%;
+    }
+    h2{
+        font-size:70%;
+        margin-top:-2%
+    }
+    header{
+        background-color: #aa1111;
+
+    }
+    .btn_btn-lg_btn-primary{
+        background-color: #a68b6a;
+        border-radius: 22px;
+        width: 70%;
+        height: 5%;
+        margin-top: 50px;
+
+    }
+    .h3-mb-3-font-weight-normal{
+        font-size: 350%;
+        font-family: "cooper-heweit", serif;
+        display:flex;
+        width: 53%;
+>>>>>>> 30eaa15b2f779d9648bf43d49ce2d3e456a17e25
         text-align: center;
         flex-flow: column;
     }
     .ecriture_avenir{
+<<<<<<< HEAD
         display:flex;
         margin-left: 10%;
         align-self: self-start;
+=======
+>>>>>>> 30eaa15b2f779d9648bf43d49ce2d3e456a17e25
         margin-bottom: 10px;
         font-family: 'cooper-heweit', serif;
         width:50%;
         font-size: 200%;
     }
     .ecriture_avenir-email{
+<<<<<<< HEAD
         display:flex;
         margin-left: 10%;
         align-self: self-start;
+=======
+>>>>>>> 30eaa15b2f779d9648bf43d49ce2d3e456a17e25
         margin-bottom: 10px;
         font-family: 'cooper-heweit', serif;
         width:50%;
         font-size: 200%;
         margin-top:50px;
     }
+<<<<<<< HEAD
     .inscription{
         margin-top:10%
     }
     #inscription{
         margin-top:1%
     }
+=======
+
+>>>>>>> 30eaa15b2f779d9648bf43d49ce2d3e456a17e25
     .form-control{
         width:80%;
         height: 4%;
