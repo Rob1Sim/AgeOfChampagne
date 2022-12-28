@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @font-face {
     font-family:'Avenir next condenced';
     src: url('/police/Avenir_Next_Condensed.ttc') ;
@@ -27,7 +26,6 @@ body{
     display: flex;
 }
 
-
 @media (min-width: 1000px ) {
     .formu{
         display: flex;
@@ -46,7 +44,7 @@ body{
         margin-top:3%
     }
     head{
-        background: url("../public/image/OHG.png");
+        background: url("../public/image/OHG.png") no-repeat;
     }
     .btn_btn-lg_btn-primary{
         background-color: #a68b6a;
@@ -63,84 +61,37 @@ body{
         font-family: "handwritting", serif;
         font-weight: lighter;
         display:flex;
-        width: 63%;
-=======
-body{
-    display: flex;
-}
-@font-face {
-    font-family:'cooper-heweit';
-    src: url("/public/police/cooper-hewitt-font-family.zip");
-}
-
-@media (min-width: 1000px ) {
-    .formu{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        flex-grow: initial;
-        margin-top: 15%;
-    }
-    h2{
-        font-size:70%;
-        margin-top:-2%
-    }
-    header{
-        background-color: #aa1111;
-
-    }
-    .btn_btn-lg_btn-primary{
-        background-color: #a68b6a;
-        border-radius: 22px;
-        width: 70%;
-        height: 5%;
-        margin-top: 50px;
-
-    }
-    .h3-mb-3-font-weight-normal{
-        font-size: 350%;
-        font-family: "cooper-heweit", serif;
-        display:flex;
-        width: 53%;
->>>>>>> 30eaa15b2f779d9648bf43d49ce2d3e456a17e25
         text-align: center;
-        flex-flow: column;
-    }
+        width: 63%;}
+
     .ecriture_avenir{
-<<<<<<< HEAD
         display:flex;
         margin-left: 10%;
         align-self: self-start;
-=======
->>>>>>> 30eaa15b2f779d9648bf43d49ce2d3e456a17e25
         margin-bottom: 10px;
         font-family: 'cooper-heweit', serif;
         width:50%;
         font-size: 200%;
     }
     .ecriture_avenir-email{
-<<<<<<< HEAD
+
         display:flex;
         margin-left: 10%;
         align-self: self-start;
-=======
->>>>>>> 30eaa15b2f779d9648bf43d49ce2d3e456a17e25
         margin-bottom: 10px;
         font-family: 'cooper-heweit', serif;
         width:50%;
         font-size: 200%;
         margin-top:50px;
     }
-<<<<<<< HEAD
     .inscription{
         margin-top:10%
     }
     #inscription{
-        margin-top:1%
-    }
-=======
+        margin-top:1%;
+        margin-bottom: 1%;
 
->>>>>>> 30eaa15b2f779d9648bf43d49ce2d3e456a17e25
+    }
     .form-control{
         width:80%;
         height: 4%;
@@ -159,7 +110,7 @@ body{
         height: 100%;
         left: 0;
         top: 0;
-        background: #FFFFFF;
+        background: #FFFFFF ;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     }
 
@@ -187,12 +138,92 @@ body{
 }
 @media (max-width: 999px ){
     .gauche {
-        position: absolute;
+        position: fixed;
         width: 100%;
         height: 100%;
         left: 0;
         top: 0;
         background: #FFFFFF;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+    .formu{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 15%;
+    }
+    h2{
+        font-size:90%;
+        margin-top:-2%;
+        font-family: "gotham", serif;
+        opacity: 35%;
+    }
+    #mdp_forget{
+        margin-top:3%
+    }
+    head{
+        background: url("../public/image/OHG.png") no-repeat;
+    }
+    .btn_btn-lg_btn-primary{
+        background-color: #a68b6a;
+        font-size: 150%;
+        color:white;
+        border-radius: 22px;
+        width: 70%;
+        height: 5%;
+        margin-top: 50px;
+
+    }
+    .h3-mb-3-font-weight-normal{
+        font-size: 400%;
+        font-family: "handwritting", serif;
+        font-weight: normal;
+        display:flex;
+        text-align: center;
+        width: 63%;}
+
+    .ecriture_avenir{
+        display:flex;
+        margin-left: 10%;
+        align-self: self-start;
+        margin-bottom: 10px;
+        font-family: 'cooper-heweit', serif;
+        width:50%;
+        font-size: 200%;
+    }
+    .ecriture_avenir-email{
+
+        display:flex;
+        margin-left: 10%;
+        align-self: self-start;
+        margin-bottom: 10px;
+        font-family: 'cooper-heweit', serif;
+        width:50%;
+        font-size: 200%;
+        margin-top:50px;
+    }
+    .inscription{
+        margin-top:10%
+    }
+    #inscription{
+        margin-top:1%;
+        margin-bottom: 1%;
+
+    }
+    .form-control{
+        width:80%;
+        height: 4%;
+        box-sizing: border-box;
+        display:flex;
+        justify-content: center;
+        margin-bottom: 30px;
+        border-bottom: 1px solid #D9D9D9;
+        border-radius: 5px;
+    }
+    .greenfoot{
+        background-color: #324016;
+        width:50%;
+        height: 20%;
+        bottom: 3%;
     }
 }
