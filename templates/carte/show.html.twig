@@ -1,24 +1,29 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <img src="/uploads/img/{{carte.contenuImage}}" alt="{{ carte.nom }}">
-    <ul class="carte">
-            <li class="carteNom">
-                Nom : {{ carte.nom }}
-            </li>
-            <li class="carteType">
-                Type : {{ carte.type }}
-            </li>
-            <li class="carteCru">
-                Cru : {{ carte.cru }}
-            </li>
-            <li class="carteRegion">
-                Region : {{ carte.region }}
-            </li>
-            <li class="carteSuperficie">
-                Superficie : {{ carte.superficie }} m&#178;
-            </li>
-    </ul>
+    <div id ="show-carte-body">
+        <main id = "show-carte">
+            <section id="carteInfo">
+                <img src="/uploads/img/{{carte.contenuImage}}" alt="Carte du vignoble">
+                <aside>
+                    <h3>{{ carte.nom }}</h3>
+                    <p>Le <strong>{{ carte.nom }}</strong> est un <i>{{ carte.type }}</i> qui produit un cru <i>{{ carte.cru }}</i>
+                        dans la région : {{ carte.region }}, elle représente une supèreficie de {{ carte.superficie }} m&#178; </p>
+
+                </aside>
+            </section>
+            <section>
+
+            <!--
+            Cartes intéractive
+            <section>
+                <h3>Coordonées :</h3>
+            </section> -->
+                <h3>Partenaires : </h3>
+            </section>
+        </main>
+    </div>
+
 {% endblock %}
 
 {% block title %}
