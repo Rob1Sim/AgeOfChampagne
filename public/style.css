@@ -89,3 +89,11 @@ button{
     }
 }
 
+@media screen and (max-width: 480px) {
+    #show-carte > #carteInfo >img {
+
+        width: 50%;
+
+    }
+}
+
