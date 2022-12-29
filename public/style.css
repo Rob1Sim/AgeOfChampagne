@@ -1,5 +1,6 @@
 body {
     display:flex;
+    flex-direction: column;
     margin: 0;
     padding:0;
 }
@@ -37,3 +38,29 @@ button{
     width: 75%;
     border-radius: 15%;
 }
+
+ /* Page pour une carte indivduel*/
+#show-carte{
+    display: flex;
+    flex-direction: column;
+}
+#show-carte > #carteInfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+#show-carte > #carteInfo >img{
+    flex-basis: 10% ;
+}
+#show-carte > #carteInfo > aside{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 3;
+    flex-basis: 60% ;
+
+}
+
+
