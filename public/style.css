@@ -6,10 +6,57 @@ body {
     background-image: url("image/ardoise.png");
 
 }
+
+/* Police personalise*/
 @font-face {
     font-family:'avenir';
-    src: url("/public/police/cooper-hewitt-font-family.zip");
+    src: url("police/Avenir_Next_Condensed.ttc");
 }
+@font-face {
+    font-family: 'daneehand_demoregular';
+    src: url('police/daneehand_demo-webfont.woff2') format('woff2'),
+    url('police/daneehand_demo-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'gothamextra_light';
+    src: url('police/gotham-extralight_700137626-webfont.woff2') format('woff2'),
+    url('police/gotham-extralight_700137626-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'handwritingmedium';
+    src: url('police/handwriting-webfont.woff2') format('woff2'),
+    url('police/handwriting-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'myriad_proregular';
+    src: url('police/myriadpro-regular_2066245031-webfont.woff2') format('woff2'),
+    url('police/myriadpro-regular_2066245031-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 .login {
     display:flex;
     justify-content: center;
@@ -42,11 +89,27 @@ button{
 }
 
  /* Page pour une carte indivduel*/
+
 #show-carte{
     display: flex;
     flex-direction: column;
     gap: 5vh;
 }
+.handWriting-text{
+    font-family: 'handwritingmedium', serif;
+    font-size: 2rem;
+}
+
+.avenir-text{
+    font-family: 'avenir', serif;
+
+}
+
+myriad-text{
+    font-family: 'myriad_proregular', serif;
+
+}
+
 #show-carte > #carteInfo{
     display: flex;
     flex-direction: row;
