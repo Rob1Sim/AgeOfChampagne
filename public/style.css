@@ -1,10 +1,67 @@
+html{
+    height: 100%;
+}
+
 body {
     display:flex;
+    flex-direction: column;
+    margin: 0;
+    padding:0;
+    background-image: url("image/ardoise.png");
+    height: 100%;
+
 }
+
+/* Police personalise*/
 @font-face {
     font-family:'avenir';
-    src: url("/public/police/cooper-hewitt-font-family.zip");
+    src: url("police/Avenir_Next_Condensed.ttc");
 }
+@font-face {
+    font-family: 'daneehand_demoregular';
+    src: url('police/daneehand_demo-webfont.woff2') format('woff2'),
+    url('police/daneehand_demo-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'gothamextra_light';
+    src: url('police/gotham-extralight_700137626-webfont.woff2') format('woff2'),
+    url('police/gotham-extralight_700137626-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'handwritingmedium';
+    src: url('police/handwriting-webfont.woff2') format('woff2'),
+    url('police/handwriting-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'myriad_proregular';
+    src: url('police/myriadpro-regular_2066245031-webfont.woff2') format('woff2'),
+    url('police/myriadpro-regular_2066245031-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 .login {
     display:flex;
     justify-content: center;
@@ -35,15 +92,95 @@ button{
     width: 75%;
     border-radius: 15%;
 }
-@media (min-width: 1000px ) {
-    .vigneron {
+
+/* Page pour une carte indivduel*/
+.avenir-text{
+    font-family: 'avenir', serif;
+    letter-spacing: 0.2em;
+}
+
+.myriad-text{
+    font-family: 'myriad_proregular', serif;
+
+}
+
+
+#show-carte{
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    height: 100%;
+    justify-content: space-between;
+    padding: 1rem 1rem 0 1rem;
+
+}
+.handWriting-text{
+    font-family: 'handwritingmedium', serif;
+    font-size: 2rem;
+}
+
+
+#show-carte > #carteInfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2vw;
+
+}
+
+#show-carte > #carteInfo >img{
+    flex-basis: 10% ;
+}
+#show-carte > #carteInfo > aside{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 3;
+    flex-basis: 60% ;
+
+}
+#carte-complmt{
+    display: flex;
+
+}
+
+#show-carte-body{
+    color: white;
+    height: 100%;
+}
+
+#show-carte-footer{
+    width: 100%;
+    height: 5rem;
+    background-color: #314015;
+}
+
+@media screen and (min-width: 1024px) {
+    #show-carte {
+        width: 50%;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+        -webkit-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+        -moz-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+    }
+    #show-carte-body{
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #show-carte > #carteInfo >img {
+
+        width: 50%;
+
+    }
+    #show-carte-footer {
+        height: 3rem;
+    }
+    #show-carte{
+        padding: 1rem 0 0 0;
+
     }
 
-    .cru {
-        display: flex;
-        justify-content: end;
-        flex-direction: row;
-    }
 }
