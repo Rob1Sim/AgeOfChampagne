@@ -40,6 +40,10 @@ class Carte
     #[ORM\ManyToOne(inversedBy: 'cartes')]
     private ?Vigneron $vignerons = null;
 
+    #[ORM\ManyToOne(inversedBy: 'Cartes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Category $category = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -149,6 +153,18 @@ class Carte
     public function setVignerons(?Vigneron $vignerons): self
     {
         $this->vignerons = $vignerons;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }
