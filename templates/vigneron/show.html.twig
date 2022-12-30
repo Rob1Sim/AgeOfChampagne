@@ -3,6 +3,20 @@
 {% block title %} {{ vigneron.getNom()}} {{ vigneron.getPrenom()}} {% endblock %}
 
 {% block body %}
+    <div id ="show-vigneron-body">
+        <main id="show-vigneron">
+            <section id="vigneronInfos">
+                <aside>
+                    <h2 class="handWriting-text">{{ vigneron.getNom()}} {{ vigneron.getPrenom()}}</h2>
+                    <p class="myriad-text">Le vigneron <strong>{{ vigneron.getNom()}} {{ vigneron.getPrenom()}}</strong> est situé dans la ville de <i>{{ vigneron.getVille()}}</i>
+                    dont l'adresse est <i>{{ vigneron.getCodePostal()}}</i> <i>{{ vigneron.getAdresse()}}</i></p>
+                </aside>
+            </section>
+        </main>
+
+    </div>
+
+
     <h1> {{ vigneron.getNom()}} {{ vigneron.getPrenom()}} </h1>
 
     <div class="vigneron"><dl>
