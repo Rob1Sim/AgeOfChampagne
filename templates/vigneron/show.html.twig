@@ -3,13 +3,33 @@
 {% block title %} {{ vigneron.getNom()}} {{ vigneron.getPrenom()}} {% endblock %}
 
 {% block body %}
-    <h1> {{ vigneron.getNom()}} {{ vigneron.getPrenom()}} </h1>
+    <div id ="show-vigneron-body">
+        <main id="show-vigneron">
+            <section id="vigneronInfos">
+                <aside>
+                    <h2 class="handWriting-text">{{ vigneron.getNom()}} {{ vigneron.getPrenom()}}</h2>
+                    <p class="myriad-text">Le vigneron <strong>{{ vigneron.getNom()}} {{ vigneron.getPrenom()}}</strong> est situé dans la ville de <i>{{ vigneron.getVille()}}</i>
+                    dont l'adresse est <i>{{ vigneron.getCodePostal()}}</i> <i>{{ vigneron.getAdresse()}}</i></p>
+                </aside>
+            </section>
 
-    <dl>
-        <dt>Nom : {{ vigneron.getNom()}} </dt>
-        <dt>Prénom : {{ vigneron.getPrenom()}} </dt>
-        <dt>Adresse : {{ vigneron.getAdresse()}} </dt>
-        <dt>Code Postal : {{ vigneron.getCodePostal()}} </dt>
-        <dt>Ville : {{ vigneron.getVille()}} </dt>
-    </dl>
+            <section id="cruInfos">
+                <h2 class="handWriting-text">{{ vigneron.cru.libelle }}</h2>
+                <p class="myriad-text">Le cru correspondant à ce vigneron est <strong>{{ vigneron.cru.libelle }}</strong>. Les informations sur les horaires sont <i>{{ vigneron.cru.horaire }}</i>.</p>
+                <p class="myriad-text">Voici les informations complétaires sur le cru : <i>{{ vigneron.cru.infos }}</i></p>
+            </section>
+
+            <section id="produitInfos">
+                <h2 class="handWriting-text">{{ vigneron.produit.libelle }}</h2>
+                <p class="myriad-text">Le produit vendu par le vigneron aura pour prix <i>{{ vigneron.produit.prix }}</i></p>
+                <!--
+                afficher le prix si l'utilisateur est majeur
+                -->
+            </section>
+
+            <footer id="show-vigneron-footer"></footer>
+        </main>
+
+    </div>
+
 {% endblock %}
