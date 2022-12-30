@@ -12,6 +12,12 @@
                     dont l'adresse est <i>{{ vigneron.getCodePostal()}}</i> <i>{{ vigneron.getAdresse()}}</i></p>
                 </aside>
             </section>
+
+            <section id="cruInfos">
+                <h2 class="handWriting-text">{{ vigneron.cru.libelle }}</h2>
+                <p class="myriad-text">Le cru correspondant à ce vigneron est <strong>{{ vigneron.cru.libelle }}</strong>. Les informations sur les horaires sont <i>{{ vigneron.cru.horaire }}</i>.</p>
+                <p class="myriad-text">Voici les informations complétaires sur le cru : <i>{{ vigneron.cru.infos }}</i></p>
+            </section>
         </main>
 
     </div>

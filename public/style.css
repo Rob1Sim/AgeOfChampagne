@@ -214,3 +214,14 @@ button{
     flex-basis: 60% ;
 
 }
+
+#cruInfos{
+    display: flex;
+}
+
+#show-vigneron > #cruInfos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2vw;
+}
