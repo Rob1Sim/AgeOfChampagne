@@ -3,8 +3,10 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
+
     <div class="gauche">
-        <div class="head"></div><form class="formu" method="post">
+        <div class="header"><img src="../../public/image/OHG.png"></div>
+        <form class="formu" method="post">
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
@@ -43,6 +45,7 @@
             </button>
             <h2 class="inscription">Vous n'avez pas de compte?</h2><h2 id="inscription">Inscrivez-vous!</h2>
         </form>
+
     </div><div class="droite"><div class="AOC"></div></div>
 {% endblock %}
 
