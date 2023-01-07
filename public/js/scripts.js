@@ -37,7 +37,28 @@ function dropdownFlags(){
 
 }
 
+/**
+ * Quand la taille de l'écran est trop petit, les liens sont mis dans un dropdown
+ */
+function dropdownLinks(){
+    const linkNoDropDown = document.querySelectorAll("li.no-dropdown");
+    const linkWithDropDown = document.querySelector('div.with-dropdown');
+    const dropDownButton = document.querySelector('button.btn-dropdown');
+    if(screen.width <= 480){
+        dropDownButton.style.display = 'inline-block';
+        linkNoDropDown.forEach((el)=>{el.style.display = 'none'});
+        dropDownButton.addEventListener('click',()=>{
+            linkWithDropDown.style.display = "flex";
+        })
+    }else{
+        dropDownButton.style.display = 'none';
+        linkNoDropDown.forEach((el)=>{el.style.display = 'block'});
+    }
+
+}
+
 dropdownFlags();
+dropdownLinks();
 
 // Fereme le dropdown si on clique autre part que sur le bouton
 window.onclick = function(event) {
@@ -46,6 +67,11 @@ window.onclick = function(event) {
         const flagDropdown = document.querySelector('div.dropdown-flags');
         flagDropdown.style.display = "none";
 
+    }
+
+    if(!event.target.matches('.with-dropdown') && !event.target.matches('.btn-dropdown')&& !event.target.matches('.material-symbols-outlined')){
+        const linkWithDropDown = document.querySelector('div.with-dropdown');
+        linkWithDropDown.style.display = "none";
 
     }
 }
