@@ -15,6 +15,8 @@ class CarteController extends AbstractController
     #[Route('/carte', name: 'app_carte')]
     public function index(Request $request, CarteRepository $repository): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
         $carte = $request->query->get('search', '');
         $carteList = $repository->search($carte);
 
