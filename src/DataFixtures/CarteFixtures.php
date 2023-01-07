@@ -2,6 +2,8 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Carte;
+use App\Entity\Compte;
 use App\Factory\CarteFactory;
 use App\Factory\VigneronFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -10,16 +12,32 @@ use Doctrine\Persistence\ObjectManager;
 
 class CarteFixtures extends Fixture implements DependentFixtureInterface
 {
-    public function load(ObjectManager $manager): void
+    public function load(ObjectManager $manager): array
     {
-        CarteFactory::createMany(10, function () {
+        $carte = new Carte();
+        $compte = new Compte();
+
+        $cartes = CarteFactory::createMany(10, function () {
             return ['vignerons' => VigneronFactory::random()];
         });
+        foreach ($cartes as $relations) {
+            return [
+                $this->addReference('carte_compte', $compte),
+
+                $relations->addCompte($compte),
+                $compte->addCarte($carte),
+            ];
+        }
+        $manager->persist($carte);
+        $manager->persist($compte);
         $manager->flush();
     }
 
     public function getDependencies(): array
     {
-        return [VigneronFixtures::class];
+        return [
+            VigneronFixtures::class,
+            CompteFixtures::class,
+        ];
     }
 }
