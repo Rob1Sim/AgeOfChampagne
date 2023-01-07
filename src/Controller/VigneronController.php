@@ -13,6 +13,8 @@ class VigneronController extends AbstractController
     #[Route('/vigneron', name: 'app_vigneron')]
     public function index(VigneronRepository $repository): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
         $allVignerons = $repository->findBy([], ['nom' => 'ASC', 'prenom' => 'ASC']);
 
         return $this->render('vigneron/index.html.twig', ['vignerons' => $allVignerons]);
