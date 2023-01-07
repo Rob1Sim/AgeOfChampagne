@@ -15,6 +15,8 @@ class CarteController extends AbstractController
     #[Route('/carte', name: 'app_carte')]
     public function index(Request $request, CarteRepository $repository): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
         $carte = $request->query->get('search', '');
         $carteList = $repository->search($carte);
 
@@ -25,6 +27,8 @@ class CarteController extends AbstractController
     #[Entity('carte', expr: 'repository.find(id)')]
     public function show(Carte $carte): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
         return $this->render('carte/show.html.twig', ['carte' => $carte]);
     }
 }
