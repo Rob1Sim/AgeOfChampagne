@@ -39,9 +39,12 @@
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     {% if is_granted('ROLE_ADMIN') %}
                         <li>
-                            <a href="{{ path('admin') }}">Panel admin</a>
+                            <a href="{{ path('admin') }}">Panel administrateur</a>
                         </li>
                     {% endif %}
+                    <li>
+                        <a href="{{ path('app_profil',{'id': app.user.id}) }}">Mon profil</a>
+                    </li>
                     <li>
                         <a href="{{ path('app_logout') }}">Déconnexion</a>
                     </li>
