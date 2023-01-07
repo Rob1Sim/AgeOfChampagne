@@ -9,6 +9,8 @@ function dropdownFlags(){
 
         if ( flagDropdown.style.display === "none" ){
             flagDropdown.style.display = "block";
+            flagDropdown.style.transition = "backgroundColor 0.5s ";
+
         }else{
             flagDropdown.style.display = "none";
         }
