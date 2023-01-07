@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {{ cru.libelle }}
-    {{ cru.horaire }}
-    {{ cru.infos }}
+    <p class ="cru_libelle">{{ cru.libelle }}</p>
+    <p class ="cru_horaire">{{ cru.horaire }}</p>
+    <p class ="cru_infos">{{ cru.infos }}</p>
     Liste des vignerons pour ce cru :
     {% for vigneron in cru.vigneronsCru %}
-        <li>
+        <li class="cru_vigneron">
             {{ vigneron }}
         </li>
     {% endfor %}
