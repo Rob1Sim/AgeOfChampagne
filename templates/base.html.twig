@@ -24,41 +24,45 @@
     </head>
     <nav>
         <ul class="nav-link">
-            <li>
-                <a class="nav-title" href="#"><img src="{{ asset('image/favicon/favicon-32x32.png') }}"></a>
-            </li>
-            <li class="nav-item">
-                <a href = "{{ path('app_carte') }}" class="nav-link">Mes cartes</a>
-            </li>
-            <li>
-                <a href = "{{ path('app_vigneron') }}" class="nav-link">Les vignerons partenaires</a>
-            </li>
-            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                <li>
-                    <a href="{{ path('app_logout') }}">Déconnexion</a>
+            <div class="nav-logo-link">
+                <li class="nav-title">
+                    <a  href="#"><img src="{{ asset('image/favicon/favicon-32x32.png') }}"></a>
                 </li>
-            {% else %}
-                <li>
-                    <a href="{{ path('app_login') }}">Connexion</a>
+                <li class="nav-item">
+                    <a href = "{{ path('app_carte') }}" >Mes cartes</a>
                 </li>
                 <li>
-                    <a href="{{ path('app_register') }}">Inscription</a>
+                    <a href = "{{ path('app_vigneron') }}" >Les vignerons partenaires</a>
                 </li>
+            </div>
+            <div class="nav-login-lang">
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <li>
+                        <a href="{{ path('app_logout') }}">Déconnexion</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{{ path('app_login') }}">Connexion</a>
+                    </li>
+                    <li>
+                        <a class="btn-inscription" href="{{ path('app_register') }}">Inscription</a>
+                    </li>
 
-            {% endif %}
-            <li class="dropdown">
-                <button class="btn-flag">
-                    <img class="btn-img" src="{{ asset('image/flags/france.png') }}">
-                </button>
-                <div class="dropdown-flags">
-                    <button class="btn-flag-fr">
-                        <img class="btn-img-fr" src="{{ asset('image/flags/france.png') }}">
+                {% endif %}
+                <li class="dropdown">
+                    <button class="btn-flag">
+                        <img class="btn-img" src="{{ asset('image/flags/france.png') }}">
                     </button>
-                    <button class="btn-flag-us">
-                        <img class="btn-img-us" src="{{ asset('image/flags/united-states.png') }}">
-                    </button>
-                </div>
-            </li>
+                    <div class="dropdown-flags">
+                        <button class="btn-flag-fr">
+                            <img class="btn-img-fr" src="{{ asset('image/flags/france.png') }}">
+                        </button>
+                        <button class="btn-flag-us">
+                            <img class="btn-img-us" src="{{ asset('image/flags/united-states.png') }}">
+                        </button>
+                    </div>
+                </li>
+            </div>
         </ul>
     </nav>
     <body>

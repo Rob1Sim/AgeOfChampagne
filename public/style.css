@@ -273,7 +273,32 @@ button{
     flex-direction: row;
     text-decoration: none;
     list-style-type: none;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    font-family: 'gothamextra_light', sans-serif;
+
+
 }
+.nav-link>div>li>a{
+    text-decoration: none;
+    color: white;
+    transition: color 0.5s;
+}
+
+.nav-link>div>li>a:link{
+    text-decoration: none;
+}
+
+.nav-link>div>li>a:hover{
+    color: #96A621;
+}
+
+.nav-link>div>li>a:visited{
+    text-decoration: none;
+}
+
 
 .dropdown{
     position: relative;
@@ -290,9 +315,36 @@ button{
 
 }
 
+.nav-title{
+    justify-self: flex-start;
+}
 
 .show{display: block}
 
 .btn-flag,.btn-flag-fr,.btn-flag-us {
     all:unset;
+}
+.nav-login-lang,.nav-logo-link{
+    display: flex;
+    align-items: center;
+    flex-grow: 2;
+    gap: 1vw;
+    border-bottom: #ffffff;
+    border-bottom-style: solid;
+    height: 10vh;
+}
+.nav-logo-link{
+    justify-content: flex-start;
+
+}
+
+.nav-login-lang{
+    justify-content: flex-end;
+
+}
+
+.btn-inscription{
+    background-color: #A58B6A;
+    border-radius: 30px;
+    padding: 8px 12px;
 }
