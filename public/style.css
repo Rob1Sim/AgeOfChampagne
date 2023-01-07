@@ -87,12 +87,14 @@ body {
 
 
 }
+
+/* Faut pas faire de propriété global
 button{
     background-color: #A68B6A;
     width: 75%;
     border-radius: 15%;
 }
-
+*/
 /* Page pour une carte indivduel*/
 .avenir-text{
     font-family: 'avenir', serif;
@@ -282,5 +284,6 @@ button{
     position: absolute;
     z-index: 1;
 }
+
 
 .show{display: block}

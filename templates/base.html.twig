@@ -48,11 +48,15 @@
             {% endif %}
             <li class="dropdown">
                 <button class="btn-flag">
-                    <img src="{{ asset('image/flags/france.png') }}">
+                    <img class="btn-img" src="{{ asset('image/flags/france.png') }}">
                 </button>
                 <div class="dropdown-flags">
-                    <img src="{{ asset('image/flags/france.png') }}">
-                    <img src="{{ asset('image/flags/united-states.png') }}">
+                    <button class="btn-flag-fr">
+                        <img class="btn-img-fr" src="{{ asset('image/flags/france.png') }}">
+                    </button>
+                    <button class="btn-flag-us">
+                        <img class="btn-img-us" src="{{ asset('image/flags/united-states.png') }}">
+                    </button>
                 </div>
             </li>
         </ul>
