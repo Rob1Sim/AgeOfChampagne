@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ animation.getNom() }} {% endblock %}
+
+{% block body %}
+    <p class="myriad-text"><strong>{{ animation.getNom }}</strong> est de type <i>{{ animation.getType() }}</i><br>
+        Cette animation aura pour horaire d'ouverture : <i>{{ animation.getHoraireDeb()|date("d/m/Y") }}</i> et comme horaire de fermeture <i>{{ animation.getHoraireFin|date("d/m/Y") }}</i><br>
+        Toute cette animation sera au total de <i>{{ animation.getPrix }}</i>
+    </p>
+
+<!-- lorsque relation ajouté mettre en les infos des partenaires -->
+
+{% endblock %}
