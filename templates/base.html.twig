@@ -27,7 +27,7 @@
         <ul class="nav-link">
             <div class="nav-logo-link">
                 <li class="nav-title">
-                    <a  href="#"><img src="{{ asset('image/favicon/favicon-32x32.png') }}"></a>
+                    <a  href="{{ path('app_carte') }}"><img src="{{ asset('image/favicon/favicon-32x32.png') }}"></a>
                 </li>
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <li class="nav-item no-dropdown">
