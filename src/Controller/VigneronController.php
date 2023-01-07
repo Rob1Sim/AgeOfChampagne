@@ -23,6 +23,8 @@ class VigneronController extends AbstractController
     #[Route('/vigneron/{id<\d+>}', name: 'app_vigneron_show')]
     public function show(Vigneron $vigneron): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
         return $this->render('vigneron/show.html.twig', ['vigneron' => $vigneron]);
     }
 }
