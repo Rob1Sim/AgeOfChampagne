@@ -17,6 +17,8 @@ class ProfilController extends AbstractController
     #[Route('/profil/{id<\d+>}', name: 'app_profil')]
     public function index(int $id, CompteRepository $repository): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
         $compte = $repository->search($id);
 
         return $this->render('profil/index.html.twig', [
