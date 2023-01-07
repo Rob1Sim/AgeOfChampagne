@@ -4,6 +4,12 @@
     {{ cru.libelle }}
     {{ cru.horaire }}
     {{ cru.infos }}
+    Liste des vignerons pour ce cru :
+    {% for vigneron in cru.vigneronsCru %}
+        <li>
+            {{ vigneron }}
+        </li>
+    {% endfor %}
 {% endblock %}
 
 {% block title %}
