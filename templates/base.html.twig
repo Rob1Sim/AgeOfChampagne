@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="stylesheet" href="{{ asset('style.css') }}">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
               rel="stylesheet">
         <link rel="apple-touch-icon" sizes="180x180" href="image/favicon/apple-touch-icon.png">
@@ -25,33 +24,31 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href = "/carte" class="nav-link">Mes cartes</a>
-                    </li>
-                    <li>
-                        <a href = "/vigneron" class="nav-link">Vignerons</a>
-                    </li>
-                </ul>
-                <form class="d-flex" role="search" action="{{ path('app_carte') }}">
-                    <input class="form-control me-2" name="search" value="{{ search|default('') }}" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
-        </div>
+    <nav>
+        <ul class="nav-link">
+            <li>
+                <a class="nav-title" href="#">Navbar</a>
+            </li>
+            <li class="nav-item">
+                <a href = "{{ path('app_carte') }}" class="nav-link">Mes cartes</a>
+            </li>
+            <li>
+                <a href = "{{ path('app_vigneron') }}" class="nav-link">Les vignerons partenaires</a>
+            </li>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li>
+                    <a href="{{ path('app_logout') }}">Déconnexion</a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{{ path('app_login') }}">Connexion</a>
+                </li>
+                <li>
+                    <a href="{{ path('app_register') }}">Inscription</a>
+                </li>
+            {% endif %}
+
+        </ul>
     </nav>
     <body>
         {% block body %}{% endblock %}
