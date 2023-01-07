@@ -5,11 +5,13 @@
     <p class ="cru_horaire">{{ cru.horaire }}</p>
     <p class ="cru_infos">{{ cru.infos }}</p>
     Liste des vignerons pour ce cru :
+    <ul>
     {% for vigneron in cru.vigneronsCru %}
         <li class="cru_vigneron">
             {{ vigneron }}
         </li>
     {% endfor %}
+    </ul>
 {% endblock %}
 
 {% block title %}
