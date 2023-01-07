@@ -29,6 +29,8 @@ class ProfilController extends AbstractController
     #[Route('/profil/{id<\d+>}/update', name: 'app_profil_update')]
     public function update(ManagerRegistry $doctrine, Compte $compte, Request $request): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
         $form = $this->createForm(CompteType::class, $compte);
 
         $form->handleRequest($request);
