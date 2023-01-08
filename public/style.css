@@ -46,7 +46,6 @@ body {
     flex-direction: column;
     margin: 0;
     padding:0;
-    background-image: url("image/ardoise.png");
     height: 100%;
 }
 
@@ -315,7 +314,7 @@ button{
 
 .partenaire>a{
     text-decoration: none;
-    color:white;
+    color:black;
     transition: color 0.5s;
     font-family: 'myriad_proregular', sans-serif;
 }
@@ -362,7 +361,7 @@ button{
 }
 
 #show-carte-body{
-    color: white;
+    color: black;
     height: 100%;
 }
 
@@ -403,7 +402,7 @@ button{
 }
 
 #show-vigneron-body{
-    color: white;
+    color: black;
     height: 100%;
 }
 
@@ -498,7 +497,7 @@ button{
 }
 .nav-link>div>li>a{
     text-decoration: none;
-    color: white;
+    color: black;
     transition: color 0.5s;
 }
 
@@ -523,7 +522,7 @@ button{
 .dropdown-flags{
     display: none;
     position: absolute;
-    background-color: #ffffff;
+    background-color: black;
     border-radius: 12px;
     padding-left: 0.2vw ;
     padding-right: 0.2vw ;
@@ -549,7 +548,7 @@ button{
     align-items: center;
     flex-grow: 2;
     gap: 1vw;
-    border-bottom: #ffffff;
+    border-bottom: #314015;
     border-bottom-style: solid;
     height: 10vh;
 }
