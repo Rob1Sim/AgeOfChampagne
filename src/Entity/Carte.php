@@ -49,6 +49,9 @@ class Carte
     {
         $this->compte = new ArrayCollection();
     }
+    #[ORM\ManyToOne(inversedBy: 'Cartes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Category $category = null;
 
     public function getId(): ?int
     {
@@ -183,6 +186,14 @@ class Carte
     public function removeCompte(Compte $compte): self
     {
         $this->compte->removeElement($compte);
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

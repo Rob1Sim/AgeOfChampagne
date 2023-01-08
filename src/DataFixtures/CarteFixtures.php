@@ -2,9 +2,12 @@
 
 namespace App\DataFixtures;
 
+
 use App\Entity\Carte;
 use App\Entity\Compte;
+use App\Entity\Category;
 use App\Factory\CarteFactory;
+use App\Factory\CategoryFactory;
 use App\Factory\VigneronFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -19,6 +22,8 @@ class CarteFixtures extends Fixture implements DependentFixtureInterface
 
         $cartes = CarteFactory::createMany(10, function () {
             return ['vignerons' => VigneronFactory::random()];
+        CarteFactory::createMany(10, function () {
+            return ['vignerons' => VigneronFactory::random(), 'category' => CategoryFactory::random()];
         });
         foreach ($cartes as $relations) {
             return [
@@ -39,5 +44,6 @@ class CarteFixtures extends Fixture implements DependentFixtureInterface
             VigneronFixtures::class,
             CompteFixtures::class,
         ];
+        return [VigneronFixtures::class, CategoryFixtures::class];
     }
 }
