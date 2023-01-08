@@ -3,7 +3,7 @@
 {% block title %}Inscription{% endblock %}
 
 {% block body %}
-    <div class="gauche"><div class="formu">
+    <div class="gauche"><div class="formu2">
     {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
@@ -26,8 +26,7 @@
             <div class="ecriture_avenir2">{{ form_row(registrationForm.agreeTerms, {
             label: "Acceptez les conditions d'utilisations"
         }) }}</div>
-
-            <div class="ecriture_avenir"><button type="submit" class="btn">S'inscrire</button></div>
+            <div class="ecriture_avenir2"><button type="submit" class="btn_btn-lg_btn-primary2">S'inscrire</button></div>
     {{ form_end(registrationForm) }}</div></div>
     <div class="droite"><div class="AOC"></div> </div>
 {% endblock %}

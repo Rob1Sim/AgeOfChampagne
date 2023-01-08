@@ -127,7 +127,14 @@ body{
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        width: 100%;
 
+    }
+    .formu2{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     h2{
@@ -142,12 +149,25 @@ body{
     .btn_btn-lg_btn-primary{
         background-color: #a68b6a;
         font-size: 150%;
+        align-items: center;
         color:white;
         border-radius: 22px;
         width: 70%;
         height: 5%;
 
     }
+    .btn_btn-lg_btn-primary2{
+        display:flex;
+        background-color: #a68b6a;
+        font-size: 150%;
+        justify-content: center;
+        color:white;
+        border-radius: 22px;
+        width: 150%;
+        height: 5%;
+
+    }
+
     .h3-mb-3-font-weight-normal{
         font-size: 400%;
         font-family: "handwritting", serif;
@@ -173,6 +193,7 @@ body{
         font-family: 'cooper-heweit', serif;
         width:50%;
         font-size: 200%;
+
     }
     .ecriture_avenir-email{
         display:flex;
