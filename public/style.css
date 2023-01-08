@@ -18,10 +18,7 @@
     font-family:'myriadPro';
     src: url('/police/MyriadPro-Regular_2066245031.otf') format('truetype');
 }
-@font-face {
-    font-family:'cooper-heweit';
-    src: url('/police/CooperHewitt-Book.ttf') format('truetype');
-}
+
 body{
     display: flex;
 }
@@ -129,18 +126,14 @@ body{
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 15%;
 
     }
     h2{
         font-size:90%;
-        margin-top:-2%;
         font-family: "gotham", serif;
         opacity: 35%;
     }
-    #mdp_forget{
-        margin-top:3%
-    }
+
     head{
         background: url("../public/image/OHG.png");
     }
@@ -151,7 +144,6 @@ body{
         border-radius: 22px;
         width: 70%;
         height: 5%;
-        margin-top: 50px;
 
     }
     .h3-mb-3-font-weight-normal{
@@ -167,7 +159,6 @@ body{
         display:flex;
         margin-left: 10%;
         align-self: self-start;
-        margin-bottom: 10px;
         font-family: 'cooper-heweit', serif;
         width:50%;
         font-size: 200%;
@@ -176,17 +167,13 @@ body{
         display:flex;
         margin-left: 10%;
         align-self: self-start;
-        margin-bottom: 10px;
         font-family: 'cooper-heweit', serif;
         width:50%;
         font-size: 200%;
-        margin-top:50px;
     }
     .inscription{
-        margin-top:10%
     }
     #inscription{
-        margin-top:1%
     }
     .form-control{
         width:80%;
@@ -194,7 +181,6 @@ body{
         box-sizing: border-box;
         display:flex;
         justify-content: center;
-        margin-bottom: 30px;
         border-bottom: 1px solid #D9D9D9;
         border-radius: 5px;
     }
@@ -229,7 +215,6 @@ body{
         height: 100%;
         right: -10%;
         top: 0;
-        margin-top:15px;
     }
     .green{
         color:rgba(0,0,0,0)
@@ -250,16 +235,13 @@ body{
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 15%;
     }
     h2{
         font-size:90%;
-        margin-top:-2%;
         font-family: "gotham", serif;
         opacity: 35%;
     }
     #mdp_forget{
-        margin-top:3%
     }
     head{
         background: url("../public/image/OHG.png") no-repeat;
@@ -271,7 +253,6 @@ body{
         border-radius: 22px;
         width: 70%;
         height: 5%;
-        margin-top: 50px;
 
     }
     .h3-mb-3-font-weight-normal{
@@ -286,7 +267,6 @@ body{
         display:flex;
         margin-left: 10%;
         align-self: self-start;
-        margin-bottom: 10px;
         font-family: 'cooper-heweit', serif;
         width:50%;
         font-size: 200%;
@@ -296,18 +276,13 @@ body{
         display:flex;
         margin-left: 10%;
         align-self: self-start;
-        margin-bottom: 10px;
         font-family: 'cooper-heweit', serif;
         width:50%;
         font-size: 200%;
-        margin-top:50px;
     }
     .inscription{
-        margin-top:10%
     }
     #inscription{
-        margin-top:1%;
-        margin-bottom: 1%;
 
     }
     .form-control{
@@ -316,12 +291,10 @@ body{
         box-sizing: border-box;
         display:flex;
         justify-content: center;
-        margin-bottom: 30px;
         border-bottom: 1px solid #D9D9D9;
         border-radius: 5px;
     }
     .green{
-        margin-top:20%;
         background-color: #324016;
         height:120%}
 
@@ -370,9 +343,7 @@ button{
 
 }
 
-#show-carte > #carteInfo >img{
-    flex-basis: 10% ;
-}
+
 #show-carte > #carteInfo > aside{
     display: flex;
     flex-direction: column;
@@ -415,7 +386,7 @@ button{
     #show-carte > #carteInfo >img {
 
         width: 50%;
-
+        flex-basis: 100% ;
     }
     #show-carte-footer {
         height: 3rem;
