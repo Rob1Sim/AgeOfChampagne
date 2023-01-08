@@ -23,14 +23,14 @@ function dropdownFlags(){
 
     frFlagButton.addEventListener('click',()=>{
         let currentFlag = document.querySelector('img.btn-img');
-        currentFlag.src = "image/flags/france.png";
+        currentFlag.src = "/image/flags/france.png";
         flagDropdown.style.display = "none";
 
     })
 
     usFlagButton.addEventListener('click',()=>{
         let currentFlag = document.querySelector('img.btn-img');
-        currentFlag.src = "image/flags/united-states.png";
+        currentFlag.src = "/image/flags/united-states.png";
         flagDropdown.style.display = "none";
 
     })
