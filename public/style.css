@@ -129,6 +129,7 @@ body{
         justify-content: center;
 
     }
+
     h2{
         font-size:90%;
         font-family: "gotham", serif;
@@ -158,6 +159,15 @@ body{
     }
     .ecriture_avenir{
         display:flex;
+        margin-left: 10%;
+        align-self: self-start;
+        font-family: 'cooper-heweit', serif;
+        width:50%;
+        font-size: 200%;
+    }
+    .ecriture_avenir2{
+        display:flex;
+        justify-content: space-between;
         margin-left: 10%;
         align-self: self-start;
         font-family: 'cooper-heweit', serif;
