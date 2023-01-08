@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Carte;
-use App\Entity\Category;
 use App\Repository\CarteRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,8 +17,14 @@ class CarteController extends AbstractController
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
-        $category = $request->query->get('category', '');
-        $carteList = $repository->byCategory($category);
+
+        if ('' == $request->query->get('category')) {
+            $carte = $request->query->get('search', '');
+            $carteList = $repository->search($carte);
+        } else {
+            $category = $request->query->get('category', '');
+            $carteList = $repository->byCategory($category);
+        }
 
         return $this->render('carte/index.html.twig', ['liste' => $carteList]);
     }
