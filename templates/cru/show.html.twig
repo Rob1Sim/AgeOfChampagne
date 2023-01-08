@@ -4,14 +4,19 @@
     <p class ="cru_libelle">{{ cru.libelle }}</p>
     <p class ="cru_horaire">{{ cru.horaire }}</p>
     <p class ="cru_infos">{{ cru.infos }}</p>
-    Liste des vignerons pour ce cru :
-    <ul>
-    {% for vigneron in cru.vigneronsCru %}
-        <li class="cru_vigneron">
-            {{ vigneron }}
-        </li>
-    {% endfor %}
-    </ul>
+        {% if cru.vigneronsCru is empty %}
+            Ce cru n'est dirigé par aucun vigneron.
+        {% else %}
+            Liste des vignerons pour ce cru :
+            <ul>
+                {% for vigneron in cru.vigneronsCru %}
+                    <li class="cru_vigneron">
+                        <a href="{{ path('app_vigneron_show', {'id': vigneron.id}) }}">{{ vigneron.nom }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
 {% endblock %}
 
 {% block title %}
