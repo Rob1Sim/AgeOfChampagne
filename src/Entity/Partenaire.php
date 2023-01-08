@@ -24,6 +24,9 @@ class Partenaire
     #[ORM\ManyToMany(targetEntity: Vigneron::class, mappedBy: 'partenaire')]
     private Collection $vigneronsPart;
 
+    #[ORM\ManyToOne(inversedBy: 'partenaires')]
+    private ?Animation $animation = null;
+
     public function __construct()
     {
         $this->vigneronsPart = new ArrayCollection();
@@ -81,6 +84,18 @@ class Partenaire
         if ($this->vigneronsPart->removeElement($vigneronsPart)) {
             $vigneronsPart->removePartenaire($this);
         }
+
+        return $this;
+    }
+
+    public function getAnimation(): ?Animation
+    {
+        return $this->animation;
+    }
+
+    public function setAnimation(?Animation $animation): self
+    {
+        $this->animation = $animation;
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CarteRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CarteRepository::class)]
@@ -40,6 +42,13 @@ class Carte
     #[ORM\ManyToOne(inversedBy: 'cartes')]
     private ?Vigneron $vignerons = null;
 
+    #[ORM\ManyToMany(targetEntity: Compte::class, inversedBy: 'cartes')]
+    private Collection $compte;
+
+    public function __construct()
+    {
+        $this->compte = new ArrayCollection();
+    }
     #[ORM\ManyToOne(inversedBy: 'Cartes')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
@@ -157,6 +166,26 @@ class Carte
         return $this;
     }
 
+    /**
+     * @return Collection<int, Compte>
+     */
+    public function getCompte(): Collection
+    {
+        return $this->compte;
+    }
+
+    public function addCompte(Compte $compte): self
+    {
+        if (!$this->compte->contains($compte)) {
+            $this->compte->add($compte);
+        }
+
+        return $this;
+    }
+
+    public function removeCompte(Compte $compte): self
+    {
+        $this->compte->removeElement($compte);
     public function getCategory(): ?Category
     {
         return $this->category;
