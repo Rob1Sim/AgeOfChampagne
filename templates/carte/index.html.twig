@@ -10,6 +10,15 @@
         <input class="form-control me-2" name="search" value="{{ search|default('') }}" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
+    <form class="carte-category" action="{{ path('app_carte') }}">
+        <select name="catégorie" id="carte-category">
+            <option value="">Toutes catégories</option>
+            <option value="2">Chardonnay</option>
+            <option value="3">Meuniers</option>
+            <option value="1">Pinots noirs</option>
+        </select>
+        <button class="btn btn-outline-success" type="submit">Rechercher</button>
+    </form>
     <ul>
         {% for carte in liste %}
             <li class="carte">
