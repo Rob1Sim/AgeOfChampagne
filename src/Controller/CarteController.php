@@ -17,8 +17,14 @@ class CarteController extends AbstractController
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
-        $carte = $request->query->get('search', '');
-        $carteList = $repository->search($carte);
+
+        if ('' == $request->query->get('category')) {
+            $carte = $request->query->get('search', '');
+            $carteList = $repository->search($carte);
+        } else {
+            $category = $request->query->get('category', '');
+            $carteList = $repository->byCategory($category);
+        }
 
         return $this->render('carte/index.html.twig', ['liste' => $carteList]);
     }
@@ -29,6 +35,7 @@ class CarteController extends AbstractController
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
+
         return $this->render('carte/show.html.twig', ['carte' => $carte]);
     }
 }
