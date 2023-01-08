@@ -51,6 +51,19 @@ class CarteRepository extends ServiceEntityRepository
 
         return $qb->getQuery()->getResult();
     }
+    /**
+     * @return Carte[]
+     */
+    public function byCategory(string $value = ''): array
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->where('c.category LIKE :value')
+            ->setParameter('value', '%'.$value.'%')
+            ->orderBy('c.nom', 'ASC');
+
+        return $qb->getQuery()->getResult();
+    }
+
 
 //    /**
 //     * @return Carte[] Returns an array of Carte objects
