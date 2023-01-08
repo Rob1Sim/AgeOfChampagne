@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
-
+{% block title %}
+    Carte {{ carte.nom }}
+{% endblock %}
 {% block body %}
     <div id ="show-carte-body">
         <main id = "show-carte">
@@ -34,7 +36,4 @@
 
 {% endblock %}
 
-{% block title %}
-
-{% endblock %}
 
