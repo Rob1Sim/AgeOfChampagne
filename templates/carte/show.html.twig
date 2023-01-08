@@ -19,7 +19,11 @@
             <section>
                 <h3>Coordonées :</h3>
             </section> -->
-                <h2 class="avenir-text">Partenaires : </h2>
+                <div class="partenaire">
+                    <h2 class="avenir-text">Vignerons partenaire : </h2>
+
+                    <a href={{ path('app_vigneron_show', {id: carte.vignerons.id})}}>{{ carte.vignerons.NomPrenom }}</a>
+                </div>
             </section>
             <footer id="show-carte-footer">
 
