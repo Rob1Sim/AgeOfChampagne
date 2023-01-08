@@ -1,7 +1,4 @@
-@font-face {
-    font-family:'Avenir next condenced';
-    src: url('/police/Avenir_Next_Condensed.ttc') ;
-}
+
 @font-face {
     font-family:'daneehand';
     src: url('/police/Daneehand_Demo.otf') ;
@@ -19,12 +16,8 @@
     src: url('/police/MyriadPro-Regular_2066245031.otf') format('truetype');
 }
 
-body{
-    display: flex;
-}
-
 @font-face {
-    font-family:'Avenir next condenced';
+    font-family:'avenir';
     src: url('/police/Avenir_Next_Condensed.ttc') ;
 }
 @font-face {
@@ -53,7 +46,6 @@ body {
     flex-direction: column;
     margin: 0;
     padding:0;
-    background-image: url("image/ardoise.png");
     height: 100%;
 }
 
@@ -64,8 +56,8 @@ body {
 }
 body{
     display: flex;
-    font-family:'avenir';
-    src: url("police/Avenir_Next_Condensed.ttc");
+    font-family: 'avenir', sans-serif;
+
 }
 @font-face {
     font-family: 'daneehand_demoregular';
@@ -115,7 +107,7 @@ body{
 .login {
     display:flex;
     justify-content: center;
-    font-family: avenir, sans-serif;
+    font-family: 'avenir', sans-serif;
     white-space: pre-line;
     flex-direction: column;
 }
@@ -130,7 +122,7 @@ body{
     }
     h2{
         font-size:90%;
-        font-family: "gotham", serif;
+        font-family: "gotham", sans-serif;
         opacity: 35%;
     }
 
@@ -148,7 +140,7 @@ body{
     }
     .h3-mb-3-font-weight-normal{
         font-size: 400%;
-        font-family: "handwritting", serif;
+        font-family: "handwritting", sans-serif;
         font-weight: lighter;
         display:flex;
         width: 63%;
@@ -159,7 +151,7 @@ body{
         display:flex;
         margin-left: 10%;
         align-self: self-start;
-        font-family: 'cooper-heweit', serif;
+        font-family: 'cooper-heweit', sans-serif;
         width:50%;
         font-size: 200%;
     }
@@ -167,7 +159,7 @@ body{
         display:flex;
         margin-left: 10%;
         align-self: self-start;
-        font-family: 'cooper-heweit', serif;
+        font-family: 'cooper-heweit', sans-serif;
         width:50%;
         font-size: 200%;
     }
@@ -238,7 +230,7 @@ body{
     }
     h2{
         font-size:90%;
-        font-family: "gotham", serif;
+        font-family: "gotham", sans-serif;
         opacity: 35%;
     }
     #mdp_forget{
@@ -257,7 +249,7 @@ body{
     }
     .h3-mb-3-font-weight-normal{
         font-size: 400%;
-        font-family: "handwritting", serif;
+        font-family: "handwritting", sans-serif;
         font-weight: normal;
         display:flex;
         text-align: center;
@@ -267,7 +259,7 @@ body{
         display:flex;
         margin-left: 10%;
         align-self: self-start;
-        font-family: 'cooper-heweit', serif;
+        font-family: 'cooper-heweit', sans-serif;
         width:50%;
         font-size: 200%;
     }
@@ -276,7 +268,7 @@ body{
         display:flex;
         margin-left: 10%;
         align-self: self-start;
-        font-family: 'cooper-heweit', serif;
+        font-family: 'cooper-heweit', sans-serif;
         width:50%;
         font-size: 200%;
     }
@@ -310,15 +302,26 @@ button{
 */
 /* Page pour une carte indivduel*/
 .avenir-text{
-    font-family: 'avenir', serif;
+    font-family: 'avenir', sans-serif;
     letter-spacing: 0.2em;
 }
 
+
 .myriad-text{
-    font-family: 'myriad_proregular', serif;
+    font-family: 'myriad_proregular', sans-serif;
 
 }
 
+.partenaire>a{
+    text-decoration: none;
+    color:black;
+    transition: color 0.5s;
+    font-family: 'myriad_proregular', sans-serif;
+}
+
+.partenaire>a:hover{
+    color: #96A621;
+}
 
 #show-carte{
     display: flex;
@@ -330,7 +333,7 @@ button{
 
 }
 .handWriting-text{
-    font-family: 'handwritingmedium', serif;
+    font-family: 'handwritingmedium', sans-serif;
     font-size: 2rem;
 }
 
@@ -358,7 +361,7 @@ button{
 }
 
 #show-carte-body{
-    color: white;
+    color: black;
     height: 100%;
 }
 
@@ -399,7 +402,7 @@ button{
 }
 
 #show-vigneron-body{
-    color: white;
+    color: black;
     height: 100%;
 }
 
@@ -494,7 +497,7 @@ button{
 }
 .nav-link>div>li>a{
     text-decoration: none;
-    color: white;
+    color: black;
     transition: color 0.5s;
 }
 
@@ -519,7 +522,7 @@ button{
 .dropdown-flags{
     display: none;
     position: absolute;
-    background-color: #ffffff;
+    background-color: black;
     border-radius: 12px;
     padding-left: 0.2vw ;
     padding-right: 0.2vw ;
@@ -545,7 +548,7 @@ button{
     align-items: center;
     flex-grow: 2;
     gap: 1vw;
-    border-bottom: #ffffff;
+    border-bottom: #314015;
     border-bottom-style: solid;
     height: 10vh;
 }
