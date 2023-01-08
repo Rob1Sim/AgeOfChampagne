@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProduitRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProduitRepository::class)]
@@ -18,6 +20,14 @@ class Produit
 
     #[ORM\Column]
     private ?float $prix = null;
+
+    #[ORM\OneToMany(mappedBy: 'produit', targetEntity: Vigneron::class)]
+    private Collection $vigneronsProd;
+
+    public function __construct()
+    {
+        $this->vigneronsProd = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -44,6 +54,36 @@ class Produit
     public function setPrix(float $prix): self
     {
         $this->prix = $prix;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Vigneron>
+     */
+    public function getVigneronsProd(): Collection
+    {
+        return $this->vigneronsProd;
+    }
+
+    public function addVigneronsProd(Vigneron $vigneronsProd): self
+    {
+        if (!$this->vigneronsProd->contains($vigneronsProd)) {
+            $this->vigneronsProd->add($vigneronsProd);
+            $vigneronsProd->setProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVigneronsProd(Vigneron $vigneronsProd): self
+    {
+        if ($this->vigneronsProd->removeElement($vigneronsProd)) {
+            // set the owning side to null (unless already changed)
+            if ($vigneronsProd->getProduit() === $this) {
+                $vigneronsProd->setProduit(null);
+            }
+        }
 
         return $this;
     }

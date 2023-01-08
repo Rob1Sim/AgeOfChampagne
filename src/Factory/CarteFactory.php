@@ -39,6 +39,8 @@ final class CarteFactory extends ModelFactory
 
     protected function getDefaults(): array
     {
+        $jsonImage = file_get_contents("src/Factory/data/images.json");
+        $tableauImg = json_decode($jsonImage, true);
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
             'nom' => self::faker()->userName(),
@@ -48,7 +50,7 @@ final class CarteFactory extends ModelFactory
             'latitude' => self::faker()->randomFloat(),
             'longitude' => self::faker()->randomFloat(),
             'superficie' => self::faker()->randomFloat(),
-            'contenuImage' => self::faker()->text(),
+            'contenuImage' => $tableauImg[array_rand($tableauImg)],
         ];
     }
 

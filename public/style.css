@@ -46,12 +46,81 @@ body{
     font-family:'myriadPro';
     src: url('/police/MyriadPro-Regular_2066245031.otf') format('truetype');
 }
+
+html{
+    height: 100%;
+}
+
+body {
+    display:flex;
+    flex-direction: column;
+    margin: 0;
+    padding:0;
+    background-image: url("image/ardoise.png");
+    height: 100%;
+}
+
+/* Police personalise*/
 @font-face {
     font-family:'cooper-heweit';
     src: url('/police/CooperHewitt-Book.ttf') format('truetype');
 }
 body{
     display: flex;
+    font-family:'avenir';
+    src: url("police/Avenir_Next_Condensed.ttc");
+}
+@font-face {
+    font-family: 'daneehand_demoregular';
+    src: url('police/daneehand_demo-webfont.woff2') format('woff2'),
+    url('police/daneehand_demo-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'gothamextra_light';
+    src: url('police/gotham-extralight_700137626-webfont.woff2') format('woff2'),
+    url('police/gotham-extralight_700137626-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'handwritingmedium';
+    src: url('police/handwriting-webfont.woff2') format('woff2'),
+    url('police/handwriting-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'myriad_proregular';
+    src: url('police/myriadpro-regular_2066245031-webfont.woff2') format('woff2'),
+    url('police/myriadpro-regular_2066245031-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.login {
+    display:flex;
+    justify-content: center;
+    font-family: avenir, sans-serif;
+    white-space: pre-line;
+    flex-direction: column;
 }
 
 
@@ -255,5 +324,347 @@ body{
         margin-top:20%;
         background-color: #324016;
         height:120%}
+
+}
+
+
+/* Faut pas faire de propriété global
+button{
+    background-color: #A68B6A;
+    width: 75%;
+    border-radius: 15%;
+}
+*/
+/* Page pour une carte indivduel*/
+.avenir-text{
+    font-family: 'avenir', serif;
+    letter-spacing: 0.2em;
+}
+
+.myriad-text{
+    font-family: 'myriad_proregular', serif;
+
+}
+
+
+#show-carte{
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    height: 100%;
+    justify-content: space-between;
+    padding: 1rem 1rem 0 1rem;
+
+}
+.handWriting-text{
+    font-family: 'handwritingmedium', serif;
+    font-size: 2rem;
+}
+
+
+#show-carte > #carteInfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2vw;
+
+}
+
+#show-carte > #carteInfo >img{
+    flex-basis: 10% ;
+}
+#show-carte > #carteInfo > aside{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 3;
+    flex-basis: 60% ;
+
+}
+#carte-complmt{
+    display: flex;
+
+}
+
+#show-carte-body{
+    color: white;
+    height: 100%;
+}
+
+#show-carte-footer{
+    width: 100%;
+    height: 5rem;
+    background-color: #314015;
+}
+
+@media screen and (min-width: 1024px) {
+    #show-carte {
+        width: 50%;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+        -webkit-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+        -moz-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+    }
+    #show-carte-body{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #show-carte > #carteInfo >img {
+
+        width: 50%;
+
+    }
+    #show-carte-footer {
+        height: 3rem;
+    }
+    #show-carte{
+        padding: 1rem 0 0 0;
+
+    }
+
+}
+
+#show-vigneron-body{
+    color: white;
+    height: 100%;
+}
+
+#show-vigneron {
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    height: 100%;
+    justify-content: space-between;
+    padding: 1rem 1rem 0 1rem;
+}
+
+#show-vigneron > #vigneronInfos{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2vw;
+}
+
+#show-vigneron > #vigneronInfos > aside{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 3;
+    flex-basis: 60% ;
+
+}
+
+#cruInfos{
+    display: flex;
+}
+
+#show-vigneron > #cruInfos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2vw;
+}
+
+#produitInfos{
+    display: flex;
+}
+
+#show-vigneron > #produitInfos{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2vw;
+}
+
+@media screen and (min-width: 1024px) {
+    #show-vigneron {
+        width: 50%;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+        -webkit-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+        -moz-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+    }
+    #show-vigneron-body{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #show-vigneron > #vigneronInfo {
+        width: 50%;
+    }
+    #show-vigneron-footer {
+        height: 3rem;
+    }
+    #show-vigneron{
+        padding: 1rem 0 0 0;
+
+    }
+}
+
+/* bar de navigation */
+
+.nav-link{
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    list-style-type: none;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    font-family: 'gothamextra_light', sans-serif;
+
+
+}
+.nav-link>div>li>a{
+    text-decoration: none;
+    color: white;
+    transition: color 0.5s;
+}
+
+.nav-link>div>li>a:link{
+    text-decoration: none;
+}
+
+.nav-link>div>li>a:hover{
+    color: #96A621;
+}
+
+.nav-link>div>li>a:visited{
+    text-decoration: none;
+}
+
+
+.dropdown{
+    position: relative;
+    display: flex;
+}
+
+.dropdown-flags{
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding-left: 0.2vw ;
+    padding-right: 0.2vw ;
+
+}
+
+.nav-title{
+    justify-self: flex-start;
+}
+
+.show{display: block}
+
+.btn-flag,.btn-flag-fr,.btn-flag-us,.btn-dropdown {
+    all:unset;
+}
+
+.btn-flag{
+    cursor:pointer ;
+}
+
+.nav-login-lang,.nav-logo-link{
+    display: flex;
+    align-items: center;
+    flex-grow: 2;
+    gap: 1vw;
+    border-bottom: #ffffff;
+    border-bottom-style: solid;
+    height: 10vh;
+}
+.nav-logo-link{
+    justify-content: flex-start;
+
+}
+
+.nav-login-lang{
+    justify-content: flex-end;
+
+}
+
+.btn-inscription{
+    background-color: #A58B6A;
+    border-radius: 30px;
+    padding: 8px 12px;
+}
+
+.no-dropdown{
+    display: block;
+}
+
+.with-dropdown,.btn-dropdown{display: none}
+
+.btn-dropdown{
+    background-color: #dcded5;
+    padding: 3px 3px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.material-symbols-outlined{
+
+    cursor: pointer;
+}
+
+.with-dropdown{
+    display: none;
+    position: absolute;
+    background-color: #dcded5;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 15px;
+    width: 100%;
+    z-index: 2;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+
+}
+
+
+.with-dropdown>div>a{
+    font-size: large;
+    text-decoration: none;
+    color: black;
+    border-bottom-width: unset;
+    border-bottom-style: unset;
+}
+
+.with-dropdown>div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    width: 100%;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    transition: background-color 5ms, color 5ms;
+}
+
+.with-dropdown>div:active{
+    background-color: #96A621;
+
+}
+
+
+
+
+.with-dropdown>.btn-inscription{
+    background-color: unset;
+    padding: unset;
+
+}
+.dropdown-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 30%;
+    z-index: 1;
 
 }

@@ -1,0 +1,10 @@
+<ul>
+    {% for infoVign in vignerons %}
+        <li class="vigneron">
+            <a href={{ path('app_vigneron_show', {id: infoVign.id})}}>
+                <span class="nomVign">{{ infoVign.nom }}</span>
+                <span class="prenomVign">{{ infoVign.prenom }}</span>
+            </a>
+        </li>
+    {% endfor %}
+</ul>

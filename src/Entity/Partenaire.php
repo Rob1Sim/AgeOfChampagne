@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PartenaireRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PartenaireRepository::class)]
@@ -18,6 +20,14 @@ class Partenaire
 
     #[ORM\Column(length: 255)]
     private ?string $prenom = null;
+
+    #[ORM\ManyToMany(targetEntity: Vigneron::class, mappedBy: 'partenaire')]
+    private Collection $vigneronsPart;
+
+    public function __construct()
+    {
+        $this->vigneronsPart = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -44,6 +54,33 @@ class Partenaire
     public function setPrenom(string $prenom): self
     {
         $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Vigneron>
+     */
+    public function getVigneronsPart(): Collection
+    {
+        return $this->vigneronsPart;
+    }
+
+    public function addVigneronsPart(Vigneron $vigneronsPart): self
+    {
+        if (!$this->vigneronsPart->contains($vigneronsPart)) {
+            $this->vigneronsPart->add($vigneronsPart);
+            $vigneronsPart->addPartenaire($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVigneronsPart(Vigneron $vigneronsPart): self
+    {
+        if ($this->vigneronsPart->removeElement($vigneronsPart)) {
+            $vigneronsPart->removePartenaire($this);
+        }
 
         return $this;
     }

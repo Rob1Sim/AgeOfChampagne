@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Édition de {{ compte.getLogin() }} {% endblock %}
+
+{% block body %}
+
+    <h1>Édition de {{ compte.getLogin() }}</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.login, {'label': 'Identifiant : '}) }}
+        {{ form_row(form.email, {'label': 'Mail : '}) }}
+        {{ form_row(form.date_naiss, {'label': 'Date de naissance : '}) }}
+        <button type="submit" class="btn btn-success">Modifier</button>
+    {{ form_end(form) }}
+
+{% endblock %}
