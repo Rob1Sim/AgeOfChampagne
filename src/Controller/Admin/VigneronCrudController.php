@@ -88,7 +88,8 @@ class VigneronCrudController extends AbstractCrudController
             ImageField::new('contenuImage', 'Image du vigneron')
             ->setUploadDir('public/uploads/img/')
                 ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]')
-                ->onlyOnForms(),
+                ->onlyOnForms()
+                ->addHtmlContentsToBody("<script src='js/vigneron.js' ></script>"),
         ];
     }
 
@@ -98,16 +99,16 @@ class VigneronCrudController extends AbstractCrudController
             $entityInstance->setNom($name);
         }
         if ($prenom = $this->getContext()->getRequest()->get('Vigneron')['prenom']) {
-            $entityInstance->setType($prenom);
+            $entityInstance->setPrenom($prenom);
         }
         if ($adresse = $this->getContext()->getRequest()->get('Vigneron')['adresse']) {
-            $entityInstance->setCru($adresse);
+            $entityInstance->setAdresse($adresse);
         }
         if ($codepostal = $this->getContext()->getRequest()->get('Vigneron')['code_postal']) {
-            $entityInstance->setCru($codepostal);
+            $entityInstance->setCodePostal($codepostal);
         }
         if ($ville = $this->getContext()->getRequest()->get('Vigneron')['ville']) {
-            $entityInstance->setCru($ville);
+            $entityInstance->setVille($ville);
         }
     }
 }
