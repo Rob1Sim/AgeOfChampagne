@@ -13,8 +13,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class CarteController extends AbstractController
 {
     #[Route('/carte', name: 'app_carte')]
-    public function index(Request $request, CarteRepository $repository): Response
+    public function index(Request $request, CarteRepository $repository, CarteRepository $repositoryLast): Response
     {
+        $repositoryLast->getLastCardsId();
+        $lastCardList = [];
+
+        foreach ($repositoryLast as $carte) {
+            array_push($lastCardList, $repositoryLast->findOneBy(['id'], $carte));
+        }
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
 
