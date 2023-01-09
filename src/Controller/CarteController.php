@@ -24,9 +24,11 @@ class CarteController extends AbstractController
 
         foreach ($_SESSION['LAST_CARDS'] as $idCarte) {
             $carte = $repositoryLast->findOneBy(['id' => $idCarte]);
+            array_push($lastCardList, $carte);
+            /*
             $repositoryLast->save($carte, true);
-           // dump($carte);
-            dump($repositoryLast);
+            dump($carte);*/
+            //dump($repositoryLast);
         }
 
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
