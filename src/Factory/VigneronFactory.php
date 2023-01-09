@@ -38,6 +38,8 @@ final class VigneronFactory extends ModelFactory
 
     protected function getDefaults(): array
     {
+        $jsonImage = file_get_contents("src/Factory/data/vigneron.json");
+        $tableauImg = json_decode($jsonImage, true);
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
             'nom' => self::faker()->lastName(),
@@ -45,6 +47,7 @@ final class VigneronFactory extends ModelFactory
             'adresse' => self::faker()->address(),
             'code_postal' => self::faker()->numberBetween(10000, 99999),
             'ville' => self::faker()->city(),
+            'contenuImage' => $tableauImg[array_rand($tableauImg)],
         ];
     }
 
