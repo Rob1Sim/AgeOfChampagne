@@ -89,15 +89,15 @@ class CarteRepository extends ServiceEntityRepository
             } else {
                 if (10 == count($_SESSION['LAST_CARDS'])) {
                     array_pop($_SESSION['LAST_CARDS']);
-                    array_unshift($_SESSION['LAST_CARDS'], $carteId);
-                } else {
-                    array_unshift($_SESSION['LAST_CARDS'], $carteId);
                 }
+                array_unshift($_SESSION['LAST_CARDS'], $carteId);
             }
+        } else {
+            array_unshift($_SESSION['LAST_CARDS'], $carteId);
         }
     }
 
-    public function replaceExistingCard(int $carteId): void
+    private function replaceExistingCard(int $carteId)
     {
         if (!isset($_SESSION['LAST_CARDS'])) {
             $_SESSION['LAST_CARDS'] = [];
