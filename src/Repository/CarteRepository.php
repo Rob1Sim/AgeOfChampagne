@@ -70,11 +70,14 @@ class CarteRepository extends ServiceEntityRepository
      */
     public function getLastCardsId(): array
     {
-        if (session_status() != 'PHP_SESSION_ACTIVE') {
+        if (session_status() == 'PHP_SESSION_ACTIVE') {
             session_start();
         }
 
-        return $_SESSION['LAST_CARDS'];
+        if (isset($_SESSION['LAST_CARDS'])) {
+            return $_SESSION['LAST_CARDS'];
+        }
+        return [];
     }
 
     public function addToCardList(int $carteId): void
