@@ -4,13 +4,13 @@
 
 {% block body %}
 
-    <h1>{{ compte.getLogin() }}</h1>
+    <div class="profilInfo"><h1>{{ compte.getLogin() }}</h1></div>
 
-    <dl>
+        <div class="profil"><dl>
         <dt>Login : {{ compte.getLogin() }}</dt>
         <dt>Email : {{ compte.getEmail() }}</dt>
         <dt>Date de naissance : {{ compte.getDateNaiss().format('d-m-y') }}</dt>
-    </dl>
+    </dl></div>
 
 
 {% endblock %}

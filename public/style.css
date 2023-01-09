@@ -54,7 +54,7 @@ body {
     margin: 0;
     padding:0;
     background-image: url("image/ardoise.png");
-    height: 100%;
+    background-size: 100%;
 }
 
 /* Police personalise*/
@@ -231,14 +231,23 @@ body{
         display:flex;
         align-content: flex-start;
         width: 100%;
-        height: 100000%;
+        height: 100%;
         left: 0;
-        top:-30%;
-        background: #F1DFDC ;
+        color: #F1DFDC;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     }
-    .BackCarte{
-        background: #F1DFDC ;
+    .profil{
+        display:flex;
+        color: white;
+        font-family: gotham;
+        margin-left: 5%;
+        font-size: 150%;
+    }
+    .profilInfo{
+        color: white;
+        font-family: myriad_proregular;
+        margin-left: 5%;
+        font-size: 150%;
     }
     .ecriture_carte{
         display:flex;
@@ -246,6 +255,7 @@ body{
         align-self: self-start;
         font-family: 'daneehand', serif;
         width:50%;
+        color: #F1DFDC;
         font-size: 200%;
     }
     .droiteInfoCarte{
