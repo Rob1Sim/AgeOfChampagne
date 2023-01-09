@@ -3,9 +3,11 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Vigneron;
+use Doctrine\ORM\EntityRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class VigneronCrudController extends AbstractCrudController
@@ -54,6 +56,10 @@ class VigneronCrudController extends AbstractCrudController
                         return "Pas d'animations";
                     }
                 }),
+            ImageField::new('contenuImage', 'Image du vigneron')
+            ->setUploadDir('public/uploads/img/')
+                ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]')
+                ->onlyOnForms(),
         ];
     }
 }
