@@ -20,16 +20,12 @@ class EmailVerifier
     ) {
     }
 
-    public function sendEmailConfirmation(string $email, string $login): void
+    public function sendEmailConfirmation(string $email): void
     {
         $email = (new Email())
             ->from('contact@oldhengames.com')
             ->to($email)
             ->subject('Email de vérification')
-            ->context([
-                'expiration_date' => new \DateTime('+7 days'),
-                'username' => $login,
-            ])
             ->text('Vérifie ton email stp');
         $this->mailer->send($email);
     }
