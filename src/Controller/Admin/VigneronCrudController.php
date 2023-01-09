@@ -91,4 +91,23 @@ class VigneronCrudController extends AbstractCrudController
                 ->onlyOnForms(),
         ];
     }
+
+    public function saveDatas($entityInstance): void
+    {
+        if ($name = $this->getContext()->getRequest()->get('Vigneron')['nom']) {
+            $entityInstance->setNom($name);
+        }
+        if ($prenom = $this->getContext()->getRequest()->get('Vigneron')['prenom']) {
+            $entityInstance->setType($prenom);
+        }
+        if ($adresse = $this->getContext()->getRequest()->get('Vigneron')['adresse']) {
+            $entityInstance->setCru($adresse);
+        }
+        if ($codepostal = $this->getContext()->getRequest()->get('Vigneron')['code_postal']) {
+            $entityInstance->setCru($codepostal);
+        }
+        if ($ville = $this->getContext()->getRequest()->get('Vigneron')['ville']) {
+            $entityInstance->setCru($ville);
+        }
+    }
 }
