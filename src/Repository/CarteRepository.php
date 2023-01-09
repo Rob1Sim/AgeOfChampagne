@@ -80,17 +80,16 @@ class CarteRepository extends ServiceEntityRepository
         if ('PHP_SESSION_ACTIVE' == session_status()) {
             session_start();
         }
+        if (!isset($_SESSION['LAST_CARDS'])) {
+            $_SESSION['LAST_CARDS'] = [];
+        }
         if ('' != $_SESSION['LAST_CARDS']) {
             if (in_array($carteId, $_SESSION['LAST_CARDS'])) {
                 $this->replaceExistingCard($carteId);
             } else {
-                if (10 == $this->count($_SESSION['LAST_CARDS'])) {
-                    if (in_array($carteId, $_SESSION['LAST_CARDS'])) {
-                        $this->replaceExistingCard($carteId);
-                    } else {
-                        array_pop($_SESSION['LAST_CARDS']);
-                        array_unshift($_SESSION['LAST_CARDS'], $carteId);
-                    }
+                if (10 == count($_SESSION['LAST_CARDS'])) {
+                    array_pop($_SESSION['LAST_CARDS']);
+                    array_unshift($_SESSION['LAST_CARDS'], $carteId);
                 } else {
                     array_unshift($_SESSION['LAST_CARDS'], $carteId);
                 }
@@ -100,9 +99,15 @@ class CarteRepository extends ServiceEntityRepository
 
     public function replaceExistingCard(int $carteId): void
     {
-        for ($i = 0; $i < $this->count($_SESSION['LAST_CARDS']); ++$i) {
+        if (!isset($_SESSION['LAST_CARDS'])) {
+            $_SESSION['LAST_CARDS'] = [];
+        }
+        for ($i = 0; $i < count($_SESSION['LAST_CARDS']); ++$i) {
             if ($_SESSION['LAST_CARDS'][$i] == $carteId) {
                 unset($_SESSION['LAST_CARDS']);
+                if (!isset($_SESSION['LAST_CARDS'])) {
+                    $_SESSION['LAST_CARDS'] = [];
+                }
                 $_SESSION['LAST_CARDS'] = array_values($_SESSION['LAST_CARDS']);
             }
         }
