@@ -80,13 +80,17 @@ class CarteRepository extends ServiceEntityRepository
         session_start();
         if ('' != $_SESSION['LAST_CARDS']) {
             if (in_array($carteId, $_SESSION['LAST_CARDS'])) {
-                $this->extracted($carteId);
+                $this->replaceExistingCard($carteId);
             } else {
-                if ($this->count($_SESSION['LAST_CARDS']) == 10) {
+                if (10 == $this->count($_SESSION['LAST_CARDS'])) {
                     if (in_array($carteId, $_SESSION['LAST_CARDS'])) {
-                        $this->extracted($carteId);
+                        $this->replaceExistingCard($carteId);
                     } else {
+                        array_pop($_SESSION['LAST_CARDS']);
+                        array_unshift($_SESSION['LAST_CARDS'], $carteId);
                     }
+                } else {
+                    array_unshift($_SESSION['LAST_CARDS'], $carteId);
                 }
             }
         }
@@ -128,4 +132,3 @@ class CarteRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }/**
-
