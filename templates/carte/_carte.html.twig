@@ -1,16 +1,22 @@
-<ul>
+<div class="all-cartes-list">
     {% if lastCard is not empty %}
-        Cartes récemment visitées :
-        {% for card in lastCard %}
+    <h3>Cartes récemment visitées :</h3>
+    {% endif %}
+    <ul>
+        {% if lastCard is not empty %}
+            {% for card in lastCard %}
+                <li class="carte">
+                    <a href=" {{ path('app_carte_show', {'id': card.id}) }}"><img  src="/uploads/img/{{card.contenuImage}}" alt="{{ card.nom }}"></a>
+                </li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+    <h3>Votre collection de cartes :</h3>
+    <ul>
+        {% for carte in liste %}
             <li class="carte">
-                <a href=" {{ path('app_carte_show', {'id': card.id}) }}"><img src="/uploads/img/{{card.contenuImage}}" alt="{{ card.nom }}"></a>
+                <a href=" {{ path('app_carte_show', {'id': carte.id}) }}"><img  src="/uploads/img/{{carte.contenuImage}}" alt="{{ carte.nom }}"></a>
             </li>
         {% endfor %}
-    {% endif %}
-    Votre collection de cartes :
-    {% for carte in liste %}
-        <li class="carte">
-            <a href=" {{ path('app_carte_show', {'id': carte.id}) }}"><img src="/uploads/img/{{carte.contenuImage}}" alt="{{ carte.nom }}"></a>
-        </li>
-    {% endfor %}
-</ul>
+    </ul>
+</div>
