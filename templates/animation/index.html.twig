@@ -4,13 +4,5 @@
 
 {% block body %}
     <h1>Liste des Animations</h1>
-    <ul>
-        {% for infoAnim in animations %}
-            <li class="animation">
-                <a href={{ path('app_animation_show', {id: infoAnim.id})}}>
-                    <span class="nomAnim">{{ infoAnim.nom }}</span>
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
+    {{ include('animation/_animation.html.twig') }}
 {% endblock %}
