@@ -657,7 +657,6 @@ button{
 .list-form{
     display: flex;
     flex-direction: row;
-    justify-content: center;
     gap: 2%;
 }
 
@@ -689,4 +688,8 @@ button{
     display: flex;
     list-style: none;
     flex-wrap: wrap;
+}
+
+.all-cartes-list>h3 {
+    font-family: "gotham", sans-serif;
 }

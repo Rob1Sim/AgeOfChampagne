@@ -4,7 +4,6 @@
     {% endif %}
     <ul>
         {% if lastCard is not empty %}
-            Cartes récemment visitées :
             {% for card in lastCard %}
                 <li class="carte">
                     <a href=" {{ path('app_carte_show', {'id': card.id}) }}"><img src="/uploads/img/{{card.contenuImage}}" alt="{{ card.nom }}"></a>
