@@ -37,11 +37,12 @@ class CarteController extends AbstractController
 
     #[Route('carte/{id}', name: 'app_carte_show', requirements: ['id' => '\d+'])]
     #[Entity('carte', expr: 'repository.find(id)')]
-    public function show(Carte $carte): Response
+    public function show(Carte $carte, CarteRepository $repository): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
 
+        $repository->addToCardList(1);
         return $this->render('carte/show.html.twig', ['carte' => $carte]);
     }
 }
