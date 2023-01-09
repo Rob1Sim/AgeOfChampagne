@@ -6,7 +6,7 @@
         {% if lastCard is not empty %}
             {% for card in lastCard %}
                 <li class="carte">
-                    <a href=" {{ path('app_carte_show', {'id': card.id}) }}"><img src="/uploads/img/{{card.contenuImage}}" alt="{{ card.nom }}"></a>
+                    <a href=" {{ path('app_carte_show', {'id': card.id}) }}"><img  src="/uploads/img/{{card.contenuImage}}" alt="{{ card.nom }}"></a>
                 </li>
             {% endfor %}
         {% endif %}
@@ -15,7 +15,7 @@
     <ul>
         {% for carte in liste %}
             <li class="carte">
-                <a href=" {{ path('app_carte_show', {'id': carte.id}) }}"><img src="/uploads/img/{{carte.contenuImage}}" alt="{{ carte.nom }}"></a>
+                <a href=" {{ path('app_carte_show', {'id': carte.id}) }}"><img  src="/uploads/img/{{carte.contenuImage}}" alt="{{ carte.nom }}"></a>
             </li>
         {% endfor %}
     </ul>

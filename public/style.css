@@ -693,3 +693,14 @@ button{
 .all-cartes-list>h3 {
     font-family: "gotham", sans-serif;
 }
+
+.carte{
+    transition: background-color 0.3s;
+    padding: 5px 5px 3px 5px;
+    border-radius: 30px;
+}
+
+.carte:hover{
+    background-color: #314015;
+}
+
