@@ -32,6 +32,7 @@ class CarteController extends AbstractController
             $carteList = $repository->byCategory($category);
         }
 
+        dump($lastCardList);
         return $this->render('carte/index.html.twig', ['liste' => $carteList, 'lastCard' => $lastCardList]);
     }
 
@@ -42,7 +43,7 @@ class CarteController extends AbstractController
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
 
-        $repository->addToCardList(1);
+        $repository->addToCardList(10);
         return $this->render('carte/show.html.twig', ['carte' => $carte]);
     }
 }
