@@ -65,6 +65,23 @@ class CarteRepository extends ServiceEntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    /**
+     * @return Carte[]
+     */
+    public function getLastCards(): array
+    {
+        $liste = [];
+        session_start();
+        if ('' == $_SESSION['LAST_CARDS']) {
+            return $liste;
+        } else {
+            foreach ($_SESSION['LAST_CARDS'] as $carte) {
+                $liste.array_push(Carte::class->findOneBy('id', $carte));
+            }
+        }
+        return $liste;
+    }
+
 //    /**
 //     * @return Carte[] Returns an array of Carte objects
 //     */
