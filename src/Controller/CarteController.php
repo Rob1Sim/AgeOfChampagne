@@ -15,12 +15,20 @@ class CarteController extends AbstractController
     #[Route('/carte', name: 'app_carte')]
     public function index(Request $request, CarteRepository $repository, CarteRepository $repositoryLast): Response
     {
+        if (session_status() == 'PHP_SESSION_ACTIVE') {
+            session_start();
+        }
+
         $repositoryLast->getLastCardsId();
         $lastCardList = [];
 
-        foreach ($repositoryLast as $carte) {
-            array_push($lastCardList, $repositoryLast->findOneBy(['id'], $carte));
+        foreach ($_SESSION['LAST_CARDS'] as $idCarte) {
+            $carte = $repositoryLast->findOneBy(['id' => $idCarte]);
+            $repositoryLast->save($carte, true);
+           // dump($carte);
+            dump($repositoryLast);
         }
+
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
 
@@ -32,7 +40,7 @@ class CarteController extends AbstractController
             $carteList = $repository->byCategory($category);
         }
 
-        dump($lastCardList);
+        //dump($_SESSION['LAST_CARDS']);
         return $this->render('carte/index.html.twig', ['liste' => $carteList, 'lastCard' => $lastCardList]);
     }
 
@@ -44,6 +52,7 @@ class CarteController extends AbstractController
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
 
         $repository->addToCardList(10);
+        dump($_SESSION['LAST_CARDS']);
         return $this->render('carte/show.html.twig', ['carte' => $carte]);
     }
 }
