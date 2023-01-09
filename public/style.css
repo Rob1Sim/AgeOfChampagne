@@ -649,10 +649,12 @@ button{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    width: 50%;
+    align-self: center;
 }
 
 .list-form{
-    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -672,4 +674,19 @@ button{
 .searchbar{
     border: #B5BE6B 1px solid;
 
+}
+
+.list-cartes > h1{
+    font-family: 'handwritingmedium', sans-serif;
+}
+
+.all-cartes-list{
+    display: flex;
+    flex-direction: column;
+}
+
+.all-cartes-list>ul{
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
 }
