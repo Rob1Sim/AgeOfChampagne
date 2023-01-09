@@ -45,6 +45,9 @@ class Vigneron
     #[ORM\ManyToMany(targetEntity: Animation::class, inversedBy: 'vigneronsAnim')]
     private Collection $animation;
 
+    #[ORM\Column(length: 255)]
+    private ?string $contenuImage = null;
+
     public function __construct()
     {
         $this->cartes = new ArrayCollection();
@@ -117,8 +120,9 @@ class Vigneron
         return $this;
     }
 
-    public function getNomPrenom(): ?string{
-        return $this->nom." ".$this->prenom;
+    public function getNomPrenom(): ?string
+    {
+        return $this->nom.' '.$this->prenom;
     }
 
     /**
@@ -219,6 +223,18 @@ class Vigneron
     public function removeAnimation(Animation $animation): self
     {
         $this->animation->removeElement($animation);
+
+        return $this;
+    }
+
+    public function getContenuImage(): ?string
+    {
+        return $this->contenuImage;
+    }
+
+    public function setContenuImage(string $contenuImage): self
+    {
+        $this->contenuImage = $contenuImage;
 
         return $this;
     }
