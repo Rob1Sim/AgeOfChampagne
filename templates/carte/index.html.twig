@@ -5,20 +5,25 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Liste des cartes</h1>
-    <form class="carte-searchbar" role="search" action="{{ path('app_carte') }}">
-        <input class="form-control me-2" name="search" value="{{ search|default('') }}" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-    <form class="carte-category" action="{{ path('app_carte') }}">
-        <select name="category" id="carte-category">
-            <option value="" selected>Toutes catégories</option>
-            <option value="2">Chardonnay</option>
-            <option value="3">Meuniers</option>
-            <option value="1">Pinots noirs</option>
-        </select>
-        <button class="btn btn-outline-success" type="submit">Rechercher</button>
-    </form>
-    {{ include ('carte/_carte.html.twig', {show_category: false} )  }}
+    <div class="list-cartes">
+        <h1>Liste des cartes</h1>
+        <div class="list-form">
+            <form class="carte-searchbar" role="search" action="{{ path('app_carte') }}">
+                <input class="searchbar" name="search" value="{{ search|default('') }}" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit" hidden="hidden">Search</button>
+            </form>
+            <form class="carte-category" action="{{ path('app_carte') }}">
+                <select class="dropdown-category" name="category" id="carte-category">
+                    <option value="" selected>Toutes catégories</option>
+                    <option value="2">Chardonnay</option>
+                    <option value="3">Meuniers</option>
+                    <option value="1">Pinots noirs</option>
+                </select>
+                <button class="btn-category" type="submit" hidden="hidden">Rechercher</button>
+            </form>
+        </div>
+        {{ include ('carte/_carte.html.twig', {show_category: false} )  }}
+    </div>
+
 {% endblock %}
 
