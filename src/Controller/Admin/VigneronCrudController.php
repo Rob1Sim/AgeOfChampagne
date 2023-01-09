@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Vigneron;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -15,6 +16,34 @@ class VigneronCrudController extends AbstractCrudController
     public static function getEntityFqcn(): string
     {
         return Vigneron::class;
+    }
+
+    public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        $this->saveDatas($entityInstance);
+        if ($contenuImage = $this->getContext()->getRequest()) {
+            if (!('image/jpeg' == $contenuImage->files->get('Vigneron')['contenuImage']['file']->getClientMimeType()
+                || 'image/png' == $contenuImage->files->get('Vigneron')['contenuImage']['file']->getClientMimeType())) {
+                return;
+            }
+        }
+
+        parent::updateEntity($entityManager, $entityInstance);
+    }
+
+    public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        // N'est appelé que lorsque on ajoute une donnée et donc non pendant la modification
+
+        $this->saveDatas($entityInstance);
+        if ($contenuImage = $this->getContext()->getRequest()) {
+            if (!('image/jpeg' == $contenuImage->files->get('Vigneron')['contenuImage']['file']->getClientMimeType()
+                || 'image/png' == $contenuImage->files->get('Vigneron')['contenuImage']['file']->getClientMimeType())) {
+                return;
+            }
+        }
+
+        parent::persistEntity($entityManager, $entityInstance);
     }
 
     public function configureFields(string $pageName): iterable
