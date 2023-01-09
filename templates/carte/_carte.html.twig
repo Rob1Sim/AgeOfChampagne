@@ -1,4 +1,12 @@
 <ul>
+    {% for card in lastCard %}
+        <li class="carte">
+            <a href=" {{ path('app_carte_show', {'id': card.id}) }}"><img src="/uploads/img/{{card.contenuImage}}" alt="{{ card.nom }}"></a>
+            <p class="carte-name">{{ card.nom }}</p>
+            <p class="carte-type">{{ card.type }}</p>
+            <p class="carte-cru">{{ card.cru }}</p>
+        </li>
+    {% endfor %}
     {% for carte in liste %}
         <li class="carte">
             <a href=" {{ path('app_carte_show', {'id': carte.id}) }}"><img src="/uploads/img/{{carte.contenuImage}}" alt="{{ carte.nom }}"></a>
