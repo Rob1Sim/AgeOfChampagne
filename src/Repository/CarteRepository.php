@@ -66,13 +66,43 @@ class CarteRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return Carte[]
+     * @return int[]
      */
     public function getLastCardsId(): array
     {
         session_start();
+
         return $_SESSION['LAST_CARDS'];
     }
+
+    public function addToCardList(int $carteId): void
+    {
+        session_start();
+        if ('' != $_SESSION['LAST_CARDS']) {
+            if (in_array($carteId, $_SESSION['LAST_CARDS'])) {
+                $this->extracted($carteId);
+            } else {
+                if ($this->count($_SESSION['LAST_CARDS']) == 10) {
+                    if (in_array($carteId, $_SESSION['LAST_CARDS'])) {
+                        $this->extracted($carteId);
+                    } else {
+                    }
+                }
+            }
+        }
+    }
+
+    public function replaceExistingCard(int $carteId): void
+    {
+        for ($i = 0; $i < $this->count($_SESSION['LAST_CARDS']); ++$i) {
+            if ($_SESSION['LAST_CARDS'][$i] == $carteId) {
+                unset($_SESSION['LAST_CARDS']);
+                $_SESSION['LAST_CARDS'] = array_values($_SESSION['LAST_CARDS']);
+            }
+        }
+        array_unshift($_SESSION['LAST_CARDS'], $carteId);
+    }
+}
 
 //    /**
 //     * @return Carte[] Returns an array of Carte objects
@@ -97,5 +127,5 @@ class CarteRepository extends ServiceEntityRepository
 //            ->getQuery()
 //            ->getOneOrNullResult()
 //        ;
-//    }
-}
+//    }/**
+
