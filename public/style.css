@@ -704,3 +704,9 @@ button{
     background-color: #314015;
 }
 
+@media screen and (min-width: 768px)and (max-width: 1023px) {
+    .list-cartes {
+        width: 80%;
+
+    }
+}
