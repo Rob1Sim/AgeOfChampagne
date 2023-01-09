@@ -15,6 +15,9 @@ class CarteController extends AbstractController
     #[Route('/carte', name: 'app_carte')]
     public function index(Request $request, CarteRepository $repository, CarteRepository $repositoryLast): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
+
         if (session_status() == 'PHP_SESSION_ACTIVE') {
             session_start();
         }
@@ -22,17 +25,12 @@ class CarteController extends AbstractController
         $repositoryLast->getLastCardsId();
         $lastCardList = [];
 
-        foreach ($_SESSION['LAST_CARDS'] as $idCarte) {
-            $carte = $repositoryLast->findOneBy(['id' => $idCarte]);
-            array_push($lastCardList, $carte);
-            /*
-            $repositoryLast->save($carte, true);
-            dump($carte);*/
-            //dump($repositoryLast);
+        if (isset($_SESSION['LAST_CARDS'])) {
+            foreach ($_SESSION['LAST_CARDS'] as $idCarte) {
+                $carte = $repositoryLast->findOneBy(['id' => $idCarte]);
+                array_push($lastCardList, $carte);
+            }
         }
-
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
 
         if ('' == $request->query->get('category')) {
             $carte = $request->query->get('search', '');
@@ -42,7 +40,6 @@ class CarteController extends AbstractController
             $carteList = $repository->byCategory($category);
         }
 
-        //dump($_SESSION['LAST_CARDS']);
         return $this->render('carte/index.html.twig', ['liste' => $carteList, 'lastCard' => $lastCardList]);
     }
 
@@ -53,7 +50,7 @@ class CarteController extends AbstractController
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
 
-        $repository->addToCardList(10);
+        $repository->addToCardList($carte->getId());
         dump($_SESSION['LAST_CARDS']);
         return $this->render('carte/show.html.twig', ['carte' => $carte]);
     }
