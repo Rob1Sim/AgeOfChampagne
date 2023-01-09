@@ -5,7 +5,8 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Liste des cartes</h1>
+    <div class="BackCarte">
+    <h1 class="ecriture_carte">Liste des cartes</h1>
     <form class="carte-searchbar" role="search" action="{{ path('app_carte') }}">
         <input class="form-control me-2" name="search" value="{{ search|default('') }}" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
@@ -19,6 +20,6 @@
         </select>
         <button class="btn btn-outline-success" type="submit">Rechercher</button>
     </form>
-    {{ include ('carte/_carte.html.twig', {show_category: false} )  }}
+    {{ include ('carte/_carte.html.twig', {show_category: false} )  }}</div>
 {% endblock %}
 

@@ -227,6 +227,33 @@ body{
         background: #FFFFFF;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     }
+    .gaucheCarte{
+        display:flex;
+        align-content: flex-start;
+        width: 100%;
+        height: 100000%;
+        left: 0;
+        top:-30%;
+        background: #F1DFDC ;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+    .BackCarte{
+        background: #F1DFDC ;
+    }
+    .ecriture_carte{
+        display:flex;
+        margin-left: 3%;
+        align-self: self-start;
+        font-family: 'daneehand', serif;
+        width:50%;
+        font-size: 200%;
+    }
+    .droiteInfoCarte{
+        display:flex;
+        flex-direction: column;
+
+        right:-45%;
+    }
 
     .droite {
         background: url("/image/ardoise.png") no-repeat;
