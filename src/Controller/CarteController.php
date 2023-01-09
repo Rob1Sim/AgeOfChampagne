@@ -32,7 +32,7 @@ class CarteController extends AbstractController
             $carteList = $repository->byCategory($category);
         }
 
-        return $this->render('carte/index.html.twig', ['liste' => $carteList]);
+        return $this->render('carte/index.html.twig', ['liste' => $carteList, 'lastCard' => $lastCardList]);
     }
 
     #[Route('carte/{id}', name: 'app_carte_show', requirements: ['id' => '\d+'])]
