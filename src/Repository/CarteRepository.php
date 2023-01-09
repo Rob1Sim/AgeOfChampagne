@@ -77,7 +77,9 @@ class CarteRepository extends ServiceEntityRepository
 
     public function addToCardList(int $carteId): void
     {
-        session_start();
+        if ('PHP_SESSION_ACTIVE' == session_status()) {
+            session_start();
+        }
         if ('' != $_SESSION['LAST_CARDS']) {
             if (in_array($carteId, $_SESSION['LAST_CARDS'])) {
                 $this->replaceExistingCard($carteId);
