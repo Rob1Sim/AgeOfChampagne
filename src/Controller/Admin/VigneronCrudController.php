@@ -86,7 +86,7 @@ class VigneronCrudController extends AbstractCrudController
                     }
                 }),
             ImageField::new('contenuImage', 'Image du vigneron')
-            ->setUploadDir('public/uploads/img/')
+            ->setUploadDir('public/uploads/img/vigneron/')
                 ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]')
                 ->onlyOnForms()
                 ->addHtmlContentsToBody("<script src='js/vigneron.js' ></script>"),

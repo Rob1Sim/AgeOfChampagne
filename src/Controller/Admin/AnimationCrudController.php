@@ -10,6 +10,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
@@ -18,6 +19,34 @@ class AnimationCrudController extends AbstractCrudController
     public static function getEntityFqcn(): string
     {
         return Animation::class;
+    }
+
+    public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        $this->saveDatas($entityInstance);
+        if ($contenuImage = $this->getContext()->getRequest()) {
+            if (!('image/jpeg' == $contenuImage->files->get('Animation')['contenuImage']['file']->getClientMimeType()
+                || 'image/png' == $contenuImage->files->get('Animation')['contenuImage']['file']->getClientMimeType())) {
+                return;
+            }
+        }
+
+        parent::updateEntity($entityManager, $entityInstance);
+    }
+
+    public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        // N'est appelé que lorsque on ajoute une donnée et donc non pendant la modification
+
+        $this->saveDatas($entityInstance);
+        if ($contenuImage = $this->getContext()->getRequest()) {
+            if (!('image/jpeg' == $contenuImage->files->get('Animation')['contenuImage']['file']->getClientMimeType()
+                || 'image/png' == $contenuImage->files->get('Animation')['contenuImage']['file']->getClientMimeType())) {
+                return;
+            }
+        }
+
+        parent::persistEntity($entityManager, $entityInstance);
     }
 
 
@@ -50,7 +79,30 @@ class AnimationCrudController extends AbstractCrudController
 
                     return 'Pas de vignerons';
                 }),
+            ImageField::new('contenuImage', "Image de l'animation")
+                ->setUploadDir('public/uploads/img/animation/')
+                ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]')
+                ->onlyOnForms()
+                ->addHtmlContentsToBody("<script src='js/animation.js' ></script>"),
         ];
     }
 
+    public function saveDatas($entityInstance): void
+    {
+        if ($name = $this->getContext()->getRequest()->get('Animation')['nom']) {
+            $entityInstance->setNom($name);
+        }
+        if ($type = $this->getContext()->getRequest()->get('Animation')['type']) {
+            $entityInstance->setType($type);
+        }
+        /*if ($hdeb = $this->getContext()->getRequest()->get('Animation')['horaireDeb']) {
+            $entityInstance->setHoraireDeb($hdeb);
+        }
+        if ($hfin = $this->getContext()->getRequest()->get('Animation')['horaireFin']) {
+            $entityInstance->setHoraireFin($hfin);
+        }*/
+        if ($prix = $this->getContext()->getRequest()->get('Animation')['prix']) {
+            $entityInstance->setPrix($prix);
+        }
+    }
 }
