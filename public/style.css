@@ -139,7 +139,7 @@ body{
     head{
         background: url("../public/image/OHG.png");
     }
-    .btn_btn-lg_btn-primary{
+    .btn_btn-lg_btn-primary,.btn_btn-lg_btn-primaryRegister{
         background-color: #a68b6a;
         font-size: 150%;
         color:white;
@@ -271,7 +271,7 @@ body{
     head{
         background: url("../public/image/OHG.png") no-repeat;
     }
-    .btn_btn-lg_btn-primary{
+    .btn_btn-lg_btn-primary,.btn_btn-lg_btn-primaryRegister{
         background-color: #a68b6a;
         font-size: 150%;
         color:white;
@@ -944,3 +944,24 @@ button{
      height: 9%;
  }
 
+.register-d{
+    display: flex;
+    flex-direction: column;
+    gap:3vh;
+}
+
+.register-txt>div{
+    display: flex;
+    flex-direction: column;
+}
+
+.register-txt>div>input{
+    all: unset;
+    border-bottom: #D9D9D9 1px solid;
+}
+
+#inputEmail,#inputPassword{
+    border: unset;
+    border-bottom: #D9D9D9 1px solid;
+
+}
