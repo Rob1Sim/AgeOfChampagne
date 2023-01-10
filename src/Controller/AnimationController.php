@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Animation;
 use App\Repository\AnimationRepository;
-use App\Repository\VigneronRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

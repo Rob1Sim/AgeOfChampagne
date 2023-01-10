@@ -75,10 +75,6 @@ class CarteCrudController extends AbstractCrudController
         ];
     }
 
-    /**
-     * @param $entityInstance
-     * @return void
-     */
     public function saveDatas($entityInstance): void
     {
         if ($name = $this->getContext()->getRequest()->get('Carte')['nom']) {

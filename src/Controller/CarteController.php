@@ -18,7 +18,7 @@ class CarteController extends AbstractController
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
 
-        if (session_status() == 'PHP_SESSION_ACTIVE') {
+        if ('PHP_SESSION_ACTIVE' == session_status()) {
             session_start();
         }
 
@@ -52,6 +52,7 @@ class CarteController extends AbstractController
 
         $repository->addToCardList($carte->getId());
         dump($_SESSION['LAST_CARDS']);
+
         return $this->render('carte/show.html.twig', ['carte' => $carte]);
     }
 }

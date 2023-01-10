@@ -38,8 +38,9 @@ final class AnimationFactory extends ModelFactory
 
     protected function getDefaults(): array
     {
-        $jsonImage = file_get_contents("src/Factory/data/animation.json");
+        $jsonImage = file_get_contents('src/Factory/data/animation.json');
         $tableauImg = json_decode($jsonImage, true);
+
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
             'type' => self::faker()->name(),

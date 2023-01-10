@@ -37,6 +37,7 @@ class ProduitCrudController extends AbstractCrudController
                         if (count($entity->getVigneronsProd()) > 1) {
                             return $entity->getVigneronsProd()[0]->getNom().' '.$entity->getVigneronsProd()[0]->getPrenom().'...';
                         }
+
                         return $entity->getVigneronsProd()[0]->getNom().' '.$entity->getVigneronsProd()[0]->getPrenom();
                     }
 

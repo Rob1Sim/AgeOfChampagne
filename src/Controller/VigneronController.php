@@ -25,6 +25,7 @@ class VigneronController extends AbstractController
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
+
         return $this->render('vigneron/show.html.twig', ['vigneron' => $vigneron]);
     }
 }
