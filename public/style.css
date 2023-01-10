@@ -980,3 +980,21 @@ button{
 .btn_update{
     width: 100%;
 }
+
+.f-base{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #314015;
+}
+
+.f-ul{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.f-li{
+    list-style: none;
+}
