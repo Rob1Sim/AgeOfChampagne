@@ -999,10 +999,14 @@ button{
 .f-li{
     color: white;
     list-style: none;
+}
+.f-li>a{
+    color: white;
     transition: color 0.5s;
+
 }
 
-.f-li:hover{
+.f-li>a:hover{
     color:#96A621 ;
 }
 
