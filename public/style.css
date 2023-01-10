@@ -1006,7 +1006,7 @@ button{
 
 }
 
-.f-li>a:hover{
+.f-li>a:hover,.cru-l:hover{
     color:#96A621 ;
 }
 
@@ -1016,4 +1016,10 @@ button{
 }
 .profil-d,.vigneron-d,.animation-d{
     height: 100%;
+}
+
+.cru-l{
+    color: black;
+    transition: color 0.5s;
+    text-decoration: none;
 }
