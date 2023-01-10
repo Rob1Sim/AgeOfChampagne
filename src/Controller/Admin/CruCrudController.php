@@ -7,7 +7,6 @@ use Doctrine\ORM\EntityRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class CruCrudController extends AbstractCrudController
@@ -38,12 +37,12 @@ class CruCrudController extends AbstractCrudController
                         if (count($entity->getVigneronsCru()) > 1) {
                             return $entity->getVigneronsCru()[0]->getNom().' '.$entity->getVigneronsCru()[0]->getPrenom().'...';
                         }
+
                         return $entity->getVigneronsCru()[0]->getNom().' '.$entity->getVigneronsCru()[0]->getPrenom();
                     }
 
                     return 'Pas de vignerons';
                 }),
-
         ];
     }
 }

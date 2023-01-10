@@ -9,7 +9,6 @@ class loginCest
 {
     public function _before(ControllerTester $I)
     {
-
     }
 
     // tests

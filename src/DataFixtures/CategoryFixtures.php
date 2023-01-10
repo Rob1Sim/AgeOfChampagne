@@ -14,6 +14,5 @@ class CategoryFixtures extends Fixture
         foreach ($Categories as $category) {
             CategoryFactory::createOne(['name' => $category['name']]);
         }
-
     }
 }

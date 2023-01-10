@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Compte;
 use App\Form\CompteType;
-use App\Form\RegistrationFormType;
 use App\Repository\CompteRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

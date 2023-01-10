@@ -3,7 +3,6 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Animation;
-use App\Entity\Vigneron;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -48,7 +47,6 @@ class AnimationCrudController extends AbstractCrudController
 
         parent::persistEntity($entityManager, $entityInstance);
     }
-
 
     public function configureFields(string $pageName): iterable
     {

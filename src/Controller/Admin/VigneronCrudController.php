@@ -4,7 +4,6 @@ namespace App\Controller\Admin;
 
 use App\Entity\Vigneron;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\EntityRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -54,7 +53,7 @@ class VigneronCrudController extends AbstractCrudController
             TextField::new('prenom', 'Prénom'),
             TextField::new('adresse', 'Adresse'),
             TextField::new('code_postal', 'Code postal')->setMaxLength(5)
-            ->setFormTypeOption('attr',['maxlength' => 5]),
+            ->setFormTypeOption('attr', ['maxlength' => 5]),
             TextField::new('ville', 'Ville'),
             AssociationField::new('partenaire', 'Partenaires')
                 ->setFormTypeOption('choice_label', function ($partenaire) {
