@@ -445,7 +445,6 @@ button{
 
 #show-vigneron-body{
     color: black;
-    height: 100%;
 }
 
 #show-vigneron {
@@ -644,7 +643,7 @@ button{
 
     .imgAnim{
         width: 40%;
-        height: 60%;
+        height: 30%;
     }
 
     #show-animation > #animationInfos {
@@ -979,4 +978,48 @@ button{
 
 .btn_update{
     width: 100%;
+}
+
+.f-base{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #314015;
+    padding-top: 3vh;
+}
+
+.f-ul{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+
+}
+
+.f-li{
+    color: white;
+    list-style: none;
+}
+.f-li>a{
+    color: white;
+    transition: color 0.5s;
+
+}
+
+.f-li>a:hover,.cru-l:hover{
+    color:#96A621 ;
+}
+
+.f-base>p{
+    color: white;
+    text-align: center;
+}
+.profil-d,.vigneron-d,.animation-d{
+    height: 100%;
+}
+
+.cru-l{
+    color: black;
+    transition: color 0.5s;
+    text-decoration: none;
 }
