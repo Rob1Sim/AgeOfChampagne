@@ -7,6 +7,7 @@
         <main id="show-animation">
             <section id="animationInfos">
                 <aside>
+                    <img src="{{ asset('uploads/img/animation/')}}{{ animation.contenuImage }}" alt="{{ animation.nom }}" />
                     <h2 class="handWriting-text">{{ animation.getNom()}} </h2>
                     <p class="myriad-text"><strong>{{ animation.getNom }}</strong> est de type <i>{{ animation.getType() }}</i><br>
                         Cette animation aura pour horaire d'ouverture : <i>{{ animation.getHoraireDeb()|date("d/m/Y") }}</i> et comme horaire de fermeture <i>{{ animation.getHoraireFin|date("d/m/Y") }}</i><br>
