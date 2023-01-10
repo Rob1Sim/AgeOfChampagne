@@ -123,15 +123,7 @@ body{
         align-items: center;
 
     }
-    .btn_btn-lg_btn-primaryProfil{
-        background-color: #a68b6a;
-        font-size: 100%;
-        color:white;text-decoration: none;
-        border-radius: 22px;
-        width: 35%;
-        text-align: center;
-        height: 25%;
-    }
+
     h2{
         font-size:90%;
         font-family: "gotham", sans-serif;
@@ -165,25 +157,7 @@ body{
         text-align: center;
         flex-flow: column;
     }
-    .ProfilTypoTitre{
-        font-size: 150%;
-        font-family: "handwritting", sans-serif;
-        font-weight: lighter;
-        display:flex;
-        width: 63%;
-        margin-left: 3%;
-        flex-flow: column;
-    }
-    .ecriture_avenirProfil{
-        display:flex;
-        margin-left: 4%;
-        align-self: self-start;
-        font-family: 'gothamextra_light', sans-serif;
-        flex-direction: column;
-        width:80%;
-        text-decoration: none;
-        font-size: 200%;
-    }
+
     .ecriture_avenir{
         display:flex;
         margin-left: 10%;
@@ -840,3 +814,52 @@ button{
 
     }
 }
+.ProfilTypoTitre{
+    font-size: 150%;
+    font-family: "handwritting", sans-serif;
+    font-weight: lighter;
+    display:flex;
+    width: 63%;
+    margin-left: 3%;
+    flex-flow: column;
+}
+.ecriture_avenirProfil{
+    display:flex;
+    margin-left: 4%;
+    align-self: self-start;
+    font-family: 'gothamextra_light', sans-serif;
+    flex-direction: column;
+    width:80%;
+    text-decoration: none;
+    font-size: 200%;
+}
+.btn_btn-lg_btn-primaryProfil{
+    background-color: #a68b6a;
+    font-size: 100%;
+    color:white;text-decoration: none;
+    border-radius: 22px;
+    width: 25%;
+    text-align: center;
+    height: 25%;
+}
+.btn_btn-lg_btn-primaryProfilUpdate{
+    background-color: #a68b6a;
+    font-size: 100%;
+    margin-left: 10%;
+    color:white;
+    text-decoration: none;
+    border-radius: 22px;
+    width: 35%;
+    text-align: center;
+    height: 12%;
+}.btn_btn-lg_btn-primaryRegister{
+     background-color: #a68b6a;
+     font-size: 100%;
+     margin-left: 10%;
+     color:white;
+     text-decoration: none;
+     border-radius: 22px;
+     width: 35%;
+     text-align: center;
+     height: 9%;
+ }

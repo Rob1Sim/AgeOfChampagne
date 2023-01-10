@@ -4,13 +4,13 @@
 
 {% block body %}
 
-    <h1>Édition de {{ compte.getLogin() }}</h1>
+    <div class="formu"><h1>Edition de {{ compte.getLogin() }}</h1>
 
     {{ form_start(form) }}
-        {{ form_row(form.login, {'label': 'Identifiant : '}) }}
-        {{ form_row(form.email, {'label': 'Mail : '}) }}
-        {{ form_row(form.date_naiss, {'label': 'Date de naissance : '}) }}
-        <button type="submit" class="btn btn-success">Modifier</button>
-    {{ form_end(form) }}
+        <div class="ecriture_avenir">{{ form_row(form.login, {'label': 'Identifiant : '}) }}</div>
+        <div class="ecriture_avenir">{{ form_row(form.email, {'label': 'Mail : '}) }}</div>
+        <div class="ecriture_avenir">{{ form_row(form.date_naiss, {'label': 'Date de naissance : '}) }}</div>
+        <button type="submit" class="btn_btn-lg_btn-primaryProfilUpdate">Modifier</button>
+    {{ form_end(form) }}</div>
 
 {% endblock %}
