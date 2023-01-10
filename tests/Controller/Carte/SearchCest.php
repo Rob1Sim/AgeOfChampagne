@@ -4,6 +4,7 @@
 namespace App\Tests\Controller\Carte;
 
 use App\Factory\CarteFactory;
+use App\Factory\CategoryFactory;
 use App\Tests\ControllerTester;
 
 class SearchCest
@@ -17,11 +18,11 @@ class SearchCest
          * - 2 contiennent un zzzzz
          * - Aucune ne contient de ooooo
          */
-        CarteFactory::createOne(['nom' => 'xxxxx']);
-        CarteFactory::createOne(['nom' => 'yyyyy']);
-        CarteFactory::createOne(['nom' => 'zzzzz']);
-        CarteFactory::createOne(['nom' => 'xxxxxyyyyy']);
-        CarteFactory::createOne(['nom' => 'xxxxxyyyyyzzzzz']);
+        CarteFactory::createOne(['nom' => 'xxxxx', 'category' => CategoryFactory::createOne()]);
+        CarteFactory::createOne(['nom' => 'yyyyy', 'category' => CategoryFactory::createOne()]);
+        CarteFactory::createOne(['nom' => 'zzzzz', 'category' => CategoryFactory::createOne()]);
+        CarteFactory::createOne(['nom' => 'xxxxxyyyyy', 'category' => CategoryFactory::createOne()]);
+        CarteFactory::createOne(['nom' => 'xxxxxyyyyyzzzzz', 'category' => CategoryFactory::createOne()]);
         $I->amOnPage('/carte?search=zzzzz');
         $I->seeNumberOfElements('.carte', 2);
         $I->amOnPage('/carte?search=yyyyy');
