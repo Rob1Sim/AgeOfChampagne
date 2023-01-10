@@ -1,14 +1,15 @@
 <?php
+
 // src/Command/CreateUserCommand.php
+
 namespace App\Command;
 
+use App\Factory\CompteFactory;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use App\Factory\CompteFactory;
-
 
 // the name of the command is what users type after "php bin/console"
 #[AsCommand(
@@ -19,29 +20,24 @@ use App\Factory\CompteFactory;
 )]
 class CreateUserCommand extends Command
 {
-
     private string $mdp;
     private string $email;
     private string $role;
-    private string $finalRole = "ROLE_USER";
+    private string $finalRole = 'ROLE_USER';
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-
-        if($this->email != null &&$this->email != "" && $this->mdp != null && $this->mdp != "" && $this->role != null && $this->role != "") {
-            if ($this->role == "admin" ){
-                $this->finalRole = "ROLE_ADMIN";
-            } elseif ($this->role == "premium"){
-                $this->finalRole = "ROLE_PREMIUM";
+        if (null != $this->email && '' != $this->email && null != $this->mdp && '' != $this->mdp && null != $this->role && '' != $this->role) {
+            if ('admin' == $this->role) {
+                $this->finalRole = 'ROLE_ADMIN';
+            } elseif ('premium' == $this->role) {
+                $this->finalRole = 'ROLE_PREMIUM';
             }
             CompteFactory::createOne(['email' => $this->email, 'roles' => [$this->finalRole], 'login' => $this->role]);
 
             return Command::SUCCESS;
-
-
-        }else{
+        } else {
             return Command::INVALID;
-
         }
 
         // this method must return an integer number with the "exit status code"
@@ -62,9 +58,9 @@ class CreateUserCommand extends Command
     protected function configure(): void
     {
         $this
-            ->addArgument("Email",InputArgument::REQUIRED,"Email de l'utilisateur")
-            ->addArgument('mot de passe',InputArgument::REQUIRED,"Mot de passe de l'utilisateur")
-            ->addArgument('Rôle',InputArgument::REQUIRED,"Rôle de l'utilisateur(admin,premium,user")
+            ->addArgument('Email', InputArgument::REQUIRED, "Email de l'utilisateur")
+            ->addArgument('mot de passe', InputArgument::REQUIRED, "Mot de passe de l'utilisateur")
+            ->addArgument('Rôle', InputArgument::REQUIRED, "Rôle de l'utilisateur(admin,premium,user")
             ->setHelp('Email, mot de passe, rôle')
         ;
     }
