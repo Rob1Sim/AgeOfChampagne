@@ -4,12 +4,17 @@
 
 namespace App\Command;
 
+use App\Entity\Compte;
 use App\Factory\CompteFactory;
+use App\Repository\CompteRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Config\SecurityConfig;
 
 // the name of the command is what users type after "php bin/console"
 #[AsCommand(
@@ -20,10 +25,21 @@ use Symfony\Component\Console\Output\OutputInterface;
 )]
 class CreateUserCommand extends Command
 {
-    private string $mdp;
-    private string $email;
-    private string $role;
+    private string $mdp ="";
+    private string $email ="";
+    private string $role ="";
+    private EntityManagerInterface $entityManager;
     private string $finalRole = 'ROLE_USER';
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        parent::__construct();
+
+        // 3. Update the value of the private entityManager variable through injection
+        $this->entityManager = $entityManager;
+
+    }
+
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
@@ -34,6 +50,10 @@ class CreateUserCommand extends Command
                 $this->finalRole = 'ROLE_PREMIUM';
             }
             CompteFactory::createOne(['email' => $this->email, 'roles' => [$this->finalRole], 'login' => $this->role]);
+            $security = new SecurityConfig();
+            $security->passwordHasher(Compte::class);
+
+            $this->createUser($security);
 
             return Command::SUCCESS;
         } else {
@@ -54,7 +74,18 @@ class CreateUserCommand extends Command
         // or missing arguments (it's equivalent to returning int(2))
         // return Command::INVALID
     }
+    protected function createUser(UserPasswordHasherInterface $passwordHasher){
+        $user = new Compte();
 
+        $password = $passwordHasher->hashPassword($user,$this->mdp);
+        $user->setPassword($password);
+        $user->setLogin($this->role);
+        $user->setEmail($this->email);
+        $user->setRoles([$this->finalRole]);
+
+        $this->entityManager->persist($user);
+        $this->entityManager->flush();
+    }
     protected function configure(): void
     {
         $this
