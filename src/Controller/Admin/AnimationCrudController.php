@@ -80,7 +80,7 @@ class AnimationCrudController extends AbstractCrudController
                     return 'Pas de vignerons';
                 }),
             ImageField::new('contenuImage', "Image de l'animation")
-                ->setUploadDir('public/uploads/img/')
+                ->setUploadDir('public/uploads/img/animation/')
                 ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]')
                 ->onlyOnForms()
                 ->addHtmlContentsToBody("<script src='js/animation.js' ></script>"),
@@ -95,15 +95,14 @@ class AnimationCrudController extends AbstractCrudController
         if ($type = $this->getContext()->getRequest()->get('Animation')['type']) {
             $entityInstance->setType($type);
         }
-        if ($hdeb = $this->getContext()->getRequest()->get('Animation')['horaire_deb']) {
+        /*if ($hdeb = $this->getContext()->getRequest()->get('Animation')['horaireDeb']) {
             $entityInstance->setHoraireDeb($hdeb);
         }
-        if ($hfin = $this->getContext()->getRequest()->get('Animation')['horaire_fin']) {
+        if ($hfin = $this->getContext()->getRequest()->get('Animation')['horaireFin']) {
             $entityInstance->setHoraireFin($hfin);
-        }
+        }*/
         if ($prix = $this->getContext()->getRequest()->get('Animation')['prix']) {
             $entityInstance->setPrix($prix);
         }
     }
-
 }
