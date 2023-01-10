@@ -20,25 +20,22 @@
                 <p class="myriad-text">Voici les informations complétaires sur le cru : <i>{{ vigneron.cru.infos }}</i></p>
             </section>
 
+            <section id="animationInfos">
+            <ul class="lstAnim">
+                <h2 class="handWriting-text"> Liste des animations correspondantes :</h2>
+                {% for anim in vigneron.animation %}
+                    <div class="liens">
+                        <a href={{ path('app_animation_show', {id: anim.id}) }}>
+                        <span class="gotham-text"><strong>{{ anim.nom }}</strong></span>
+                        </a>
+                    </div>
+                {% endfor %}
+            </ul>
+            </section>
+
             <section id="produitInfos">
-                Liste des produits vendus par le vigneron :
-                <table class="tableau_prod">
-                    <tr>
-                        <td><strong>Nom du produit</strong></td>
-                        <td><strong>Prix du produit</strong></td>
-                    </tr>
-                    {% for prod in vigneron.produit %}
-                        <tr>
-                            <td><h2 class="handWriting-text">{{ prod.libelle }}</h2></td>
-                            <td><p class="myriad-text">{{ prod.prix }}</p></td>
-                        </tr>
-                    {% endfor %}
-                </table>
                 <h2 class="handWriting-text">{{ vigneron.produit.libelle }}</h2>
                 <p class="myriad-text">Le produit vendu par le vigneron aura pour prix <i>{{ vigneron.produit.prix }}</i></p>
-                <!--
-                afficher le prix si l'utilisateur est majeur
-                -->
             </section>
 
             <footer id="show-vigneron-footer"></footer>
