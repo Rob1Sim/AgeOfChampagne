@@ -416,16 +416,14 @@ button{
     display: flex;
     flex-direction: column;
     gap: 5vh;
-    height: 100%;
     justify-content: space-between;
     padding: 1rem 1rem 0 1rem;
 }
 
 #show-vigneron > #vigneronInfos{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 2vw;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 #show-vigneron > #vigneronInfos > aside{
@@ -446,15 +444,14 @@ button{
     display: flex;
     flex-direction: column;
     gap: 5vh;
-    height: 100%;
     justify-content: space-between;
     padding: 1rem 1rem 0 1rem;
 }
 
 #show-animation > #animationInfos{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     gap: 2vw;
 }
 
@@ -465,6 +462,16 @@ button{
     flex-shrink: 3;
     flex-basis: 60% ;
 
+}
+
+.lstAnim {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.gotham-text {
+    font-family: "gotham", sans-serif;
 }
 
 .liens > a:hover {
@@ -484,9 +491,8 @@ button{
 
 #show-vigneron > #cruInfos{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
-    gap: 2vw;
 }
 
 #produitInfos{
@@ -495,9 +501,9 @@ button{
 
 #show-vigneron > #produitInfos{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 2vw;
+    flex-direction: column;
+    justify-content: flex-start;
+
 }
 
 @media screen and (min-width: 1024px) {
