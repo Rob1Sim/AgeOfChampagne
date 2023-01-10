@@ -3,9 +3,11 @@
 namespace App\Security;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Security\Core\User\UserInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
@@ -24,11 +26,12 @@ class EmailVerifier
      */
     public function sendEmailConfirmation(string $email): void
     {
-        $message = (new \Swift_Message('Email de vérification'))
-            ->setFrom('contact@oldhengames.com')
-            ->setTo($email)
-            ->setBody('Here is the message itself');
-        $this->mailer->send($message);
+        $mailer = (new Email())
+            ->from('contact@oldhengames.com')
+            ->to($email)
+            ->subject('Email de vérification')
+            ->text('Vérifie ton email stp');
+        $this->mailer->send($mailer);
     }
 
     /**

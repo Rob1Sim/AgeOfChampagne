@@ -43,10 +43,6 @@ class RegistrationController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-
-            $mailer->sendEmailConfirmation($userModel->getEmail());
-            $this->addFlash('success', 'Incription réussie');
-
             return $this->redirectToRoute('app_login');
         }
 
