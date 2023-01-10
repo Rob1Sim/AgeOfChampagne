@@ -944,3 +944,8 @@ button{
      height: 9%;
  }
 
+.register-d{
+    display: flex;
+    flex-direction: column;
+    gap:3vh;
+}
