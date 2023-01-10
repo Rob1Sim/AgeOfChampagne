@@ -87,4 +87,23 @@ class AnimationCrudController extends AbstractCrudController
         ];
     }
 
+    public function saveDatas($entityInstance): void
+    {
+        if ($name = $this->getContext()->getRequest()->get('Animation')['nom']) {
+            $entityInstance->setNom($name);
+        }
+        if ($type = $this->getContext()->getRequest()->get('Animation')['type']) {
+            $entityInstance->setType($type);
+        }
+        if ($hdeb = $this->getContext()->getRequest()->get('Animation')['horaire_deb']) {
+            $entityInstance->setHoraireDeb($hdeb);
+        }
+        if ($hfin = $this->getContext()->getRequest()->get('Animation')['horaire_fin']) {
+            $entityInstance->setHoraireFin($hfin);
+        }
+        if ($prix = $this->getContext()->getRequest()->get('Animation')['prix']) {
+            $entityInstance->setPrix($prix);
+        }
+    }
+
 }
