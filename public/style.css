@@ -949,3 +949,8 @@ button{
     flex-direction: column;
     gap:3vh;
 }
+
+.register-txt>div{
+    display: flex;
+    flex-direction: column;
+}
