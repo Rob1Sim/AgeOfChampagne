@@ -4,13 +4,14 @@
 
 {% block body %}
 
-    <h1>{{ compte.getLogin() }}</h1>
+    <div class="flex"><div class="ProfilTypoTitre"><h1>{{ compte.getLogin() }}</h1></div>
 
-    <dl>
+        <div class="ecriture_avenirProfil"><br>
         <dt>Login : {{ compte.getLogin() }}</dt>
         <dt>Email : {{ compte.getEmail() }}</dt>
-        <dt>Date de naissance : {{ compte.getDateNaiss().format('d-m-y') }}</dt>
-    </dl>
+        <dt>Date de naissance : {{ compte.getDateNaiss().format('d-m-y') }}</dt></br>
+        <a class="btn_btn-lg_btn-primaryProfil" href="{{ path('app_profil_update',{'id': app.user.id}) }}">Modifier</a>
+    </dl></div></div>
 
 
 {% endblock %}
