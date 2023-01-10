@@ -21,6 +21,34 @@ class AnimationCrudController extends AbstractCrudController
         return Animation::class;
     }
 
+    public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        $this->saveDatas($entityInstance);
+        if ($contenuImage = $this->getContext()->getRequest()) {
+            if (!('image/jpeg' == $contenuImage->files->get('Animation')['contenuImage']['file']->getClientMimeType()
+                || 'image/png' == $contenuImage->files->get('Animation')['contenuImage']['file']->getClientMimeType())) {
+                return;
+            }
+        }
+
+        parent::updateEntity($entityManager, $entityInstance);
+    }
+
+    public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        // N'est appelé que lorsque on ajoute une donnée et donc non pendant la modification
+
+        $this->saveDatas($entityInstance);
+        if ($contenuImage = $this->getContext()->getRequest()) {
+            if (!('image/jpeg' == $contenuImage->files->get('Animation')['contenuImage']['file']->getClientMimeType()
+                || 'image/png' == $contenuImage->files->get('Animation')['contenuImage']['file']->getClientMimeType())) {
+                return;
+            }
+        }
+
+        parent::persistEntity($entityManager, $entityInstance);
+    }
+
 
     public function configureFields(string $pageName): iterable
     {
