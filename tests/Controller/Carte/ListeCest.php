@@ -7,6 +7,7 @@ use App\Entity\Carte;
 use App\Factory\CarteFactory;
 use App\Factory\CategoryFactory;
 use App\Factory\CompteFactory;
+use App\Factory\VigneronFactory;
 use App\Tests\ControllerTester;
 
 class ListeCest
@@ -38,5 +39,14 @@ class ListeCest
         $I->seeResponseCodeIsSuccessful();
         $I->click('Aaaaaaaaaaaa');
         $I->seeCurrentRouteIs('app_carte_show');
+    }
+
+
+    // Vérifie que nous sommes bien redirigés sur /login quand nous ne sommes pas connectés !
+    public function restricted(ControllerTester $I)
+    {
+        CarteFactory::createOne();
+        $I->amOnPage('/vigneron/1');
+        $I->seeCurrentUrlEquals('/login');
     }
 }
