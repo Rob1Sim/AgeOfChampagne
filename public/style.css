@@ -445,7 +445,6 @@ button{
 
 #show-vigneron-body{
     color: black;
-    height: 100%;
 }
 
 #show-vigneron {
@@ -987,12 +986,13 @@ button{
     align-items: center;
     justify-content: center;
     background-color: #314015;
+    padding-top: 3vh;
 }
 
 .f-ul{
     display: flex;
     flex-direction: row;
-    gap: 1vw;
+    gap: 30px;
 
 }
 
@@ -1008,4 +1008,8 @@ button{
 
 .f-base>p{
     color: white;
+    text-align: center;
+}
+.profil-d,.vigneron-d,.animation-d{
+    height: 100%;
 }
