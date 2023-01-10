@@ -1,21 +1,31 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <p class ="cru_libelle">{{ cru.libelle }}</p>
-    <p class ="cru_horaire">{{ cru.horaire }}</p>
-    <p class ="cru_infos">{{ cru.infos }}</p>
-        {% if cru.vigneronsCru is empty %}
-            Ce cru n'est dirigé par aucun vigneron.
-        {% else %}
-            Liste des vignerons pour ce cru :
-            <ul>
-                {% for vigneron in cru.vigneronsCru %}
-                    <li class="cru_vigneron">
-                        <a href="{{ path('app_vigneron_show', {'id': vigneron.id}) }}">{{ vigneron.nom }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-        {% endif %}
+<div id ="show-animation-body">
+    <main id="show-animation">
+        <section id="animationInfos">
+                <aside>
+                    <h2 class="handWriting-text">{{ cru.getLibelle()}}</h2>
+                    <p class="myriad-text"><strong>{{ cru.libelle }}</strong> a pour horaire d'ouverture :<i>{{ cru.horaire }}</i></p><br>
+                    <p class ="myriad-text">Informations supplémentaires sur le cru : {{ cru.infos }}</p>
+                    {% if cru.vigneronsCru is empty %}
+                        <p class="myriad-text">Ce cru n'est dirigé par aucun vigneron.</p>
+                    {% else %}
+                        <p class="myriad-text">Liste des vignerons pour ce cru :</p>
+                        <ul>
+                            {% for vigneron in cru.vigneronsCru %}
+                                <div class="liens">
+                                    <a href="{{ path('app_vigneron_show', {'id': vigneron.id}) }}">
+                                        <span class="gotham-text"><strong>{{ vigneron.nom }}</strong></span>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </aside>
+        </section>
+    </main>
+</div>
 
 {% endblock %}
 
