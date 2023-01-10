@@ -3,7 +3,9 @@
 {% block title %}Inscription{% endblock %}
 
 {% block body %}
-    <div class="gauche"><div class="formu">
+    <div class="gauche">        <div class="header"><img src="{{ asset('image/OHG.png') }}" width="50" height="50"></div>
+        <div class="formu">
+
     {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
