@@ -65,6 +65,55 @@ class CarteRepository extends ServiceEntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    /**
+     * @return int[]
+     */
+    public function getLastCardsId(): array
+    {
+        if (session_status() == 'PHP_SESSION_ACTIVE') {
+            session_start();
+        }
+
+        if (isset($_SESSION['LAST_CARDS'])) {
+            return $_SESSION['LAST_CARDS'];
+        }
+        return [];
+    }
+
+    public function addToCardList(int $carteId): void
+    {
+        if (!isset($_SESSION['LAST_CARDS'])) {
+            $_SESSION['LAST_CARDS'] = [$carteId];
+        } else {
+            $key = array_search($carteId, $_SESSION['LAST_CARDS']);
+            if ($key !== false) {
+                unset($_SESSION['LAST_CARDS'][$key]);
+            } elseif (count($_SESSION['LAST_CARDS']) === 10) {
+                array_pop($_SESSION['LAST_CARDS']);
+            }
+            array_unshift($_SESSION['LAST_CARDS'], $carteId);
+        }
+    }
+
+
+    private function replaceExistingCard(int $carteId)
+    {
+        if (!isset($_SESSION['LAST_CARDS'])) {
+            $_SESSION['LAST_CARDS'] = [];
+        }
+        for ($i = 0; $i < count($_SESSION['LAST_CARDS']); ++$i) {
+            if ($_SESSION['LAST_CARDS'][$i] == $carteId) {
+                unset($_SESSION['LAST_CARDS']);
+                if (!isset($_SESSION['LAST_CARDS'])) {
+                    $_SESSION['LAST_CARDS'] = [];
+                }
+                $_SESSION['LAST_CARDS'] = array_values($_SESSION['LAST_CARDS']);
+            }
+        }
+        array_unshift($_SESSION['LAST_CARDS'], $carteId);
+    }
+}
+
 //    /**
 //     * @return Carte[] Returns an array of Carte objects
 //     */
@@ -88,5 +137,4 @@ class CarteRepository extends ServiceEntityRepository
 //            ->getQuery()
 //            ->getOneOrNullResult()
 //        ;
-//    }
-}
+//    }/**

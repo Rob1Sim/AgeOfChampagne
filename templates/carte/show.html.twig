@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
-
+{% block title %}
+    Carte {{ carte.nom }}
+{% endblock %}
 {% block body %}
     <div id ="show-carte-body">
         <main id = "show-carte">
@@ -19,7 +21,11 @@
             <section>
                 <h3>Coordonées :</h3>
             </section> -->
-                <h2 class="avenir-text">Partenaires : </h2>
+                <div class="partenaire">
+                    <h2 class="avenir-text">Vignerons partenaire : </h2>
+
+                    <a href={{ path('app_vigneron_show', {id: carte.vignerons.id})}}>{{ carte.vignerons.NomPrenom }}</a>
+                </div>
             </section>
             <footer id="show-carte-footer">
 
@@ -30,7 +36,4 @@
 
 {% endblock %}
 
-{% block title %}
-
-{% endblock %}
 

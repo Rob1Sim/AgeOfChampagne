@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ animation.getNom() }} {% endblock %}
+
+{% block body %}
+    <div id ="show-animation-body">
+        <main id="show-animation">
+            <section id="animationInfos">
+                <aside>
+                    <img src="{{ asset('uploads/img/animation/')}}{{ animation.contenuImage }}" alt="{{ animation.nom }}" />
+                    <h2 class="handWriting-text">{{ animation.getNom()}} </h2>
+                    <p class="myriad-text"><strong>{{ animation.getNom }}</strong> est de type <i>{{ animation.getType() }}</i><br>
+                        Cette animation aura pour horaire d'ouverture : <i>{{ animation.getHoraireDeb()|date("d/m/Y") }}</i> et comme horaire de fermeture <i>{{ animation.getHoraireFin|date("d/m/Y") }}</i><br>
+                        Toute cette animation sera au total de <i>{{ animation.getPrix }}</i>
+                    </p>
+                    {% if animation.partenaires is empty %}
+                        <li class="handWriting-text"><strong>Cette animation n'a pas de partenaire.</strong></li>
+                    {% else %}
+                        <strong>Liste des partenaires pour cette animation : </strong>
+                    <ul>
+                        {% for partenaire in animation.partenaires %}
+                            <li class="handWriting-text">
+                                <strong>{{ partenaire.nom }} {{ partenaire.prenom }}</strong>
+                            </li>
+                    {% endfor %}
+                    </ul>
+                    {% endif %}
+                </aside>
+            </section>
+            <footer id="show-animation-footer"></footer>
+        </main>
+    </div>
+
+{% endblock %}

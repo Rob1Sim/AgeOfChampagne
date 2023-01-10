@@ -23,14 +23,14 @@ function dropdownFlags(){
 
     frFlagButton.addEventListener('click',()=>{
         let currentFlag = document.querySelector('img.btn-img');
-        currentFlag.src = "image/flags/france.png";
+        currentFlag.src = "/image/flags/france.png";
         flagDropdown.style.display = "none";
 
     })
 
     usFlagButton.addEventListener('click',()=>{
         let currentFlag = document.querySelector('img.btn-img');
-        currentFlag.src = "image/flags/united-states.png";
+        currentFlag.src = "/image/flags/united-states.png";
         flagDropdown.style.display = "none";
 
     })
@@ -57,9 +57,21 @@ function dropdownLinks(){
 
 }
 
+/**
+ * Lance une cherche par catégorie lorsque la valeur du dropdown change
+ */
+function startSearchOnChange(){
+    const dropDown = document.querySelector("select.dropdown-category");
+    const submitBtn = document.querySelector("button.btn-category");
+    const form = document.querySelector("form.carte-category")
+    dropDown.addEventListener("change",()=>{
+        form.submit();
+    })
+}
+
 dropdownFlags();
 dropdownLinks();
-
+startSearchOnChange();
 // Fereme le dropdown si on clique autre part que sur le bouton
 window.onclick = function(event) {
     if (!event.target.matches('.btn-flag') && !event.target.matches('.btn-img')&& !event.target.matches('.btn-flag-fr')

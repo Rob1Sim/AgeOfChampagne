@@ -37,6 +37,9 @@ class Animation
     #[ORM\OneToMany(mappedBy: 'animation', targetEntity: Partenaire::class)]
     private Collection $partenaires;
 
+    #[ORM\Column(length: 255)]
+    private ?string $contenuImage = null;
+
     public function __construct()
     {
         $this->vigneronsAnim = new ArrayCollection();
@@ -161,6 +164,18 @@ class Animation
                 $partenaire->setAnimation(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getContenuImage(): ?string
+    {
+        return $this->contenuImage;
+    }
+
+    public function setContenuImage(string $contenuImage): self
+    {
+        $this->contenuImage = $contenuImage;
 
         return $this;
     }

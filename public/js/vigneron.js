@@ -5,17 +5,17 @@ let input;
 
 
 
-input = document.getElementById("Carte_contenuImage_file");
+input = document.getElementById("Vigneron_contenuImage_file");
 
 input.accept = "image/png, image/jpeg"
 
-formulaire = document.querySelector('form[id="new-Carte-form"]');
+formulaire = document.querySelector('form[id="new-Vigneron-form"]');
 
 
 
 
 input.addEventListener("change",(event)=>{
-    const image = document.getElementById("Carte_contenuImage_file").files[0];
+    const image = document.getElementById("Vigneron_contenuImage_file").files[0];
 
     if (image.type !== "image/png" && image.type !== "image/jpeg"){
         document.getElementsByClassName("flex-fill")[8].innerHTML +=

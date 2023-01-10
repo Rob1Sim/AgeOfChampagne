@@ -6,6 +6,7 @@
     <div id ="show-vigneron-body">
         <main id="show-vigneron">
             <section id="vigneronInfos">
+                <img class="imgVign" src="{{ asset('uploads/img/vigneron/')}}{{ vigneron.contenuImage }}" alt="{{ vigneron.nom }}" />
                 <aside>
                     <h2 class="handWriting-text">{{ vigneron.getNom()}} {{ vigneron.getPrenom()}}</h2>
                     <p class="myriad-text">Le vigneron <strong>{{ vigneron.getNom()}} {{ vigneron.getPrenom()}}</strong> est situé dans la ville de <i>{{ vigneron.getVille()}}</i>
@@ -19,12 +20,22 @@
                 <p class="myriad-text">Voici les informations complétaires sur le cru : <i>{{ vigneron.cru.infos }}</i></p>
             </section>
 
+            <section id="animationInfos">
+            <ul class="lstAnim">
+                <h2 class="handWriting-text"> Liste des animations correspondantes :</h2>
+                {% for anim in vigneron.animation %}
+                    <div class="liens">
+                        <a href={{ path('app_animation_show', {id: anim.id}) }}>
+                        <span class="gotham-text"><strong>{{ anim.nom }}</strong></span>
+                        </a>
+                    </div>
+                {% endfor %}
+            </ul>
+            </section>
+
             <section id="produitInfos">
                 <h2 class="handWriting-text">{{ vigneron.produit.libelle }}</h2>
                 <p class="myriad-text">Le produit vendu par le vigneron aura pour prix <i>{{ vigneron.produit.prix }}</i></p>
-                <!--
-                afficher le prix si l'utilisateur est majeur
-                -->
             </section>
 
             <footer id="show-vigneron-footer"></footer>

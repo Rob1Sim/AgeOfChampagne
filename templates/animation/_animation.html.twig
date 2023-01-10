@@ -1,0 +1,15 @@
+<ul>
+    {% for infoAnim in animations %}
+    <div class="show-vigneron-body">
+        <section id="vigneronInfos">
+            <aside>
+                <div class="liens">
+                    <a href={{ path('app_animation_show', {id: infoAnim.id})}}>
+                        <span class="handWriting-text"><strong>{{ infoAnim.nom }}</strong></span>
+                    </a>
+                </div>
+            </aside>
+        </section>
+    </div>
+    {% endfor %}
+</ul>
