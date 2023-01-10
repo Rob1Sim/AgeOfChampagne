@@ -42,6 +42,9 @@
                     <li class="no-dropdown">
                         <a href = "{{ path('app_vigneron') }}" >Les vignerons partenaires</a>
                     </li>
+                    <li class="no-dropdown">
+                        <a href = "{{ path('app_animation') }}" >Les animations</a>
+                    </li>
                 {%  endif %}
             </div>
             <div class="dropdown-container">
@@ -56,6 +59,9 @@
                         </div>
                         <div>
                             <a href = "{{ path('app_vigneron') }}" >Les vignerons partenaires</a>
+                        </div>
+                        <div>
+                            <a href = "{{ path('app_vigneron') }}" >Les animations</a>
                         </div>
                         {% if is_granted('ROLE_ADMIN') %}
                             <div>
