@@ -416,7 +416,6 @@ button{
     display: flex;
     flex-direction: column;
     gap: 5vh;
-    height: 100%;
     justify-content: space-between;
     padding: 1rem 1rem 0 1rem;
 }
@@ -424,8 +423,8 @@ button{
 #show-vigneron > #vigneronInfos{
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    gap: 2vw;
+    justify-content: flex-start;
+    gap: 1vw;
 }
 
 #show-vigneron > #vigneronInfos > aside{
@@ -446,15 +445,14 @@ button{
     display: flex;
     flex-direction: column;
     gap: 5vh;
-    height: 100%;
     justify-content: space-between;
     padding: 1rem 1rem 0 1rem;
 }
 
 #show-animation > #animationInfos{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     gap: 2vw;
 }
 
@@ -465,6 +463,21 @@ button{
     flex-shrink: 3;
     flex-basis: 60% ;
 
+}
+
+.lstAnim {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.gotham-text {
+    font-family: "gotham", sans-serif;
+}
+
+.imgVign {
+    width: 20%;
+    border-radius: 30px;
 }
 
 .liens > a:hover {
@@ -484,9 +497,8 @@ button{
 
 #show-vigneron > #cruInfos{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
-    gap: 2vw;
 }
 
 #produitInfos{
@@ -495,9 +507,9 @@ button{
 
 #show-vigneron > #produitInfos{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 2vw;
+    flex-direction: column;
+    justify-content: flex-start;
+
 }
 
 @media screen and (min-width: 1024px) {
@@ -515,8 +527,18 @@ button{
 }
 
 @media screen and (max-width: 480px) {
+    .imgVign{
+        width: 40%;
+        height: 60%;
+    }
+    #show-vigneron > #cruInfos,#animationInfos,#produitInfos{
+        width: 90%;
+        align-self: center;
+    }
+
     #show-vigneron > #vigneronInfos {
-        width: 50%;
+        justify-content: center;
+        width: 90%;
     }
     #show-vigneron-footer {
         height: 3rem;
@@ -542,6 +564,7 @@ button{
 }
 
 @media screen and (max-width: 480px) {
+
     #show-animation > #animationInfos {
         width: 60%;
     }
