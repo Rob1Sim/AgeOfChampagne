@@ -992,9 +992,20 @@ button{
 .f-ul{
     display: flex;
     flex-direction: row;
+    gap: 1vw;
 
 }
 
 .f-li{
+    color: white;
     list-style: none;
+    transition: color 0.5s;
+}
+
+.f-li:hover{
+    color:#96A621 ;
+}
+
+.f-base>p{
+    color: white;
 }
