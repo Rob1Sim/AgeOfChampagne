@@ -43,10 +43,7 @@ class CruCrudController extends AbstractCrudController
 
                     return 'Pas de vignerons';
                 }),
-            ImageField::new('image', 'Image de la carte')
-                ->setUploadDir('public/uploads/img/crus/')
-                ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]')
-                ->onlyOnForms(),
+
         ];
     }
 }
