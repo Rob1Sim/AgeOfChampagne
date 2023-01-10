@@ -58,5 +58,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Produits', 'fas fa-wine-bottle', Produit::class);
         yield MenuItem::linkToCrud('Vignerons', 'fas fa-droplet', Vigneron::class);
         yield MenuItem::linkToCrud('Crus', 'fas fa-wine-glass', Cru::class);
+        yield MenuItem::linkToRoute('Retour', 'fas fa-solid fa-right-from-bracket','app_carte');
+
     }
 }

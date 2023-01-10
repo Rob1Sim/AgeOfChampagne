@@ -7,10 +7,12 @@
     <div class="formu"><h1>Edition de {{ compte.getLogin() }}</h1>
 
     {{ form_start(form) }}
-        <div class="ecriture_avenir">{{ form_row(form.login, {'label': 'Identifiant : '}) }}</div>
-        <div class="ecriture_avenir">{{ form_row(form.email, {'label': 'Mail : '}) }}</div>
-        <div class="ecriture_avenir">{{ form_row(form.date_naiss, {'label': 'Date de naissance : '}) }}</div>
-        <button type="submit" class="btn_btn-lg_btn-primaryProfilUpdate">Modifier</button>
-    {{ form_end(form) }}</div>
+        <div class="update-prof">
+        <div class="gotham-text register-txt">{{ form_row(form.login, {'label': 'Identifiant : '}) }}</div>
+        <div class="gotham-text register-txt">{{ form_row(form.email, {'label': 'Mail : '}) }}</div>
+        <div class="gotham-text register-txt">{{ form_row(form.date_naiss, {'label': 'Date de naissance : '}) }}</div>
+            <div class="btn_update"><button type="submit" class="btn_btn-lg_btn-primaryProfilUpdate">Modifier</button></div>
+        </div>
 
+            {{ form_end(form) }}</div>
 {% endblock %}
