@@ -487,7 +487,7 @@ button{
 
 #show-animation > #animationInfos{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: flex-start;
     gap: 2vw;
 }
@@ -545,6 +545,11 @@ button{
     width: 20%;
     border-radius: 30px;
 
+}
+
+.imgAnim {
+    width: 20%;
+    border-radius: 30px;
 }
 
 .liens > a:hover {
@@ -637,10 +642,14 @@ button{
 
 @media screen and (max-width: 480px) {
 
-
+    .imgAnim{
+        width: 40%;
+        height: 60%;
+    }
 
     #show-animation > #animationInfos {
-        width: 60%;
+        justify-content: center;
+        width: 90%;
     }
     #show-animation-footer {
         height: 3rem;
