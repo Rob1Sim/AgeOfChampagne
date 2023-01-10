@@ -21,10 +21,12 @@
             <section>
                 <h3>Coordonées :</h3>
             </section> -->
-                <div class="partenaire">
-                    <h2 class="avenir-text">Vignerons partenaire : </h2>
+                <div class="liens">
+                    <h2 class="handWriting-text">Vignerons partenaire : </h2>
 
-                    <a href={{ path('app_vigneron_show', {id: carte.vignerons.id})}}>{{ carte.vignerons.NomPrenom }}</a>
+                    <a href={{ path('app_vigneron_show', {id: carte.vignerons.id})}}>
+                        <span class="gotham-text"><strong>{{ carte.vignerons.NomPrenom }}</strong></span>
+                    </a>
                 </div>
             </section>
             <footer id="show-carte-footer">
