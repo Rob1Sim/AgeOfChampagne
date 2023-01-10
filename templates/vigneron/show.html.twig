@@ -6,8 +6,8 @@
     <div id ="show-vigneron-body">
         <main id="show-vigneron">
             <section id="vigneronInfos">
+                <img class="imgVign" src="{{ asset('uploads/img/vigneron/')}}{{ vigneron.contenuImage }}" alt="{{ vigneron.nom }}" />
                 <aside>
-                    <img src="{{ asset('uploads/img/vigneron/')}}{{ vigneron.contenuImage }}" alt="{{ vigneron.nom }}" />
                     <h2 class="handWriting-text">{{ vigneron.getNom()}} {{ vigneron.getPrenom()}}</h2>
                     <p class="myriad-text">Le vigneron <strong>{{ vigneron.getNom()}} {{ vigneron.getPrenom()}}</strong> est situé dans la ville de <i>{{ vigneron.getVille()}}</i>
                     dont l'adresse est <i>{{ vigneron.getCodePostal()}}</i> <i>{{ vigneron.getAdresse()}}</i></p>

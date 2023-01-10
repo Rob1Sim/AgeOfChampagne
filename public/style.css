@@ -422,8 +422,9 @@ button{
 
 #show-vigneron > #vigneronInfos{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: flex-start;
+    gap: 1vw;
 }
 
 #show-vigneron > #vigneronInfos > aside{
@@ -474,6 +475,11 @@ button{
     font-family: "gotham", sans-serif;
 }
 
+.imgVign {
+    width: 20%;
+    border-radius: 30px;
+}
+
 .liens > a:hover {
     color : #96A621;
 }
@@ -521,8 +527,18 @@ button{
 }
 
 @media screen and (max-width: 480px) {
+    .imgVign{
+        width: 40%;
+        height: 60%;
+    }
+    #show-vigneron > #cruInfos,#animationInfos,#produitInfos{
+        width: 90%;
+        align-self: center;
+    }
+
     #show-vigneron > #vigneronInfos {
-        width: 50%;
+        justify-content: center;
+        width: 90%;
     }
     #show-vigneron-footer {
         height: 3rem;
@@ -548,6 +564,7 @@ button{
 }
 
 @media screen and (max-width: 480px) {
+
     #show-animation > #animationInfos {
         width: 60%;
     }
