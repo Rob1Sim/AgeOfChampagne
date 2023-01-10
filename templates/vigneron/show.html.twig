@@ -15,27 +15,39 @@
             </section>
 
             <section id="cruInfos">
+                {% if vigneron.cru is empty %}
+                <p class="myriad-text">Pas de cru correspondant pour le vigneron</p>
+                {% else %}
                 <h2 class="handWriting-text">{{ vigneron.cru.libelle }}</h2>
                 <p class="myriad-text">Le cru correspondant à ce vigneron est <strong>{{ vigneron.cru.libelle }}</strong>. Les informations sur les horaires sont <i>{{ vigneron.cru.horaire }}</i>.</p>
                 <p class="myriad-text">Voici les informations complétaires sur le cru : <i>{{ vigneron.cru.infos }}</i></p>
+                {% endif %}
             </section>
 
             <section id="animationInfos">
-            <ul class="lstAnim">
-                <h2 class="handWriting-text"> Liste des animations correspondantes :</h2>
-                {% for anim in vigneron.animation %}
-                    <div class="liens">
-                        <a href={{ path('app_animation_show', {id: anim.id}) }}>
-                        <span class="gotham-text"><strong>{{ anim.nom }}</strong></span>
-                        </a>
-                    </div>
-                {% endfor %}
-            </ul>
+                {% if vigneron.animation is empty %}
+                <p class="myriad-text">Pas d'animation correspondant pour le vigneron</p>
+                {% else %}
+                <ul class="lstAnim">
+                    <h2 class="handWriting-text"> Liste des animations correspondantes :</h2>
+                    {% for anim in vigneron.animation %}
+                        <div class="liens">
+                            <a href={{ path('app_animation_show', {id: anim.id}) }}>
+                            <span class="gotham-text"><strong>{{ anim.nom }}</strong></span>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </ul>
+                {% endif %}
             </section>
 
             <section id="produitInfos">
+                {% if vigneron.produit is empty %}
+                <p class="myriad-text">Pas de produit correspondant pour le vigneron</p>
+                {% else %}
                 <h2 class="handWriting-text">{{ vigneron.produit.libelle }}</h2>
                 <p class="myriad-text">Le produit vendu par le vigneron aura pour prix <i>{{ vigneron.produit.prix }}</i></p>
+                {% endif %}
             </section>
 
             <footer id="show-vigneron-footer"></footer>
