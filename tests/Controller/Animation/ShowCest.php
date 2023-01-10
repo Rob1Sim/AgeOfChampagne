@@ -9,7 +9,7 @@ use App\Tests\ControllerTester;
 
 class ShowCest
 {
-    public function showCarte(ControllerTester $I)
+    public function showAnim(ControllerTester $I)
     {
         $user = CompteFactory::createOne(['roles' => ['ROLE_ADMIN']]);
         $trueUser = $user->object();
