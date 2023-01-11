@@ -445,6 +445,7 @@ button{
 
 #show-vigneron-body{
     color: black;
+    flex-grow: 1;
 }
 
 #show-vigneron {
@@ -834,6 +835,7 @@ button{
     justify-content: center;
     width: 50%;
     align-self: center;
+    flex-grow: 2;
 }
 
 .list-form{
