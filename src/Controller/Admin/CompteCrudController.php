@@ -47,9 +47,7 @@ class CompteCrudController extends AbstractCrudController
             $entityInstance->setRoles($role);
         }
         if ($datenaiss = $this->getContext()->getRequest()->get('Compte')['datenaiss']) {
-            dump($datenaiss);
             $date = (new \DateTime())->createFromFormat('Y-m-d', $datenaiss);
-            dump($date);
 
             $entityInstance->setDateNaiss($date);
         }

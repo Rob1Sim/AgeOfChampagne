@@ -51,7 +51,6 @@ class CarteController extends AbstractController
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
 
         $repository->addToCardList($carte->getId());
-        dump($_SESSION['LAST_CARDS']);
 
         return $this->render('carte/show.html.twig', ['carte' => $carte]);
     }
