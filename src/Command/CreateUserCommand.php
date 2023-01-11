@@ -6,7 +6,6 @@ namespace App\Command;
 
 use App\Entity\Compte;
 use App\Factory\CompteFactory;
-use App\Repository\CompteRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
@@ -25,9 +24,9 @@ use Symfony\Config\SecurityConfig;
 )]
 class CreateUserCommand extends Command
 {
-    private string $mdp ="";
-    private string $email ="";
-    private string $role ="";
+    private string $mdp = '';
+    private string $email = '';
+    private string $role = '';
     private EntityManagerInterface $entityManager;
     private string $finalRole = 'ROLE_USER';
 
@@ -37,9 +36,7 @@ class CreateUserCommand extends Command
 
         // 3. Update the value of the private entityManager variable through injection
         $this->entityManager = $entityManager;
-
     }
-
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
@@ -74,10 +71,12 @@ class CreateUserCommand extends Command
         // or missing arguments (it's equivalent to returning int(2))
         // return Command::INVALID
     }
-    protected function createUser(UserPasswordHasherInterface $passwordHasher){
+
+    protected function createUser(UserPasswordHasherInterface $passwordHasher)
+    {
         $user = new Compte();
 
-        $password = $passwordHasher->hashPassword($user,$this->mdp);
+        $password = $passwordHasher->hashPassword($user, $this->mdp);
         $user->setPassword($password);
         $user->setLogin($this->role);
         $user->setEmail($this->email);
@@ -86,6 +85,7 @@ class CreateUserCommand extends Command
         $this->entityManager->persist($user);
         $this->entityManager->flush();
     }
+
     protected function configure(): void
     {
         $this
